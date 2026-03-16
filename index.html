@@ -1,790 +1,3545 @@
 
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --sidebar-w: 220px;
-  --right-w: 220px;
-  --accent: #1a56db;
-  --accent-light: #e8f0fe;
-  --accent-2: #0e9f6e;
+html,body{min-height:100%;margin:0;background:#f4f7fb}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --lob:#627f96;
+  --lob-h:#536f86;
+  --gray-bg:#f4f7fb;
+  --radius-card:10px;
+  --radius-pill:20px;
+  --accent-bg:#f2f7fc;
+  --accent-bg-strong:#e4eef7;
+  --accent-text:#4c6983;
+  --accent-border:#d7e2ec;
+  --input-border:#c8d5e1;
+  --input-focus:#6f8ea8;
+  --think-border:#aec0d0;
+  --think-bg:#fbfdff;
+  --think-border-left:#9fb3c6;
+  --panel-shell:#f8fbfe;
+  --panel-edge:#dce6ef;
+  --card-edge:#e2eaf2;
+  --composer-border:#c7d5e1;
+  --composer-bg:#ffffff;
+  --soft-shadow:0 8px 24px rgba(15,23,42,.035);
+  --color-background-primary:#ffffff;
+  --color-background-secondary:#f8fbfe;
+  --color-border-tertiary:#e4ecf3;
+  --color-border-secondary:#d4dfe9;
+  --color-text-primary:#1a2430;
+  --color-text-secondary:#59697b;
+  --color-text-tertiary:#8d9aa8;
+  --font-sans:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
 }
-body { font-family: var(--font-sans); }
-.shell {
-  display: flex;
-  flex-direction: column;
-  height: 640px;
-  background: var(--color-background-tertiary);
-  border: 0.5px solid var(--color-border-tertiary);
-  border-radius: var(--border-radius-lg);
-  overflow: hidden;
-}
-
-/* ── TOP BAR ── */
-.topbar {
-  height: 48px;
-  background: var(--color-background-primary);
-  border-bottom: 0.5px solid var(--color-border-tertiary);
-  display: flex;
-  align-items: center;
-  padding: 0 16px;
-  gap: 12px;
-  flex-shrink: 0;
-}
-.logo {
-  display: flex; align-items: center; gap: 8px;
-  font-size: 13px; font-weight: 500; color: var(--color-text-primary);
-}
-.logo-mark {
-  width: 26px; height: 26px; border-radius: 6px;
-  background: #1a56db;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 11px; font-weight: 700; color: #fff; letter-spacing: -0.5px;
-}
-.logo-sub { font-size: 11px; color: var(--color-text-secondary); font-weight: 400; }
-.tb-divider { width: 0.5px; height: 20px; background: var(--color-border-tertiary); margin: 0 4px; }
-.tb-ctx { flex: 1; display: flex; align-items: center; gap: 8px; justify-content: center; }
-.tb-assistant-tag {
-  font-size: 12px; font-weight: 500;
-  padding: 3px 10px; border-radius: 20px;
-  background: #e8f0fe; color: #1a56db;
-  transition: all 0.2s;
-}
-.tb-session { font-size: 12px; color: var(--color-text-secondary); }
-.tb-right { display: flex; align-items: center; gap: 10px; margin-left: auto; }
-.tb-role {
-  font-size: 11px; color: var(--color-text-secondary);
-  background: var(--color-background-secondary);
-  padding: 3px 8px; border-radius: 4px;
-}
-.tb-avatar {
-  width: 28px; height: 28px; border-radius: 50%;
-  background: #1a56db; color: #fff;
-  font-size: 11px; font-weight: 500;
-  display: flex; align-items: center; justify-content: center;
-}
-.notif-dot {
-  width: 16px; height: 16px; border-radius: 50%;
-  background: var(--color-background-secondary);
-  border: 0.5px solid var(--color-border-tertiary);
-  font-size: 9px; display: flex; align-items: center; justify-content: center;
-  color: var(--color-text-secondary); position: relative; cursor: pointer;
-}
-.notif-dot::after {
-  content: '';
-  position: absolute; top: -2px; right: -2px;
-  width: 6px; height: 6px; border-radius: 50%;
-  background: #e24b4a;
+.shell{
+  display:flex;flex-direction:column;
+  height:100vh;
+  min-height:100vh;max-height:100vh;
+  font-family:var(--font-sans);
+  background:var(--gray-bg);
+  contain:layout style;
 }
 
-/* ── BODY ── */
-.body { display: flex; flex: 1; overflow: hidden; }
+/* ── TOPBAR ── */
+.tb{
+  height:48px;background:var(--color-background-primary);
+  border-bottom:1px solid var(--color-border-tertiary);
+  display:flex;align-items:center;padding:0 16px;gap:10px;
+  flex-shrink:0;will-change:contents;
+}
+.tb-lm{width:30px;height:30px;border-radius:8px;overflow:hidden;flex-shrink:0}
+.tb-name{font-size:13px;font-weight:500;color:var(--color-text-primary);line-height:1.2}
+.tb-sub{font-size:10px;color:var(--color-text-tertiary);line-height:1.2}
+.tb-sep{width:1px;height:20px;background:var(--color-border-tertiary);margin:0 8px}
+.tb-ctx{flex:1;display:flex;align-items:center;gap:8px;justify-content:center}
+.tb-badge{font-size:11px;padding:3px 10px;border-radius:var(--radius-pill);background:var(--accent-bg);color:var(--accent-text);font-weight:500;border:1px solid var(--accent-border)}
+.tb-sess{font-size:11px;color:var(--color-text-tertiary);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tb-right{display:flex;align-items:center;gap:8px;margin-left:auto}
+.tb-role{font-size:10px;color:var(--color-text-secondary);background:var(--color-background-secondary);padding:3px 9px;border-radius:var(--radius-pill);border:0.5px solid var(--color-border-tertiary)}
+
+/* ── LAYOUT ── */
+.body{display:flex;flex:1;overflow:hidden;min-height:0;gap:10px;padding:10px}
 
 /* ── SIDEBAR ── */
-.sidebar {
-  width: var(--sidebar-w);
-  background: var(--color-background-primary);
-  border-right: 0.5px solid var(--color-border-tertiary);
-  display: flex; flex-direction: column;
-  overflow-y: auto; flex-shrink: 0;
+.sidebar{
+  width:200px;flex-shrink:0;
+  display:flex;flex-direction:column;gap:6px;
+  overflow-y:auto;overflow-x:hidden;
+  background:#f9fbfe;border:1px solid var(--panel-edge);border-radius:14px;padding:6px;
+  box-shadow:var(--soft-shadow);
 }
-.sb-section { padding: 10px 10px 4px; }
-.sb-label {
-  font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em;
-  color: var(--color-text-tertiary); font-weight: 500;
-  padding: 0 6px 6px;
+.sbc{background:var(--color-background-primary);border-radius:12px;border:1px solid var(--card-edge);padding:8px 6px}
+.sblbl{font-size:10px;letter-spacing:.07em;color:var(--color-text-tertiary);font-weight:500;padding:4px 8px 6px;text-transform:uppercase}
+.sbi{
+  display:flex;align-items:center;gap:8px;
+  padding:7px 9px;border-radius:8px;
+  cursor:pointer;font-size:11px;color:var(--color-text-secondary);
+  transition:background .12s,color .12s;
+  user-select:none;
+  -webkit-tap-highlight-color:transparent;
 }
-.sb-item {
-  display: flex; align-items: center; gap: 8px;
-  padding: 7px 10px; border-radius: 8px;
-  cursor: pointer; font-size: 13px; color: var(--color-text-secondary);
-  transition: all 0.15s; user-select: none;
-}
-.sb-item:hover { background: var(--color-background-secondary); color: var(--color-text-primary); }
-.sb-item.active {
-  background: #e8f0fe; color: #1a56db; font-weight: 500;
-}
-.sb-icon {
-  width: 22px; height: 22px; border-radius: 6px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 12px; flex-shrink: 0;
-  background: var(--color-background-secondary);
-}
-.sb-item.active .sb-icon { background: #c7d9fb; }
-.sb-divider { height: 0.5px; background: var(--color-border-tertiary); margin: 8px 10px; }
-
-/* ── MAIN CHAT ── */
-.main { flex: 1; display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
-.chat-area { flex: 1; overflow-y: auto; padding: 20px 16px; display: flex; flex-direction: column; gap: 14px; }
-
-/* welcome */
-.welcome-screen { display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; padding: 24px; gap: 16px; }
-.w-avatar {
-  width: 52px; height: 52px; border-radius: 16px;
-  background: #1a56db; color: #fff;
-  font-size: 22px; font-weight: 700;
-  display: flex; align-items: center; justify-content: center;
-}
-.w-title { font-size: 15px; font-weight: 500; color: var(--color-text-primary); text-align: center; }
-.w-sub { font-size: 13px; color: var(--color-text-secondary); text-align: center; line-height: 1.6; max-width: 320px; }
-.quick-cmds { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 8px; }
-.qcmd {
-  font-size: 12px; padding: 6px 12px;
-  border: 0.5px solid var(--color-border-secondary);
-  border-radius: 20px; cursor: pointer; color: var(--color-text-secondary);
-  background: var(--color-background-primary);
-  transition: all 0.15s;
-}
-.qcmd:hover { background: #e8f0fe; color: #1a56db; border-color: #b0c9f8; }
-
-/* messages */
-.msg-row { display: flex; gap: 10px; max-width: 100%; }
-.msg-row.user { flex-direction: row-reverse; }
-.msg-avatar {
-  width: 28px; height: 28px; border-radius: 8px;
-  background: #1a56db; color: #fff; font-size: 10px; font-weight: 500;
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0; align-self: flex-end;
-}
-.msg-avatar.user { background: #5f5e5a; }
-.msg-body { display: flex; flex-direction: column; gap: 3px; max-width: 75%; }
-.msg-meta { font-size: 11px; color: var(--color-text-tertiary); padding: 0 4px; }
-.msg-row.user .msg-meta { text-align: right; }
-.bubble {
-  padding: 10px 13px; border-radius: 12px;
-  font-size: 13px; line-height: 1.65; color: var(--color-text-primary);
-  background: var(--color-background-primary);
-  border: 0.5px solid var(--color-border-tertiary);
-}
-.msg-row.user .bubble {
-  background: #1a56db; color: #fff; border-color: transparent;
+.sbi:hover{background:var(--color-background-secondary);color:var(--color-text-primary)}
+.sbi.on{background:var(--accent-bg);color:var(--accent-text);font-weight:500;box-shadow:inset 0 0 0 1px var(--accent-border)}
+.sbico{width:22px;height:22px;border-radius:6px;background:var(--color-background-secondary);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.sbi.on .sbico{background:var(--accent-bg-strong)}
+.sbi-badge{
+  margin-left:auto;font-size:9px;
+  padding:1px 5px;border-radius:10px;
+  background:#fcebeb;color:#a32d2d;font-weight:500;
+  flex-shrink:0;
 }
 
-/* cards */
-.card-msg {
-  background: var(--color-background-primary);
-  border: 0.5px solid var(--color-border-tertiary);
-  border-radius: 12px; overflow: hidden;
-  font-size: 13px; max-width: 420px;
-}
-.card-header {
-  padding: 10px 13px 8px;
-  border-bottom: 0.5px solid var(--color-border-tertiary);
-  display: flex; align-items: center; gap: 8px;
-}
-.card-tag {
-  font-size: 11px; padding: 2px 8px; border-radius: 4px;
-  background: #e8f0fe; color: #1a56db; font-weight: 500;
-}
-.card-tag.warn { background: #fef3c7; color: #b45309; }
-.card-tag.ok { background: #d1fae5; color: #065f46; }
-.card-title { font-weight: 500; font-size: 13px; color: var(--color-text-primary); }
-.card-body { padding: 10px 13px; }
-.card-row {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 4px 0; font-size: 12px;
-  border-bottom: 0.5px solid var(--color-border-tertiary);
-}
-.card-row:last-child { border-bottom: none; }
-.card-row-k { color: var(--color-text-secondary); }
-.card-row-v { font-weight: 500; color: var(--color-text-primary); }
-.card-actions { padding: 8px 13px 10px; display: flex; gap: 8px; flex-wrap: wrap; }
-.btn {
-  font-size: 12px; padding: 5px 12px; border-radius: 6px; cursor: pointer;
-  border: 0.5px solid var(--color-border-secondary);
-  background: var(--color-background-primary);
-  color: var(--color-text-primary); font-weight: 500; transition: all 0.15s;
-}
-.btn:hover { background: var(--color-background-secondary); }
-.btn.primary { background: #1a56db; color: #fff; border-color: transparent; }
-.btn.primary:hover { background: #1648c0; }
-.btn.sm { font-size: 11px; padding: 4px 10px; }
+/* ── MAIN ── */
+.main{flex:1;display:flex;flex-direction:column;gap:6px;overflow:hidden;min-width:0;min-height:0}
 
-/* progress steps */
-.step-list { padding: 10px 13px; display: flex; flex-direction: column; gap: 8px; }
-.step-row { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--color-text-secondary); }
-.step-dot {
-  width: 16px; height: 16px; border-radius: 50%; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center; font-size: 9px;
+/* ── CHAT CARD ── */
+.chat-card{
+  flex:1;min-height:0;
+  background:var(--color-background-primary);
+  border:1px solid var(--card-edge);
+  border-radius:var(--radius-card);
+  position:relative;
+  overflow-y:auto;overflow-x:hidden;
+  padding:16px 16px 20px;
+  display:flex;flex-direction:column;
+  gap:0;
+  scroll-behavior:smooth;
+  overscroll-behavior:contain;
 }
-.step-dot.done { background: #d1fae5; color: #065f46; }
-.step-dot.active { background: #e8f0fe; color: #1a56db; }
-.step-dot.pending { background: var(--color-background-secondary); color: var(--color-text-tertiary); }
-.step-row.done-row { color: var(--color-text-primary); }
 
-/* result stats */
-.stat-row { display: flex; gap: 10px; padding: 10px 13px 0; }
-.stat-box {
-  flex: 1; background: var(--color-background-secondary);
-  border-radius: 8px; padding: 8px 10px; text-align: center;
+/* ── WELCOME ── */
+.welcome{
+  display:flex;flex-direction:column;align-items:center;
+  justify-content:center;flex:1;gap:14px;
+  padding:20px;text-align:center;min-height:200px;
 }
-.stat-num { font-size: 20px; font-weight: 500; color: var(--color-text-primary); }
-.stat-lbl { font-size: 11px; color: var(--color-text-secondary); margin-top: 2px; }
-.stat-num.ok { color: #0e9f6e; }
-.stat-num.bad { color: #e24b4a; }
+.w-ava{width:52px;height:52px;border-radius:16px;background:var(--lob);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.w-title{font-size:15px;font-weight:500;color:var(--color-text-primary)}
+.w-sub{font-size:12px;color:var(--color-text-secondary);line-height:1.7;max-width:300px}
+.w-note{
+  font-size:11px;color:var(--color-text-tertiary);
+  padding:7px 12px;border-radius:999px;
+  background:var(--color-background-secondary);
+  border:1px solid var(--card-edge);
+}
+.w-cmds{display:none !important}
+.wc{display:none}
+.wc:hover{background:var(--accent-bg);color:var(--accent-text);border-color:var(--accent-border)}
 
-/* typing indicator */
-.typing { display: flex; gap: 4px; align-items: center; padding: 10px 13px; }
-.typing span {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--color-text-tertiary);
-  animation: blink 1.2s infinite;
+/* ── MESSAGE LAYOUT ── */
+.msg-ts{
+  font-size:10px;color:var(--color-text-tertiary);
+  text-align:center;margin:12px 0 14px;
+  display:flex;align-items:center;gap:8px;
 }
-.typing span:nth-child(2) { animation-delay: 0.2s; }
-.typing span:nth-child(3) { animation-delay: 0.4s; }
-@keyframes blink { 0%,100%{opacity:.3} 50%{opacity:1} }
+.msg-ts::before,.msg-ts::after{content:'';flex:1;height:0.5px;background:var(--color-border-tertiary)}
+.msg-group{margin-bottom:14px}
+.msg-group:last-child{margin-bottom:0}
+.mr{display:flex;gap:8px;align-items:flex-end}
+.mr.u{flex-direction:row-reverse}
+.mava{width:28px;height:28px;border-radius:8px;flex-shrink:0;overflow:hidden}
+.mbody{display:flex;flex-direction:column;gap:3px;min-width:0;max-width:78%}
+.mr.u .mbody{align-items:flex-end}
+.mmeta{
+  font-size:10px;color:var(--color-text-tertiary);
+  padding:0 4px;display:flex;align-items:center;gap:5px;
+}
+.mr.u .mmeta{justify-content:flex-end}
+.meta-time{font-size:9px;color:var(--color-text-tertiary);opacity:.6}
 
-/* input bar */
-.input-bar {
-  padding: 10px 12px;
-  border-top: 0.5px solid var(--color-border-tertiary);
-  background: var(--color-background-primary);
-  display: flex; align-items: flex-end; gap: 8px;
-  flex-shrink: 0;
+/* ── BUBBLES ── */
+.bubble{
+  padding:10px 13px;border-radius:12px;
+  font-size:12px;line-height:1.75;
+  color:var(--color-text-primary);
+  background:var(--color-background-secondary);
+  border:0.5px solid var(--color-border-tertiary);
+  word-break:break-word;
+  overflow-wrap:anywhere;
 }
-.input-wrap { flex: 1; position: relative; }
-.chat-input {
-  width: 100%; padding: 9px 12px; font-size: 13px;
-  border: 0.5px solid var(--color-border-secondary);
-  border-radius: 10px; resize: none;
-  background: var(--color-background-secondary);
-  color: var(--color-text-primary); outline: none;
-  font-family: var(--font-sans); line-height: 1.5;
-  transition: border 0.15s;
+.mr.u .bubble{
+  background:var(--lob);color:#fff;
+  border-color:transparent;
+  border-radius:12px 3px 12px 12px;
 }
-.chat-input:focus { border-color: #1a56db; }
-.send-btn {
-  width: 34px; height: 34px; border-radius: 8px;
-  background: #1a56db; border: none; cursor: pointer;
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-  transition: background 0.15s;
+
+/* ── THINK ── */
+.think-wrap{display:flex;flex-direction:column;gap:2px}
+.think-header{
+  display:flex;align-items:center;gap:6px;
+  padding:0 2px;cursor:pointer;user-select:none;
+  -webkit-tap-highlight-color:transparent;
 }
-.send-btn:hover { background: #1648c0; }
-.send-icon { color: #fff; font-size: 14px; }
+.think-label{font-size:10px;color:var(--accent-text);display:flex;align-items:center;gap:4px}
+.tdot{width:5px;height:5px;border-radius:50%;background:var(--think-border);animation:tdp .8s infinite}
+@keyframes tdp{0%,100%{opacity:.3}50%{opacity:1}}
+.think-toggle{
+  font-size:10px;color:var(--color-text-tertiary);
+  margin-left:auto;padding:1px 6px;
+  border-radius:4px;border:0.5px solid var(--color-border-tertiary);
+  background:var(--color-background-primary);
+  cursor:pointer;
+  transition:background .12s;
+}
+.think-toggle:hover{background:var(--color-background-secondary)}
+.thinkb{
+  padding:8px 12px;
+  border-radius:0 10px 10px 10px;
+  font-size:11px;line-height:1.65;
+  color:var(--color-text-secondary);
+  background:var(--think-bg);
+  border:0.5px solid var(--accent-border);
+  border-left:2px solid var(--think-border-left);
+  white-space:pre-wrap;
+  word-break:break-word;
+}
+.thinkb.collapsed{display:none}
+
+/* ── CARDS ── */
+.card{
+  background:var(--color-background-primary);
+  border:1px solid var(--color-border-tertiary);
+  border-radius:14px;overflow:hidden;
+  font-size:11px;max-width:520px;
+  box-shadow:0 8px 22px rgba(15,23,42,.05);
+  contain:layout;
+}
+.cardh{
+  padding:11px 14px 9px;
+  border-bottom:1px solid var(--color-border-tertiary);
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  background:var(--color-background-secondary);
+}
+.tag{font-size:10px;padding:3px 8px;border-radius:999px;font-weight:600;flex-shrink:0}
+.tag.blue{background:var(--accent-bg);color:var(--accent-text)}
+.tag.amber{background:#faeeda;color:#633806}
+.tag.green{background:#eaf3de;color:#27500a}
+.tag.red{background:#fcebeb;color:#791f1f}
+.tag.purple{background:#eeedfe;color:#3c3489}
+.tag.teal{background:#e1f5ee;color:#085041}
+.tag.coral{background:#faece7;color:#712b13}
+.ctitle{font-weight:600;font-size:12px;color:var(--color-text-primary);letter-spacing:.1px}
+.cardb{padding:10px 14px}
+.kv{
+  display:grid;grid-template-columns:84px minmax(0,1fr);
+  align-items:start;padding:7px 0;font-size:11px;
+  border-bottom:0.5px solid var(--color-border-tertiary);gap:10px;
+}
+.kv:last-child{border-bottom:none}
+.kk{color:var(--color-text-secondary);flex-shrink:0;font-size:10px;line-height:1.6}
+.kvv{font-weight:500;color:var(--color-text-primary);text-align:left;line-height:1.6}
+.acts{
+  padding:10px 14px 12px;display:flex;gap:8px;flex-wrap:wrap;
+  border-top:1px solid var(--color-border-tertiary);
+  background:var(--color-background-secondary);
+}
+.exec-summary{
+  margin:10px 14px 0;padding:10px 11px;border-radius:10px;
+  background:var(--accent-bg);border:1px solid var(--accent-border);
+}
+.exec-summary-label{font-size:10px;color:var(--accent-text);margin-bottom:4px;font-weight:600}
+.exec-summary-text{font-size:11px;line-height:1.6;color:var(--color-text-primary);font-weight:500}
+.exec-overview{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;
+  padding:10px 14px 0;
+}
+.exec-overview-item{
+  background:var(--color-background-secondary);border:1px solid var(--color-border-tertiary);
+  border-radius:10px;padding:8px 9px;
+}
+.exec-overview-k{font-size:10px;color:var(--color-text-secondary);margin-bottom:3px}
+.exec-overview-v{font-size:12px;font-weight:600;color:var(--color-text-primary)}
+.section-block{padding:10px 14px 0}
+.section-title{font-size:10px;color:var(--color-text-secondary);margin-bottom:7px;font-weight:600;letter-spacing:.1px}
+.owner-grid{display:flex;flex-direction:column;gap:7px}
+.owner-role{
+  display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:center;
+  padding:8px 9px;border:1px solid var(--color-border-tertiary);
+  border-radius:10px;background:var(--color-background-secondary);
+}
+.owner-desc{font-size:11px;color:var(--color-text-primary);line-height:1.5}
+.btn{
+  font-size:11px;padding:5px 12px;border-radius:7px;
+  cursor:pointer;font-weight:500;
+  border:0.5px solid var(--color-border-secondary);
+  background:var(--color-background-primary);color:var(--color-text-primary);
+  transition:background .12s,transform .1s;
+  -webkit-tap-highlight-color:transparent;
+}
+.btn:hover{background:var(--color-background-secondary)}
+.btn:active{transform:scale(.97)}
+.btn.p{background:var(--lob);color:#fff;border-color:transparent}
+.btn.p:hover{background:var(--lob-h)}
+.btn.warn{background:#faeeda;color:#633806;border-color:#fac775}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+
+/* ── STEPS ── */
+.steps{padding:9px 13px;display:flex;flex-direction:column;gap:7px}
+.step{
+  display:flex;align-items:flex-start;gap:8px;
+  font-size:11px;color:var(--color-text-secondary);
+  transition:color .25s;line-height:1.5;
+}
+.step.done{color:var(--color-text-primary)}
+.sdot{
+  width:16px;height:16px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:9px;transition:background .25s,color .25s;margin-top:1px;
+}
+.sdot.done{background:#eaf3de;color:#27500a}
+.sdot.act{background:var(--accent-bg);color:var(--accent-text);animation:pulse .9s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+.sdot.idle{background:var(--color-background-secondary);color:var(--color-text-tertiary)}
+
+/* ── STATS ── */
+.stats{display:flex;gap:8px;padding:9px 13px 4px}
+.stat{flex:1;background:var(--color-background-secondary);border-radius:8px;padding:8px;text-align:center;border:0.5px solid var(--color-border-tertiary)}
+.snum{font-size:17px;font-weight:500}
+.snum.ok{color:#3b6d11}
+.snum.bad{color:#a32d2d}
+.snum.warn{color:#854f0b}
+.slbl{font-size:10px;color:var(--color-text-secondary);margin-top:2px}
+
+/* ── ROLE BADGES ── */
+.rb{display:inline-flex;align-items:center;gap:3px;font-size:10px;padding:1px 7px;border-radius:3px;font-weight:500;flex-shrink:0}
+.rb.ag{background:#eeedfe;color:#3c3489}
+.rb.rpa{background:var(--accent-bg);color:var(--accent-text)}
+.rb.hu{background:#faeeda;color:#633806}
+
+.diff-row{display:grid;grid-template-columns:80px minmax(0,1fr) 44px;align-items:flex-start;gap:8px;padding:8px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:11px}
+.diff-row:last-child{border-bottom:none}
+.diff-src{color:var(--color-text-primary);font-weight:600}
+.diff-note{color:var(--color-text-secondary);line-height:1.55}
+.diff-amt{font-weight:600;text-align:right}
+.diff-amt.bad{color:#a32d2d}
+.diff-amt.warn{color:#854f0b}
+
+.task-meta{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:10px 14px 0;flex-wrap:wrap;
+}
+.task-meta-left,.task-meta-right{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.meta-pill{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:3px 8px;border-radius:999px;
+  font-size:10px;font-weight:600;
+  border:1px solid var(--color-border-tertiary);
+  background:var(--color-background-secondary);color:var(--color-text-secondary);
+}
+.meta-pill.key{background:var(--accent-bg);border-color:var(--accent-border);color:var(--accent-text)}
+.meta-pill.ok{background:#eaf3de;color:#27500a;border-color:#cfdfbb}
+.meta-pill.warn{background:#faeeda;color:#633806;border-color:#ecd6a5}
+.meta-pill.err{background:#fcebeb;color:#791f1f;border-color:#efc5c5}
+.meta-pill.idle{background:#eef2f7;color:#536173;border-color:#d7dfe8}
+.meta-pill.id{font-variant-numeric:tabular-nums}
+.phase-track{
+  padding:10px 14px 0;
+}
+.phase-progress{
+  position:relative;height:7px;border-radius:999px;
+  background:#e9eff5;border:1px solid #dbe5ee;
+  overflow:hidden;margin-bottom:10px;
+}
+.phase-progress-bar{
+  height:100%;border-radius:999px;
+  background:linear-gradient(90deg,#8eb2d2 0%,#5d88af 100%);
+  transition:width .24s ease;
+}
+.phase-progress-label{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:10px;margin-bottom:8px;font-size:10px;font-weight:600;
+  color:var(--color-text-secondary);
+}
+.phase-progress-note{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:10px;margin-bottom:10px;
+  font-size:10px;color:var(--color-text-tertiary);
+}
+.phase-progress-note b{color:var(--color-text-secondary)}
+.phase-guides{
+  position:relative;height:16px;margin:-1px 2px 8px;
+}
+.phase-guide-line{
+  position:absolute;left:0;right:0;top:7px;height:1px;background:#e4ecf3;
+}
+.phase-guide-marker{
+  position:absolute;top:0;transform:translateX(-50%);
+  display:inline-flex;align-items:center;gap:6px;white-space:nowrap;
+  padding:2px 7px;border-radius:999px;border:1px solid #c7d8e7;
+  background:#ffffff;color:#4f6e89;font-size:9px;font-weight:700;
+  box-shadow:0 6px 12px rgba(15,23,42,.05);
+}
+.phase-guide-marker::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:#5d88af;box-shadow:0 0 0 4px rgba(93,136,175,.12);
+  flex-shrink:0;
+}
+.phase-grid{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:8px;
+}
+.phase{
+  position:relative;border:1px solid var(--color-border-tertiary);
+  border-radius:12px;padding:8px 9px 9px;background:var(--color-background-secondary);
+  min-height:54px;
+}
+.phase::after{
+  content:'';position:absolute;right:-8px;top:26px;width:8px;height:1px;
+  background:var(--color-border-tertiary);
+}
+.phase:last-child::after{display:none}
+.phase-top{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:8px;margin-bottom:5px;
+}
+.phase-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:18px;height:18px;border-radius:999px;
+  font-size:10px;font-weight:700;
+  border:1px solid #d6e0ea;background:#f5f8fb;color:#607486;
+  flex-shrink:0;
+}
+.phase-state{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:1px 6px;border-radius:999px;
+  font-size:9px;font-weight:700;letter-spacing:.01em;
+  border:1px solid #d9e2ea;background:#f6f8fb;color:#76879a;
+  white-space:nowrap;
+}
+.phase-k{font-size:10px;color:var(--color-text-tertiary);margin-bottom:3px}
+.phase-v{font-size:11px;font-weight:700;color:var(--color-text-secondary);line-height:1.3}
+.phase.pending{background:#fbfcfd}
+.phase.on{
+  background:#eef5fb;border-color:#b9cee2;
+  box-shadow:0 0 0 1px rgba(93,136,175,.06),0 10px 20px rgba(93,136,175,.08);
+}
+.phase.on .phase-k,.phase.on .phase-v{color:#47657f}
+.phase.on .phase-num{
+  border-color:#9cb7d0;background:#5d88af;color:#fff;
+  box-shadow:0 0 0 4px rgba(93,136,175,.10);
+}
+.phase.on .phase-state{
+  border-color:#c7d8e7;background:#f4f8fc;color:#50708d;
+}
+.phase.done{background:#eef6f1;border-color:#cddfd6}
+.phase.done .phase-k,.phase.done .phase-v{color:#29523a}
+.phase.done .phase-num{
+  border-color:#b6cfbf;background:#3d8b5d;color:#fff;
+}
+.phase.done .phase-state{
+  border-color:#cfe0d6;background:#f4faf6;color:#33684a;
+}
+.phase.done::after{
+  background:#9ec0ac;
+}
+.phase.pending .phase-state{
+  background:#f7f9fb;color:#8a97a5;
+}
+.phase.pending .phase-num{
+  background:#f8fafc;color:#7b8b99;
+}
+.phase.on{
+  overflow:hidden;
+}
+.phase.on::before{
+  content:'';position:absolute;left:0;top:0;width:100%;height:3px;
+  background:linear-gradient(90deg,#8fb4d3 0%,#5d88af 55%,#8fb4d3 100%);
+  background-size:200% 100%;
+  animation:phaseRun 1.8s linear infinite;
+}
+.phase.on .phase-state::before{
+  content:'';display:inline-block;width:6px;height:6px;border-radius:50%;
+  background:#5d88af;margin-right:5px;box-shadow:0 0 0 0 rgba(93,136,175,.35);
+  animation:phasePulse 1.6s ease-out infinite;
+  vertical-align:middle;
+}
+.phase.on .phase-v{
+  position:relative;
+}
+.phase.on .phase-v::after{
+  content:'进行中';display:inline-flex;align-items:center;justify-content:center;
+  margin-left:6px;padding:1px 5px;border-radius:999px;
+  font-size:9px;font-weight:700;line-height:1.2;
+  color:#50708d;background:#f4f8fc;border:1px solid #c7d8e7;
+  vertical-align:middle;
+}
+.phase-progress.live .phase-progress-bar{
+  position:relative;
+  background:linear-gradient(90deg,#8eb2d2 0%,#5d88af 55%,#89afd1 100%);
+  background-size:200% 100%;
+  animation:phaseRun 2.2s linear infinite;
+}
+.phase-progress.live .phase-progress-bar::after{
+  content:'';position:absolute;top:0;right:-18px;width:28px;height:100%;
+  background:linear-gradient(90deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.62) 52%,rgba(255,255,255,0) 100%);
+  filter:blur(.2px);
+  animation:phaseHead 1.8s ease-in-out infinite;
+}
+.phase-progress.live + .phase-progress-label .phase-live{
+  display:inline-flex;align-items:center;gap:6px;
+}
+.phase-progress.live + .phase-progress-label .phase-live::before{
+  content:'';width:7px;height:7px;border-radius:50%;
+  background:#5d88af;box-shadow:0 0 0 0 rgba(93,136,175,.32);
+  animation:phasePulse 1.6s ease-out infinite;
+}
+.phase-progress-label .phase-live{color:#4d6f8c;font-weight:700}
+.phase-progress-label .phase-eta{color:var(--color-text-tertiary)}
+@keyframes phasePulse{
+  0%{box-shadow:0 0 0 0 rgba(93,136,175,.28)}
+  70%{box-shadow:0 0 0 8px rgba(93,136,175,0)}
+  100%{box-shadow:0 0 0 0 rgba(93,136,175,0)}
+}
+@keyframes phaseRun{
+  0%{background-position:0% 50%}
+  100%{background-position:200% 50%}
+}
+@keyframes phaseHead{
+  0%{transform:translateX(-8px);opacity:.55}
+  50%{transform:translateX(8px);opacity:.95}
+  100%{transform:translateX(-8px);opacity:.55}
+}
+.exec-split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:10px 14px 12px}
+.exec-box{background:var(--color-background-secondary);border:1px solid var(--color-border-tertiary);border-radius:12px;padding:10px}
+.exec-title{font-size:10px;color:var(--color-text-secondary);margin-bottom:7px;font-weight:600}
+.exec-list{display:flex;flex-direction:column;gap:7px}
+.exec-item{display:flex;gap:7px;align-items:flex-start;font-size:11px;color:var(--color-text-primary);line-height:1.55}
+.exec-dot{width:15px;height:15px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--accent-bg);color:var(--accent-text);font-size:9px;flex-shrink:0;margin-top:1px}
+.exec-brief{padding:10px 14px 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.exec-brief-item{background:var(--color-background-secondary);border:1px solid var(--color-border-tertiary);border-radius:12px;padding:10px 11px;min-height:72px}
+.exec-brief-k{font-size:10px;color:var(--color-text-secondary);margin-bottom:6px;font-weight:600}
+.exec-brief-v{font-size:11px;color:var(--color-text-primary);line-height:1.6}
+.exec-brief-item.emph{background:#f2f6fa;border-color:#d3dde7}
+.exec-brief-item.warn{background:#fcf7ef;border-color:#ecd6a5}
+.exec-path{padding:10px 14px 0}
+.exec-path-inner{display:flex;gap:8px;align-items:flex-start;padding:10px 11px;border-radius:12px;border:1px solid #d9e3ec;background:#f7fafc}
+.exec-path-ico{width:18px;height:18px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--accent-bg);color:var(--accent-text);font-size:10px;flex-shrink:0;margin-top:1px}
+.exec-path-main{display:flex;flex-direction:column;gap:3px;min-width:0}
+.exec-path-title{font-size:10px;color:var(--color-text-secondary);font-weight:600}
+.exec-path-text{font-size:11px;color:var(--color-text-primary);line-height:1.55}
+.receipt{padding:10px 14px 12px;display:flex;flex-direction:column;gap:8px}
+.receipt-row{
+  display:grid;grid-template-columns:76px 1fr auto 56px;
+  gap:8px;align-items:center;padding:9px 10px;
+  border:1px solid var(--color-border-tertiary);background:var(--color-background-secondary);
+  border-radius:10px;font-size:10px
+}
+.receipt-src{font-weight:600;color:var(--color-text-primary)}
+.receipt-note{color:var(--color-text-secondary);line-height:1.5}
+.receipt-state{
+  justify-self:start;padding:2px 8px;border-radius:999px;
+  font-size:9px;font-weight:700;letter-spacing:.02em;
+  background:#eaf3de;color:#27500a;border:1px solid #cfdfbb;
+}
+.receipt-state.warn{background:#faeeda;color:#633806;border-color:#ecd6a5}
+.receipt-state.idle{background:var(--accent-bg);color:var(--accent-text);border-color:var(--accent-border)}
+.receipt-time{text-align:right;color:var(--color-text-tertiary);font-variant-numeric:tabular-nums}
+.delivery{padding:10px 14px 12px;display:flex;flex-direction:column;gap:8px}
+.delivery-item{border:1px solid var(--color-border-tertiary);background:var(--color-background-secondary);border-radius:10px;padding:10px}
+.delivery-head{display:flex;align-items:center;gap:7px;margin-bottom:5px}
+.delivery-icon{width:18px;height:18px;border-radius:5px;background:var(--accent-bg);color:var(--accent-text);display:inline-flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0}
+.delivery-title{font-size:11px;font-weight:600;color:var(--color-text-primary)}
+.delivery-desc{font-size:10px;color:var(--color-text-secondary);line-height:1.6}
+.delivery-meta{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  margin-top:7px;padding-top:7px;border-top:1px dashed var(--color-border-tertiary);
+}
+.delivery-note{font-size:10px;color:var(--color-text-tertiary)}
+.package-flow{
+  margin:0 14px 12px;
+  border:1px solid var(--color-border-tertiary);
+  background:linear-gradient(180deg,#fbfdff 0%,#f6faff 100%);
+  border-radius:12px;
+  padding:10px;
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+.package-strip{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.package-strip-title{
+  font-size:11px;
+  font-weight:700;
+  color:var(--color-text-primary);
+}
+.package-strip-sub{
+  font-size:10px;
+  color:var(--color-text-secondary);
+}
+.package-chips{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+}
+.package-chip{
+  font-size:9px;
+  padding:3px 8px;
+  border-radius:999px;
+  border:1px solid var(--accent-border);
+  background:var(--accent-bg);
+  color:var(--accent-text);
+  font-weight:700;
+}
+.package-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:8px;
+}
+.package-op{
+  border:1px solid var(--color-border-tertiary);
+  background:#fff;
+  border-radius:10px;
+  padding:9px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  min-height:92px;
+}
+.package-op-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+}
+.package-op-k{
+  font-size:9px;
+  color:var(--color-text-tertiary);
+  letter-spacing:.04em;
+  font-weight:700;
+}
+.package-op-title{
+  font-size:11px;
+  color:var(--color-text-primary);
+  font-weight:700;
+}
+
+.package-op-desc{
+  font-size:10px;
+  color:var(--color-text-secondary);
+  line-height:1.55;
+}
+.rp-flow{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.rp-flow-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:8px;
+}
+.rp-flow-title{
+  font-size:11px;
+  font-weight:700;
+  color:var(--color-text-primary);
+}
+.rp-flow-sub{
+  margin-top:2px;
+  font-size:10px;
+  color:var(--color-text-secondary);
+  line-height:1.5;
+}
+.rp-flow-chip{
+  padding:3px 8px;
+  border-radius:999px;
+  font-size:9px;
+  font-weight:700;
+  border:1px solid var(--accent-border);
+  background:var(--accent-bg);
+  color:var(--accent-text);
+  white-space:nowrap;
+}
+.rp-flow-bar{
+  position:relative;
+  height:7px;
+  border-radius:999px;
+  background:#edf3f8;
+  overflow:hidden;
+  border:1px solid #dde7f0;
+}
+.rp-flow-bar-fill{
+  position:absolute;
+  inset:0 auto 0 0;
+  width:0%;
+  background:linear-gradient(90deg,#8eb0d1 0%,#6f8ea8 100%);
+  border-radius:999px;
+  transition:width .28s ease;
+}
+.rp-flow-list{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.rp-flow-item{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:8px;
+  padding:9px 10px;
+  border:1px solid var(--color-border-tertiary);
+  background:var(--color-background-secondary);
+  border-radius:10px;
+  transition:border-color .18s,box-shadow .18s,background .18s;
+}
+.rp-flow-item.current{
+  border-color:#c5d6e6;
+  background:#fbfdff;
+  box-shadow:0 0 0 3px rgba(111,142,168,.08);
+}
+.rp-flow-item.done{
+  background:#f7fbf5;
+  border-color:#d8e9d2;
+}
+.rp-flow-item.wait{
+  opacity:.95;
+}
+.rp-flow-dot{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:#b7c7d6;
+  box-shadow:0 0 0 4px rgba(183,199,214,.16);
+}
+.rp-flow-item.current .rp-flow-dot{
+  background:#6f8ea8;
+  box-shadow:0 0 0 4px rgba(111,142,168,.14);
+}
+.rp-flow-item.done .rp-flow-dot{
+  background:#6ea86f;
+  box-shadow:0 0 0 4px rgba(110,168,111,.12);
+}
+.rp-flow-main{
+  min-width:0;
+}
+.rp-flow-main .t{
+  font-size:10px;
+  font-weight:700;
+  color:var(--color-text-primary);
+}
+.rp-flow-main .s{
+  margin-top:2px;
+  font-size:9px;
+  color:var(--color-text-secondary);
+  line-height:1.45;
+}
+.rp-flow-state{
+  justify-self:end;
+  padding:3px 7px;
+  border-radius:999px;
+  font-size:9px;
+  font-weight:700;
+  border:1px solid #d9e3ec;
+  color:#6a7b8d;
+  background:#f7fbfe;
+  white-space:nowrap;
+}
+.rp-flow-state.current{
+  border-color:#c5d6e6;
+  background:#edf4fb;
+  color:#4c6983;
+}
+.rp-flow-state.done{
+  border-color:#d8e9d2;
+  background:#eef8ea;
+  color:#2f6a31;
+}
+.package-op-state{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  white-space:nowrap;
+  padding:2px 7px;
+  border-radius:999px;
+  font-size:9px;
+  font-weight:700;
+  border:1px solid var(--accent-border);
+  background:var(--accent-bg);
+  color:var(--accent-text);
+}
+.package-op-state.ready{
+  background:#eef6ff;
+  color:#325c84;
+  border-color:#d5e5f4;
+}
+.package-op-state.pending{
+  background:#fff7ea;
+  color:#7b5a18;
+  border-color:#ecd6a5;
+}
+.package-op-state.done{
+  background:#eef7e8;
+  color:#2d5e12;
+  border-color:#cfdfbb;
+}
+.package-actions{
+  padding-top:0;
+}
+.package-actions .btn{
+  min-width:auto;
+}
+
+.next-row{padding:0 14px 12px;display:flex;gap:7px;flex-wrap:wrap}
+.ghost-btn{font-size:10px;padding:4px 10px;border-radius:999px;border:1px solid var(--color-border-secondary);background:var(--color-background-primary);cursor:pointer;color:var(--color-text-primary)}
+.ghost-btn:hover{background:var(--color-background-secondary)}
+.handoff-inline{
+  margin:10px 14px 0;
+  padding:10px 11px;
+  border-radius:12px;
+  border:1px solid #ecd6a5;
+  background:#fcf7ef;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:10px;
+  align-items:start;
+}
+.handoff-inline-k{
+  font-size:10px;
+  color:#8a5b16;
+  font-weight:700;
+  margin-bottom:4px;
+}
+.handoff-inline-title{
+  font-size:11px;
+  color:#4e3410;
+  font-weight:700;
+  line-height:1.45;
+  margin-bottom:4px;
+}
+.handoff-inline-desc{
+  font-size:10px;
+  color:#7b5b2d;
+  line-height:1.6;
+}
+.handoff-inline-side{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:6px;
+}
+.handoff-inline-actions{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  margin-top:9px;
+}
+.handoff-inline.resolved{
+  border-color:#cfdfbb;
+  background:#f5faf1;
+}
+.handoff-inline.rejected{
+  border-color:#efc5c5;
+  background:#fff7f7;
+}
+.handoff-inline.deferred{
+  border-color:#ecd6a5;
+  background:#fcf7ef;
+}
+.manual-priority{
+  font-size:9px;
+  font-weight:700;
+  border-radius:999px;
+  padding:2px 7px;
+  border:1px solid transparent;
+}
+.manual-priority.urgent{
+  color:#9f1d1d;
+  background:#fff0f0;
+  border-color:#f3c5c5;
+}
+.manual-priority.later{
+  color:#8a5b16;
+  background:#fcf2df;
+  border-color:#ecd6a5;
+}
+
+.manual-panel{
+  position:sticky;
+  align-self:flex-end;
+  bottom:68px;
+  margin-left:auto;
+  width:min(320px,calc(100% - 20px));
+  display:none;
+  z-index:13;
+  background:rgba(255,255,255,.985);
+  border:1px solid #dfe8f1;
+  border-radius:18px;
+  box-shadow:0 20px 44px rgba(15,23,42,.10);
+  overflow:hidden;
+  backdrop-filter:blur(12px);
+}
+.manual-panel.show{display:block}
+.manual-panel-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  padding:13px 14px 12px;
+  border-bottom:1px solid #edf2f7;
+  background:linear-gradient(180deg,#fdfefe 0%,#f6fafe 100%);
+}
+.manual-panel-title{
+  font-size:12px;
+  font-weight:700;
+  color:#223041;
+}
+.manual-panel-sub{
+  font-size:10px;
+  color:#778597;
+  margin-top:2px;
+}
+.manual-head-meta{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  margin-top:8px;
+}
+.manual-head-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:3px 8px;
+  border-radius:999px;
+  font-size:9px;
+  font-weight:700;
+  border:1px solid transparent;
+}
+.manual-head-chip.urgent{
+  background:#fff1f1;
+  border-color:#f3d1d1;
+  color:#9f1d1d;
+}
+.manual-head-chip.later{
+  background:#fdf5e8;
+  border-color:#eedbb1;
+  color:#8a5b16;
+}
+.manual-panel-close{
+  border:none;
+  background:transparent;
+  color:#6b7280;
+  font-size:16px;
+  line-height:1;
+  cursor:pointer;
+  padding:4px 6px;
+  border-radius:8px;
+}
+.manual-panel-close:hover{background:#f2f6fa}
+.manual-panel-list{
+  max-height:316px;
+  overflow-y:auto;
+  padding:10px;
+  background:#fbfdff;
+}
+.manual-panel-section{
+  border:1px solid #e6edf4;
+  border-radius:14px;
+  padding:10px;
+  background:#fff;
+}
+.manual-panel-section.urgent{
+  background:linear-gradient(180deg,#fffdfd 0%,#fff7f7 100%);
+  border-color:#f0dada;
+}
+.manual-panel-section.later{
+  background:linear-gradient(180deg,#fffefd 0%,#fffaf0 100%);
+  border-color:#eee2bf;
+}
+.manual-panel-section + .manual-panel-section{margin-top:10px}
+.manual-section-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  margin-bottom:8px;
+  padding:0 2px;
+}
+.manual-section-title{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+.manual-section-title.urgent{color:#9f1d1d}
+.manual-section-title.later{color:#8a5b16}
+.manual-section-count{
+  font-size:9px;
+  color:#8a94a3;
+}
+.manual-item{
+  border:1px solid #e6ebf1;
+  background:rgba(255,255,255,.92);
+  border-radius:12px;
+  padding:10px;
+  margin-bottom:8px;
+  box-shadow:0 3px 10px rgba(15,23,42,.03);
+  cursor:pointer;
+  transition:border-color .14s,box-shadow .14s,transform .14s,background .14s;
+}
+.manual-item:hover{
+  border-color:#cfdbe7;
+  box-shadow:0 8px 20px rgba(15,23,42,.06);
+  transform:translateY(-1px);
+}
+.manual-item.focused{
+  border-color:#94acc2;
+  box-shadow:0 0 0 3px rgba(111,142,168,.16),0 10px 24px rgba(15,23,42,.08);
+  background:#fafdff;
+}
+.manual-item.urgent{border-left:3px solid #e48787}
+.manual-item.later{border-left:3px solid #e4b665}
+.manual-item:last-child{margin-bottom:0}
+.manual-item-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  margin-bottom:6px;
+}
+.manual-item-tag{
+  font-size:9px;
+  font-weight:700;
+  border-radius:999px;
+  padding:2px 7px;
+  border:1px solid transparent;
+}
+.manual-item-tag.urgent{
+  color:#9f1d1d;
+  background:#fff0f0;
+  border-color:#f3c5c5;
+}
+.manual-item-tag.later{
+  color:#8a5b16;
+  background:#fcf2df;
+  border-color:#ecd6a5;
+}
+.manual-item-time{
+  font-size:9px;
+  color:#8a94a3;
+}
+.manual-item-title{
+  font-size:11px;
+  font-weight:700;
+  color:#1f2937;
+  line-height:1.45;
+  margin-bottom:4px;
+}
+.manual-item-desc{
+  font-size:10px;
+  color:#5f6b78;
+  line-height:1.6;
+}
+.manual-item-actions{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  margin-top:9px;
+  padding-top:8px;
+  border-top:1px dashed #e8eef5;
+}
+.manual-mini{
+  font-size:9.5px;
+  padding:4px 9px;
+  border-radius:999px;
+  border:1px solid #d3dae3;
+  background:#fff;
+  cursor:pointer;
+  color:#334155;
+}
+.manual-mini:hover{background:#f7f9fb}
+.manual-mini.p{
+  background:#627f96;
+  border-color:#627f96;
+  color:#fff;
+}
+.manual-mini.approve{
+  background:#edf7eb;
+  border-color:#cfe3c9;
+  color:#215532;
+}
+.manual-mini.reject{
+  background:#fff1f1;
+  border-color:#f1cccc;
+  color:#9f1d1d;
+}
+.manual-mini.defer{
+  background:#fcf5e6;
+  border-color:#ead7ae;
+  color:#8a5b16;
+}
+.manual-empty{
+  padding:18px 14px;
+  text-align:center;
+  font-size:11px;
+  color:#7b8794;
+}
+.manual-panel-foot{
+  padding:9px 11px 10px;
+  border-top:1px solid #edf2f7;
+  background:#f8fbff;
+  font-size:10px;
+  color:#718194;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.manual-panel-foot-dot{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#8ea6bd;
+  flex-shrink:0;
+}
+.manual-anchor-card{
+  position:relative;
+  transition:box-shadow .16s,border-color .16s,background .16s;
+}
+.manual-anchor-card.is-linked{
+  border-color:#b2c6d9 !important;
+  box-shadow:0 0 0 3px rgba(111,142,168,.14),0 12px 24px rgba(15,23,42,.08);
+  background:#fcfeff;
+}
+.handoff-inline.focus-ring{
+  border-color:#d6b16b;
+  box-shadow:0 0 0 3px rgba(214,177,107,.15);
+}
+
+.manual-fab{
+  position:sticky;
+  align-self:flex-end;
+  bottom:14px;
+  margin-left:auto;
+  margin-top:10px;
+  z-index:12;
+  display:none;
+  align-items:center;
+  gap:10px;
+  padding:9px 11px;
+  border:1px solid #ecd6a5;
+  background:rgba(255,251,245,.96);
+  backdrop-filter:blur(10px);
+  box-shadow:0 10px 22px rgba(15,23,42,.07);
+  border-radius:14px;
+  cursor:pointer;
+  max-width:292px;
+}
+.manual-fab.show{display:flex}
+.manual-fab.urgent{
+  border-color:#f0c1c1;
+  background:rgba(255,246,246,.97);
+}
+.manual-fab.later{
+  border-color:#ecd6a5;
+  background:rgba(255,251,245,.96);
+}
+.manual-fab-dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#ef9f27;
+  box-shadow:0 0 0 4px rgba(239,159,39,.14);
+  flex-shrink:0;
+}
+.manual-fab.urgent .manual-fab-dot{
+  background:#e05959;
+  box-shadow:0 0 0 4px rgba(224,89,89,.14);
+}
+.manual-fab-main{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  min-width:0;
+}
+.manual-fab-label{
+  font-size:10px;
+  color:#8a5b16;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+.manual-fab.urgent .manual-fab-label{color:#9f1d1d}
+.manual-fab-sub{
+  font-size:11px;
+  color:#513410;
+  font-weight:600;
+  line-height:1.4;
+  max-width:182px;
+  text-align:left;
+}
+.manual-fab.urgent .manual-fab-sub{color:#5c1f1f}
+.manual-fab-count{
+  min-width:24px;
+  height:24px;
+  border-radius:999px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:#f6d9a7;
+  color:#6b3b05;
+  font-size:11px;
+  font-weight:700;
+  padding:0 8px;
+  flex-shrink:0;
+}
+.manual-fab.urgent .manual-fab-count{
+  background:#f5cdcd;
+  color:#8b1919;
+}
+@media (max-width:720px){
+  .exec-overview,.exec-brief{grid-template-columns:1fr}
+  .phase-grid{grid-template-columns:1fr}
+  .exec-split{grid-template-columns:1fr}
+  .receipt-row,.diff-row,.kv,.owner-role{grid-template-columns:1fr}
+  .receipt-time,.diff-amt{text-align:left}
+  .phase::after{display:none}
+  .delivery-meta{align-items:flex-start;flex-direction:column}
+  .package-grid{grid-template-columns:1fr}
+  .manual-panel,.manual-fab{width:100%;max-width:none}
+  .manual-fab{bottom:10px}
+  .manual-panel{bottom:64px}
+}
+
+
+/* ── CURSOR BLINK ── */
+.cursor{display:inline-block;width:1.5px;height:1em;background:currentColor;margin-left:1px;animation:blink .7s step-end infinite;vertical-align:text-bottom}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* ── INPUT ZONE ── */
+.input-card{
+  flex-shrink:0;background:var(--panel-shell);
+  border:1px solid var(--panel-edge);border-radius:13px;
+  box-shadow:var(--soft-shadow);
+  overflow:hidden;
+}
+.skillbar{padding:8px 10px 0;display:flex}
+.ski{
+  display:flex;gap:8px;overflow-x:auto;
+  padding-bottom:6px;scrollbar-width:none;flex:1;
+  border-bottom:none;
+}
+.ski::-webkit-scrollbar{display:none}
+.spill{
+  display:flex;align-items:center;gap:7px;
+  padding:8px 15px;border-radius:12px;
+  border:1px solid #d7e0e8;
+  cursor:pointer;font-size:10.5px;font-weight:600;
+  color:#455264;white-space:nowrap;flex-shrink:0;
+  transition:background .12s,color .12s,border-color .12s,box-shadow .12s;
+  user-select:none;-webkit-tap-highlight-color:transparent;
+  background:#fbfdff;
+}
+.spill:hover{background:#fff;color:var(--color-text-primary);border-color:#c8d1db}
+.spill.on{background:#fff;color:#2f3f50;border-color:#c4ced9;box-shadow:0 1px 3px rgba(15,23,42,.04)}
+.spill .spico{font-size:13px;line-height:1}
+.spanel{
+  padding:10px;
+  background:#fbfdff;
+  border-bottom:1px solid var(--card-edge);
+}
+.sp-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}
+.sp-name{font-weight:500;color:var(--color-text-primary);font-size:11px;display:flex;align-items:center;gap:6px}
+.sp-desc{font-size:10px;color:var(--color-text-tertiary);margin-bottom:7px;line-height:1.45}
+.spclose{cursor:pointer;color:var(--color-text-tertiary);font-size:14px;padding:2px 6px;border-radius:6px;transition:background .12s;border:none;background:transparent}
+.spclose:hover{background:var(--color-border-tertiary)}
+.spopts{display:flex;flex-wrap:wrap;gap:5px}
+.spopt{
+  font-size:10.5px;padding:5px 10px;
+  border:1px solid #d7dfe8;border-radius:8px;
+  cursor:pointer;color:var(--color-text-secondary);
+  background:#fff;
+  transition:background .12s,color .12s,border-color .12s;
+  -webkit-tap-highlight-color:transparent;
+}
+.spopt:hover{background:var(--accent-bg);color:var(--accent-text);border-color:var(--accent-border)}
+.sp-grid{display:flex;flex-direction:column;gap:7px}
+.sp-scroll{max-height:292px;overflow-y:auto;padding-right:4px;scrollbar-width:thin}
+.sp-scroll::-webkit-scrollbar{width:8px}
+.sp-scroll::-webkit-scrollbar-thumb{background:#cdd6e0;border-radius:999px}
+.sp-scroll::-webkit-scrollbar-track{background:transparent}
+.skill-group{
+  padding:9px;border-radius:10px;border:1px solid #e3eaf1;background:#fff;
+}
+.skill-group .sp-name{margin-bottom:4px}
+.skill-group .sp-desc{margin-bottom:7px}
+.sp-subtitle{
+  font-size:10px;color:var(--color-text-tertiary);
+  margin-bottom:6px;
+}
+
+/* ── CHANNEL MODAL ── */
+.modal-mask{
+  position:fixed;inset:0;background:rgba(18,24,33,.16);display:none;
+  align-items:center;justify-content:center;z-index:80;padding:20px;
+}
+.modal-mask.show{display:flex}
+.channel-modal{
+  width:min(640px,calc(100vw - 320px));max-height:min(520px,calc(100vh - 160px));
+  background:#fff;border:1px solid #d9e1ea;border-radius:16px;
+  box-shadow:0 20px 48px rgba(15,23,42,.14);overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.cm-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px 12px;border-bottom:1px solid #edf1f4;flex-shrink:0}
+.cm-title{font-size:16px;font-weight:600;color:#151b26}
+.cm-x{width:32px;height:32px;border:none;background:transparent;border-radius:8px;cursor:pointer;font-size:18px;color:#4b5563}
+.cm-x:hover{background:#f4f6f8}
+.cm-body{padding:0 20px 18px;overflow-y:auto;min-height:0}
+.cm-tip{margin-top:0;background:#f2f6ff;border-bottom:1px solid #e8eef7;padding:12px 20px;display:flex;align-items:center;gap:10px;color:#6b7280;font-size:12px;line-height:1.5;flex-shrink:0}
+.cm-tip .bell{font-size:18px;line-height:1}
+.cm-tip a{color:#2563eb;text-decoration:none;font-weight:500}
+.cm-sec{padding-top:18px}
+.cm-label{font-size:14px;color:#3e4653;margin-bottom:10px;font-weight:500}
+.cm-row{display:flex;gap:12px;flex-wrap:wrap}
+.cm-option{
+  min-width:160px;height:48px;border:1px solid #d6dde7;border-radius:10px;background:#fff;
+  display:flex;align-items:center;justify-content:center;gap:10px;padding:0 14px;cursor:pointer;
+  font-size:14px;font-weight:500;color:#4b5563;position:relative;transition:border-color .12s,background .12s,box-shadow .12s,color .12s;
+}
+.cm-option:hover{border-color:#bfd0ea;background:#fbfdff}
+.cm-option.sel{border-color:#8fb3f4;background:#f5f8ff;color:#2563eb;box-shadow:inset 0 0 0 1px #8fb3f4}
+.cm-logo{width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.cm-logo.feishu{background:linear-gradient(135deg,#41d1b4 0%,#2b6ef2 100%);color:#fff}
+.cm-logo.wecom{background:#fff;border:1px solid #d5dbe4;color:#2f6cf4}
+.cm-logo.ding{background:#2f6cf4;color:#fff}
+.cm-type{min-width:132px;justify-content:flex-start;padding:0 14px}
+.cm-badge{position:absolute;top:-10px;right:-8px;background:#ff6a6a;color:#fff;font-size:10px;font-weight:600;border-radius:7px;padding:2px 6px;line-height:1.2;box-shadow:0 4px 10px rgba(255,106,106,.22)}
+.cm-note{
+  margin-top:18px;border:1px solid #dde4ec;border-radius:14px;background:#fbfcfe;padding:16px 18px;color:#7a8596;
+}
+.cm-note-title{font-size:14px;font-weight:600;color:#3e4653;margin-bottom:8px}
+.cm-note p{font-size:13px;line-height:1.7;margin:0 0 10px}
+.cm-warn{display:flex;align-items:flex-start;gap:8px;font-size:13px;line-height:1.7;color:#6b7280}
+.cm-warn .dot{font-size:15px;line-height:1;margin-top:2px}
+.cm-actions{display:flex;justify-content:flex-end;gap:12px;margin-top:18px}
+.cm-btn{min-width:96px;height:48px;padding:0 20px;border-radius:10px;border:1px solid #d7dee8;background:#f7f9fb;color:#4b5563;font-size:14px;font-weight:600;cursor:pointer}
+.cm-btn:hover{background:#fff}
+.cm-btn.p{background:#4f46e5;border-color:#4f46e5;color:#fff;box-shadow:0 8px 18px rgba(79,70,229,.16)}
+.cm-btn.p:hover{background:#4a41dc}
+@media (max-width: 900px){
+  .channel-modal{width:calc(100vw - 24px);max-height:calc(100vh - 24px)}
+  .cm-head{padding:18px 18px 12px}
+  .cm-body{padding:0 18px 18px}
+  .cm-tip{padding:12px 18px;font-size:12px}
+  .cm-option{min-width:unset;flex:1}
+}
+.input-meta{display:none}
+.mode-chips{display:none}
+.mode-chip{display:none}
+.voice-state{display:none;font-size:10px;color:var(--color-text-tertiary);white-space:nowrap}
+.voice-state.recording{color:#8a442a}
+.voice-state.off{color:#9aa4af}
+.ibar{padding:6px 10px 8px;display:flex;align-items:stretch;gap:6px;background:transparent}
+.composer{
+  flex:1;display:flex;align-items:center;gap:7px;
+  padding:6px 8px;border:1px solid var(--composer-border);border-radius:11px;
+  background:var(--composer-bg);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.4);
+  transition:border-color .15s,box-shadow .15s,background .15s;
+}
+.composer:focus-within{border-color:var(--input-focus);box-shadow:0 0 0 3px rgba(93,120,146,.10)}
+.composer.recording{border-color:#cf9a86;box-shadow:0 0 0 3px rgba(207,154,134,.16);background:#fffaf8}
+.composer-tools{display:flex;align-items:center;gap:5px;margin-right:0;padding-right:7px;border-right:1px solid #dde6ee}
+.mm-btn{
+  width:28px;height:28px;border-radius:8px;border:1px solid var(--card-edge);
+  background:#fff;color:#66758a;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .12s,border-color .12s,color .12s,transform .1s,box-shadow .12s;
+  flex-shrink:0;-webkit-tap-highlight-color:transparent;
+  box-shadow:0 1px 1px rgba(16,24,40,.04);
+}
+.mm-btn svg{width:15px;height:15px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.mm-btn:hover:not(:disabled){background:var(--accent-bg);border-color:var(--accent-border);color:var(--accent-text)}
+.mm-btn:active:not(:disabled){transform:scale(.95)}
+.mm-btn.voice.on{background:#fff3ef;border-color:#e2b2a0;color:#8a442a}
+.mm-btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.itxt{
+  flex:1;padding:3px 2px 2px;font-size:12px;
+  border:none;border-radius:0;
+  resize:none;background:transparent;
+  color:var(--color-text-primary);outline:none;
+  font-family:var(--font-sans);line-height:1.5;
+  box-shadow:none;
+  transition:none;
+  min-height:24px;max-height:72px;
+  overflow-y:auto;
+}
+.itxt:focus{border:none;background:transparent;box-shadow:none}
+.itxt:disabled{opacity:.5;cursor:not-allowed}
+.itxt::placeholder{color:#98a2b3}
+.send-btn{
+  width:32px;height:32px;border-radius:10px;
+  background:var(--lob);border:1px solid rgba(0,0,0,.04);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  box-shadow:0 1px 2px rgba(16,24,40,.08);
+  transition:background .12s,transform .1s,opacity .12s;
+  -webkit-tap-highlight-color:transparent;
+}
+.send-btn:hover:not(:disabled){background:var(--lob-h)}
+.send-btn:active:not(:disabled){transform:scale(.94)}
+.send-btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
 
 /* ── RIGHT PANEL ── */
-.right-panel {
-  width: var(--right-w);
-  background: var(--color-background-primary);
-  border-left: 0.5px solid var(--color-border-tertiary);
-  overflow-y: auto; flex-shrink: 0;
-  display: flex; flex-direction: column;
-}
-.rp-section { padding: 12px 12px 4px; }
-.rp-title { font-size: 11px; font-weight: 500; color: var(--color-text-tertiary); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
-.rp-card {
-  background: var(--color-background-secondary);
-  border-radius: 8px; padding: 10px; margin-bottom: 8px;
-}
-.rp-card-title { font-size: 12px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
-.rp-card-sub { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; }
-.rp-status { display: flex; align-items: center; gap: 5px; }
-.status-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-.status-dot.active { background: #0e9f6e; }
-.status-dot.idle { background: #888; }
-.notif-item { display: flex; gap: 8px; align-items: flex-start; padding: 6px 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
-.notif-item:last-child { border-bottom: none; }
-.notif-dot2 {
-  width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 4px;
-}
-.notif-dot2.red { background: #e24b4a; }
-.notif-dot2.amber { background: #ef9f27; }
-.notif-text { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; }
+.rp{width:192px;flex-shrink:0;display:flex;flex-direction:column;gap:6px;overflow-y:auto;overflow-x:hidden;background:#f9fbfe;border:1px solid var(--panel-edge);border-radius:14px;padding:6px;box-shadow:var(--soft-shadow)}
+.rp-card{background:var(--color-background-primary);border:1px solid var(--card-edge);border-radius:12px;padding:10px 10px 9px}
+.rpt{font-size:10px;font-weight:500;color:var(--color-text-tertiary);letter-spacing:.07em;text-transform:uppercase;margin-bottom:9px;padding-bottom:6px;border-bottom:1px solid var(--color-border-tertiary)}
+.rpa-name{font-size:12px;font-weight:500;color:var(--color-text-primary)}
+.rpa-task{font-size:11px;color:var(--color-text-secondary);margin:3px 0 8px;line-height:1.5}
+.status-row{display:flex;align-items:center;gap:6px}
+.status-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;transition:background .3s}
+.status-dot.idle{background:#888}
+.status-dot.thinking{background:var(--lob);animation:pulse .9s infinite}
+.status-dot.running{background:#0e9f6e;animation:pulse .7s infinite}
+.status-dot.done{background:#0e9f6e}
+.rpa-st{font-size:10px;color:var(--color-text-secondary)}
+.rpc{background:var(--color-background-secondary);border-radius:7px;padding:8px 9px;margin-bottom:5px}
+.rpc:last-child{margin-bottom:0}
+.rpct{font-size:11px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px}
+.rpcs{font-size:10px;color:var(--color-text-secondary);line-height:1.5}
+.ni{display:flex;gap:7px;align-items:flex-start;padding:5px 0;border-bottom:0.5px solid var(--color-border-tertiary)}
+.ni:last-child{border-bottom:none;padding-bottom:0}
+.ndot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:3px}
+.ndot.r{background:#e24b4a}
+.ndot.a{background:#ef9f27}
+.nt{font-size:10px;color:var(--color-text-secondary);line-height:1.5}
 
-.fade-in { animation: fadeIn 0.3s ease; }
-@keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+.fadein{animation:fi .2s ease both}
+@keyframes fi{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 </style>
 
-<div class="shell">
-  <!-- TOP BAR -->
-  <div class="topbar">
-    <div class="logo">
-      <div class="logo-mark">AC</div>
-      <div>
-        <div>ArkClaw</div>
-        <div class="logo-sub">永达运营数字人助手</div>
-      </div>
+<div class="shell" id="shell">
+<!-- TOPBAR -->
+<div class="tb">
+  <div class="tb-lm"><svg width="30" height="30" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="7" fill="#51697f"/><ellipse cx="14" cy="17" rx="5" ry="6" fill="#e05a2b"/><ellipse cx="14" cy="10" rx="4.5" ry="4" fill="#e05a2b"/><circle cx="12" cy="8.5" r="1" fill="#fff"/><circle cx="16" cy="8.5" r="1" fill="#fff"/><circle cx="12.2" cy="8.7" r="0.5" fill="#111"/><circle cx="16.2" cy="8.7" r="0.5" fill="#111"/><line x1="12" y1="6.5" x2="8.5" y2="3.5" stroke="#e05a2b" stroke-width="1.1" stroke-linecap="round"/><line x1="16" y1="6.5" x2="19.5" y2="3.5" stroke="#e05a2b" stroke-width="1.1" stroke-linecap="round"/><ellipse cx="8.5" cy="15.5" rx="2.5" ry="2" fill="#c94d22" transform="rotate(-20 8.5 15.5)"/><ellipse cx="19.5" cy="15.5" rx="2.5" ry="2" fill="#c94d22" transform="rotate(20 19.5 15.5)"/><line x1="10" y1="19" x2="7" y2="22" stroke="#c94d22" stroke-width=".9" stroke-linecap="round"/><line x1="18" y1="19" x2="21" y2="22" stroke="#c94d22" stroke-width=".9" stroke-linecap="round"/><path d="M10 23 Q14 26.5 18 23" stroke="#c94d22" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg></div>
+  <div><div class="tb-name">ArkClaw</div><div class="tb-sub">永达运营数字人助手</div></div>
+  <div class="tb-sep"></div>
+  <div class="tb-ctx">
+    <div class="tb-badge" id="tbd">商城运营助手</div>
+    <div class="tb-sess" id="tss">—</div>
+  </div>
+  <div class="tb-right">
+    <div class="tb-role">总部运营经理</div>
+    <div style="width:30px;height:30px;border-radius:50%;overflow:hidden;flex-shrink:0" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 28 28"><rect width="28" height="28" rx="14" fill="#f5d0a0"/><ellipse cx="14" cy="9.5" rx="7" ry="7.5" fill="#d4a820"/><rect x="11.5" y="16" width="5" height="4" rx="2" fill="#f2c89a"/><ellipse cx="14" cy="11" rx="6" ry="6.5" fill="#f5c888"/><path d="M7 8.5 Q7.5 2.5 14 3.5 Q20.5 2.5 21 8.5" fill="#d4a820"/><path d="M7 8.5 Q6 13 7.5 16" stroke="#d4a820" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M21 8.5 Q22 13 20.5 16" stroke="#d4a820" stroke-width="2.2" fill="none" stroke-linecap="round"/><ellipse cx="11.5" cy="11.5" rx="1.2" ry="1" fill="#3a2010"/><ellipse cx="16.5" cy="11.5" rx="1.2" ry="1" fill="#3a2010"/><path d="M11.8 14.5 Q14 16 16.2 14.5" stroke="#c07060" stroke-width=".9" fill="none" stroke-linecap="round"/><path d="M7.5 28 L11 20 L14 21.5 L17 20 L20.5 28 Z" fill="#51697f"/><path d="M11 20 L14 23.5 L17 20" fill="white" opacity=".5"/></svg></div>
+  </div>
+</div>
+
+<div class="body">
+<!-- SIDEBAR -->
+<div class="sidebar" role="navigation" aria-label="助手导航">
+  <div class="sbc">
+    <div class="sblbl">专业助手</div>
+    <div class="sbi" data-key="member" onclick="swA(this)" role="button" tabindex="0"><div class="sbico" aria-hidden="true">👤</div>会员等级助手</div>
+    <div class="sbi" data-key="points" onclick="swA(this)" role="button" tabindex="0"><div class="sbico" aria-hidden="true">⭐</div>积分运营助手</div>
+    <div class="sbi on" data-key="shop" onclick="swA(this)" role="button" tabindex="0" aria-current="true"><div class="sbico" aria-hidden="true">🛒</div>商城运营助手</div>
+    <div class="sbi" data-key="activity" onclick="swA(this)" role="button" tabindex="0"><div class="sbico" aria-hidden="true">🎯</div>活动运营助手<span class="sbi-badge" aria-label="1条待处理">1</span></div>
+    <div class="sbi" data-key="community" onclick="swA(this)" role="button" tabindex="0"><div class="sbico" aria-hidden="true">💬</div>社群运营助手<span class="sbi-badge" aria-label="3条待处理">3</span></div>
+  </div>
+  <div class="sbc">
+    <div class="sblbl">工作台</div>
+    <div class="sbi" onclick="newChat()" role="button" tabindex="0"><div class="sbico" aria-hidden="true">＋</div>新建对话</div>
+    <div class="sbi" style="background:var(--color-background-secondary)"><div class="sbico" aria-hidden="true">💼</div><span style="font-size:10px;color:var(--color-text-primary)" id="sbcur">当前会话</span></div>
+    <div class="sbi" role="button" tabindex="0"><div class="sbico" aria-hidden="true">🕐</div>最近会话</div>
+    <div class="sbi" role="button" tabindex="0"><div class="sbico" aria-hidden="true">📋</div>执行记录</div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main" role="main">
+  <div class="chat-card" id="cs" role="log" aria-live="polite" aria-label="对话区域">
+    <div class="welcome" id="wlc">
+      <div class="w-ava" aria-hidden="true"><svg width="44" height="44" viewBox="0 0 28 28"><ellipse cx="14" cy="17" rx="5" ry="6" fill="#e05a2b"/><ellipse cx="14" cy="10" rx="4.5" ry="4" fill="#e05a2b"/><circle cx="12" cy="8.5" r="1" fill="#fff"/><circle cx="16" cy="8.5" r="1" fill="#fff"/><line x1="12" y1="6.5" x2="8.5" y2="3.5" stroke="#e05a2b" stroke-width="1.1" stroke-linecap="round"/><line x1="16" y1="6.5" x2="19.5" y2="3.5" stroke="#e05a2b" stroke-width="1.1" stroke-linecap="round"/><ellipse cx="8.5" cy="15.5" rx="2.5" ry="2" fill="#c94d22" transform="rotate(-20 8.5 15.5)"/><ellipse cx="19.5" cy="15.5" rx="2.5" ry="2" fill="#c94d22" transform="rotate(20 19.5 15.5)"/><path d="M10 23 Q14 26.5 18 23" stroke="#c94d22" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg></div>
+      <div class="w-title" id="wtitle">商城运营助手</div>
+      <div class="w-sub" id="wsub">我负责在第三方平台后台批量同步库存与价格、执行活动配置与时间窗设置、将商品内容批量填充至商城后台并跨平台发布。</div>
+      <div class="w-note">直接把任务交给我：我会先拆解执行路径，再调用系统执行，并回传回执与交付物</div>
     </div>
-    <div class="tb-divider"></div>
-    <div class="tb-ctx">
-      <div class="tb-assistant-tag" id="tb-tag">商城运营助手</div>
-      <div class="tb-session" id="tb-session">雨季出行服务包同步任务</div>
-    </div>
-    <div class="tb-right">
-      <div class="tb-role">总部运营经理</div>
-      <div class="notif-dot">3</div>
-      <div class="tb-avatar">王</div>
-    </div>
+    <div id="ml" style="display:none" role="list"></div>
+    <div class="manual-panel" id="manualPanel" aria-live="polite"></div>
+    <button type="button" class="manual-fab" id="manualFab" onclick="toggleManualPanel()" aria-label="查看待人工干预节点">
+      <span class="manual-fab-dot" aria-hidden="true"></span>
+      <span class="manual-fab-main"><span class="manual-fab-label">人工接管浮点</span><span class="manual-fab-sub" id="manualFabSub">当前没有待人工处理节点</span></span>
+      <span class="manual-fab-count" id="manualFabCount">0</span>
+    </button>
   </div>
 
-  <!-- BODY -->
-  <div class="body">
-    <!-- SIDEBAR -->
-    <div class="sidebar">
-      <div class="sb-section">
-        <div class="sb-label">专业助手</div>
-        <div class="sb-item" onclick="switchAssistant(this,'会员等级助手','member')">
-          <div class="sb-icon">👤</div>会员等级助手
-        </div>
-        <div class="sb-item" onclick="switchAssistant(this,'积分运营助手','points')">
-          <div class="sb-icon">⭐</div>积分运营助手
-        </div>
-        <div class="sb-item active" onclick="switchAssistant(this,'商城运营助手','shop')">
-          <div class="sb-icon">🛒</div>商城运营助手
-        </div>
-        <div class="sb-item" onclick="switchAssistant(this,'活动运营助手','activity')">
-          <div class="sb-icon">🎯</div>活动运营助手
-        </div>
-        <div class="sb-item" onclick="switchAssistant(this,'社群运营助手','community')">
-          <div class="sb-icon">💬</div>社群运营助手
-        </div>
+  <div class="input-card">
+    <div class="skillbar"><div class="ski" id="skillbar" role="list" aria-label="快捷入口"></div></div>
+    <div id="spwrap"></div>
+    <div class="input-meta" aria-hidden="true">
+      <div class="mode-chips" aria-label="输入模式">
+        <span class="mode-chip on">文本</span>
+        <span class="mode-chip">图片</span>
+        <span class="mode-chip">文件</span>
+        <span class="mode-chip">语音</span>
       </div>
-      <div class="sb-divider"></div>
-      <div class="sb-section">
-        <div class="sb-label">会话工作台</div>
-        <div class="sb-item" onclick="resetChat()">
-          <div class="sb-icon">+</div>新建对话
-        </div>
-        <div class="sb-item active-soft" style="background:var(--color-background-secondary)">
-          <div class="sb-icon">💼</div>
-          <span style="font-size:12px;color:var(--color-text-primary)">雨季出行服务包同步</span>
-        </div>
-        <div class="sb-item">
-          <div class="sb-icon">🕐</div>最近会话
-        </div>
-        <div class="sb-item">
-          <div class="sb-icon">📋</div>执行记录
-        </div>
-        <div class="sb-item">
-          <div class="sb-icon">📚</div>规则与知识
-        </div>
-      </div>
+      <div class="voice-state" id="voiceState">语音待命</div>
     </div>
-
-    <!-- MAIN CHAT -->
-    <div class="main">
-      <div class="chat-area" id="chat-area">
-        <!-- welcome state -->
-        <div class="welcome-screen" id="welcome" style="display:flex">
-          <div class="w-avatar" id="w-avatar">🛒</div>
-          <div class="w-title" id="w-title">商城运营助手</div>
-          <div class="w-sub" id="w-sub">我可以协助你处理商品上架、库存价格同步、活动配置、履约异常跟踪和商城经营优化。</div>
-          <div class="quick-cmds" id="quick-cmds">
-            <div class="qcmd" onclick="sendQuick('发起商品上架')">发起商品上架</div>
-            <div class="qcmd" onclick="sendQuick('同步库存 / 价格')">同步库存 / 价格</div>
-            <div class="qcmd" onclick="sendQuick('查看履约异常')">查看履约异常</div>
-            <div class="qcmd" onclick="sendQuick('查看热销 / 滞销商品')">查看热销 / 滞销商品</div>
-          </div>
+    <div class="ibar">
+      <div class="composer" id="composer">
+        <div class="composer-tools" aria-label="多模态输入">
+          <button type="button" class="mm-btn" id="imageBtn" onclick="insertMediaToken('image')" aria-label="添加图片" title="添加图片">
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <rect x="3" y="4" width="14" height="12" rx="2"></rect>
+              <circle cx="7.2" cy="8" r="1.3"></circle>
+              <path d="M5 14l3.2-3.2a1 1 0 0 1 1.4 0L12 13l1.4-1.4a1 1 0 0 1 1.4 0L16 13"></path>
+            </svg>
+          </button>
+          <button type="button" class="mm-btn" id="fileBtn" onclick="insertMediaToken('file')" aria-label="添加文件" title="添加文件">
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M7.5 10.5l4.6-4.6a2.5 2.5 0 1 1 3.5 3.5L9.8 15.2a4 4 0 0 1-5.7-5.7l6.1-6.1"></path>
+            </svg>
+          </button>
+          <button type="button" class="mm-btn voice" id="voiceBtn" onclick="toggleVoice()" aria-label="语音输入" aria-pressed="false" title="语音输入">
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <rect x="7.2" y="3.2" width="5.6" height="8.8" rx="2.8"></rect>
+              <path d="M5.5 9.8a4.5 4.5 0 0 0 9 0"></path>
+              <path d="M10 14.3v2.5"></path>
+              <path d="M7.7 16.8h4.6"></path>
+            </svg>
+          </button>
         </div>
-        <!-- messages injected here -->
-        <div id="msg-list" style="display:flex;flex-direction:column;gap:14px;display:none"></div>
+        <textarea
+          class="itxt" id="inp" rows="1"
+          placeholder="向助手发出执行指令…"
+          onkeydown="onKey(event)"
+          oninput="autoResize(this)"
+          aria-label="输入指令"
+          maxlength="2000"
+        ></textarea>
       </div>
-
-      <div class="input-bar">
-        <div class="input-wrap">
-          <textarea class="chat-input" id="user-input" rows="1"
-            placeholder="向助手发出任务指令..."
-            onkeydown="handleKey(event)"></textarea>
-        </div>
-        <button class="send-btn" onclick="handleSend()">
-          <svg class="send-icon" viewBox="0 0 16 16" fill="none" width="14" height="14">
-            <path d="M2 8L14 2L8 14L7 9L2 8Z" fill="white" stroke="white" stroke-width="0.5"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- RIGHT PANEL -->
-    <div class="right-panel">
-      <div class="rp-section">
-        <div class="rp-title">当前任务</div>
-        <div class="rp-card">
-          <div class="rp-card-title" id="rp-assistant">商城运营助手</div>
-          <div class="rp-card-sub" id="rp-task" style="margin-bottom:6px">商品同步任务</div>
-          <div class="rp-status">
-            <div class="status-dot active" id="rp-dot"></div>
-            <span style="font-size:11px;color:var(--color-text-secondary)" id="rp-status-txt">执行完成</span>
-          </div>
-        </div>
-      </div>
-      <div class="rp-section">
-        <div class="rp-title">最近执行</div>
-        <div class="rp-card">
-          <div class="rp-card-title">商品同步到京东联营</div>
-          <div class="rp-card-sub">今天 18:05 · 128成功 3失败</div>
-        </div>
-        <div class="rp-card">
-          <div class="rp-card-title">上周活动奖励发放</div>
-          <div class="rp-card-sub">3月7日 · 4,231人次</div>
-        </div>
-        <div class="rp-card">
-          <div class="rp-card-title">本周积分对账</div>
-          <div class="rp-card-sub">3月10日 · 已完成</div>
-        </div>
-      </div>
-      <div class="rp-section">
-        <div class="rp-title">通知提醒</div>
-        <div class="notif-item">
-          <div class="notif-dot2 red"></div>
-          <div class="notif-text">3 个履约异常待处理</div>
-        </div>
-        <div class="notif-item">
-          <div class="notif-dot2 amber"></div>
-          <div class="notif-text">1 个任务待审批</div>
-        </div>
-        <div class="notif-item">
-          <div class="notif-dot2 amber"></div>
-          <div class="notif-text">2 个执行结果待确认</div>
-        </div>
-      </div>
+      <button class="send-btn" id="ssbtn" onclick="doSend()" aria-label="发送" title="发送 (Enter)">
+        <svg viewBox="0 0 14 14" fill="none" width="13" height="13" aria-hidden="true"><path d="M2 7L12 2L7.5 12L6.5 7.5L2 7Z" fill="white"/></svg>
+      </button>
     </div>
   </div>
 </div>
 
+<!-- RIGHT PANEL -->
+<div class="rp" role="complementary" aria-label="任务状态面板">
+  <div class="rp-card">
+    <div class="rpt">当前任务</div>
+    <div class="rpa-name" id="rpa">商城运营助手</div>
+    <div class="rpa-task" id="rptask">等待任务中</div>
+    <div class="status-row">
+      <div class="status-dot idle" id="rpdot" aria-hidden="true"></div>
+      <span class="rpa-st" id="rpst">空闲</span>
+    </div>
+  </div>
+  <div class="rp-card">
+    <div class="rpt">角色分工</div>
+    <div style="display:flex;flex-direction:column;gap:6px" id="rp-role">
+      <div style="display:flex;align-items:center;gap:5px"><span class="rb ag">Hi-Agent</span><span style="font-size:10px;color:var(--color-text-secondary)">选品规则 · 同步策略</span></div>
+      <div style="display:flex;align-items:center;gap:5px"><span class="rb rpa">ArkClaw</span><span style="font-size:10px;color:var(--color-text-secondary)">库存同步 · 活动配置</span></div>
+      <div style="display:flex;align-items:center;gap:5px"><span class="rb hu">人工</span><span style="font-size:10px;color:var(--color-text-secondary)">审核活动 · 处理异常</span></div>
+    </div>
+  </div>
+  <div class="rp-card">
+    <div class="rpt">最近执行</div>
+    <div id="rp-recent">
+      <div class="rpc"><div class="rpct">商品同步京东联营</div><div class="rpcs">今天 18:05 · 128成功 3失败</div></div>
+      <div class="rpc"><div class="rpct">保养节活动上线</div><div class="rpcs">3月13日 · 3个后台</div></div>
+      <div class="rpc"><div class="rpct">新品详情页批量填充</div><div class="rpcs">3月12日 · 24个商品</div></div>
+    </div>
+  </div>
+  <div class="rp-card">
+    <div class="rpt">结果流转</div>
+    <div class="rp-flow">
+      <div class="rp-flow-head">
+        <div>
+          <div class="rp-flow-title" id="pkgFlowOverall">等待形成结果包</div>
+          <div class="rp-flow-sub" id="pkgFlowHint">交付输出形成后，这里会同步展示导出、分发、回写的闭环进度。</div>
+        </div>
+        <div class="rp-flow-chip" id="pkgFlowChip">未开始</div>
+      </div>
+      <div class="rp-flow-bar" aria-hidden="true"><div class="rp-flow-bar-fill" id="pkgFlowBarFill"></div></div>
+      <div class="rp-flow-list">
+        <div class="rp-flow-item wait" id="pkgExportRow">
+          <div class="rp-flow-dot"></div>
+          <div class="rp-flow-main"><div class="t">导出结果包</div><div class="s" id="pkgExportDesc">等待交付输出生成</div></div>
+          <div class="rp-flow-state" id="pkgExportState">待开始</div>
+        </div>
+        <div class="rp-flow-item wait" id="pkgDistRow">
+          <div class="rp-flow-dot"></div>
+          <div class="rp-flow-main"><div class="t">分发给团队</div><div class="s" id="pkgDistDesc">等待结果包导出后分发</div></div>
+          <div class="rp-flow-state" id="pkgDistState">待开始</div>
+        </div>
+        <div class="rp-flow-item wait" id="pkgWriteRow">
+          <div class="rp-flow-dot"></div>
+          <div class="rp-flow-main"><div class="t">回写完成状态</div><div class="s" id="pkgWriteDesc">等待团队确认后回写系统</div></div>
+          <div class="rp-flow-state" id="pkgWriteState">待开始</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rp-card">
+    <div class="rpt">通知提醒</div>
+    <div id="rp-notif">
+      <div class="ni"><div class="ndot r"></div><div class="nt">3 个商品同步失败待处理</div></div>
+      <div class="ni"><div class="ndot a"></div><div class="nt">1 个活动上线待人工审核</div></div>
+      <div class="ni"><div class="ndot a"></div><div class="nt">2 个商品详情页待抽检</div></div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="modal-mask" id="channelModal" aria-hidden="true"></div>
+
 <script>
-const ASSISTANTS = {
-  member: {
-    name: '会员等级助手', icon: '👤',
-    sub: '我可以协助你处理会员等级规则、成长值计算、升降级名单识别、权益触发和高价值会员经营建议。',
-    cmds: ['查看等级规则','同步升级会员','查看降级名单','查看高价值会员建议'],
-    demo: '同步昨天升级到金卡和钻石的会员到老 CRM'
-  },
-  points: {
-    name: '积分运营助手', icon: '⭐',
-    sub: '我可以协助你处理积分获取规则、积分账本、有效期管理、积分对账、风险识别和争议处理。',
-    cmds: ['查看积分规则','跑积分对账','查询到期积分','查看风控异常'],
-    demo: '跑本周保险渠道积分对账'
-  },
-  shop: {
-    name: '商城运营助手', icon: '🛒',
-    sub: '我可以协助你处理商品上架、库存价格同步、活动配置、履约异常跟踪和商城经营优化。',
-    cmds: ['发起商品上架','同步库存 / 价格','查看履约异常','查看热销 / 滞销商品'],
-    demo: '把雨季出行安全服务包同步到小程序商城和京东联营后台'
-  },
-  activity: {
-    name: '活动运营助手', icon: '🎯',
-    sub: '我可以协助你处理活动策划、规则上线、过程监控、奖励发放和活动复盘。',
-    cmds: ['发起活动上线','查看活动进度','发放活动奖励','查看活动复盘'],
-    demo: '今天 20:00 上线夏季保养节活动'
-  },
-  community: {
-    name: '社群运营助手', icon: '💬',
-    sub: '我可以协助你处理社群分层、内容排期、欢迎引导、活跃激活和潜在 KOC 用户识别。',
-    cmds: ['查看社群标签','执行欢迎引导','发布内容排期','查看活跃预警'],
-    demo: '把本周雨季安全用车专题内容排到 12 个车主群'
-  }
+'use strict';
+
+/* ─── SVG CONSTANTS ─── */
+const SVG_LOBSTER=`<svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="7" fill="#51697f"/><ellipse cx="14" cy="17" rx="5" ry="6" fill="#e05a2b"/><ellipse cx="14" cy="10" rx="4.5" ry="4" fill="#e05a2b"/><circle cx="12" cy="8.5" r="1" fill="#fff"/><circle cx="16" cy="8.5" r="1" fill="#fff"/><circle cx="12.2" cy="8.7" r="0.5" fill="#111"/><circle cx="16.2" cy="8.7" r="0.5" fill="#111"/><line x1="12" y1="6.5" x2="8.5" y2="3.5" stroke="#e05a2b" stroke-width="1.1" stroke-linecap="round"/><line x1="16" y1="6.5" x2="19.5" y2="3.5" stroke="#e05a2b" stroke-width="1.1" stroke-linecap="round"/><ellipse cx="8.5" cy="15.5" rx="2.5" ry="2" fill="#c94d22" transform="rotate(-20 8.5 15.5)"/><ellipse cx="19.5" cy="15.5" rx="2.5" ry="2" fill="#c94d22" transform="rotate(20 19.5 15.5)"/><line x1="10" y1="19" x2="7" y2="22" stroke="#c94d22" stroke-width=".9" stroke-linecap="round"/><line x1="18" y1="19" x2="21" y2="22" stroke="#c94d22" stroke-width=".9" stroke-linecap="round"/><path d="M10 23 Q14 26.5 18 23" stroke="#c94d22" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg>`;
+const SVG_WOMAN=`<svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="14" fill="#f5d0a0"/><ellipse cx="14" cy="9.5" rx="7" ry="7.5" fill="#d4a820"/><rect x="11.5" y="16" width="5" height="4" rx="2" fill="#f2c89a"/><ellipse cx="14" cy="11" rx="6" ry="6.5" fill="#f5c888"/><path d="M7 8.5 Q7.5 2.5 14 3.5 Q20.5 2.5 21 8.5" fill="#d4a820"/><path d="M7 8.5 Q6 13 7.5 16" stroke="#d4a820" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M21 8.5 Q22 13 20.5 16" stroke="#d4a820" stroke-width="2.2" fill="none" stroke-linecap="round"/><ellipse cx="11.5" cy="11.5" rx="1.2" ry="1" fill="#3a2010"/><ellipse cx="16.5" cy="11.5" rx="1.2" ry="1" fill="#3a2010"/><path d="M11.8 14.5 Q14 16 16.2 14.5" stroke="#c07060" stroke-width=".9" fill="none" stroke-linecap="round"/><path d="M7.5 28 L11 20 L14 21.5 L17 20 L20.5 28 Z" fill="#51697f"/><path d="M11 20 L14 23.5 L17 20" fill="white" opacity=".5"/></svg>`;
+
+/* ─── DATA ─── */
+const SKILLS={
+  shop:[
+    {id:'sync',ico:'🔄',label:'库存同步',desc:'批量同步库存与价格到各渠道',opts:['同步小程序商城','同步京东联营','全渠道同步','查看同步失败项']},
+    {id:'act',ico:'🚀',label:'活动配置',desc:'执行活动规则与多系统上线',opts:['执行活动规则配置','设置时间窗口','多系统联动上线','查看上线清单']},
+    {id:'content',ico:'📝',label:'内容填充',desc:'批量填充商品内容并跨平台发布',opts:['批量填充商品详情页','跨平台发布内容','更新标题与卖点','同步 FAQ 到后台']},
+    {id:'scrape',ico:'📊',label:'竞品抓取',desc:'定时抓取平台商品表现数据',opts:['抓取京东商城报表','抓取天猫表现数据','归档竞品价格']},
+    {id:'fulfil',ico:'🚚',label:'履约异常',desc:'监控和处理履约异常订单',opts:['查看今日履约异常','超时订单预警','同步失败项重试']},
+  ],
+  activity:[
+    {id:'ac',ico:'⚙️',label:'规则配置',desc:'多后台联动配置活动规则',opts:['执行活动规则配置','设置时间窗与限额','多后台联动上线','校验配置一致性']},
+    {id:'am',ico:'📡',label:'数据监控',desc:'定时抓取活动数据并归档',opts:['定时抓取活动报表','归档异常截图','监控预算消耗']},
+    {id:'ar',ico:'🎁',label:'奖励发放',desc:'批量发放积分奖励与写入',opts:['批量发放积分奖励','发放优惠券','写入会员中心','同步短信通知']},
+    {id:'amm',ico:'📢',label:'物料分发',desc:'多渠道上传发布活动物料',opts:['上传海报到各后台','执行短信定时发布','跨平台分发活动内容']},
+    {id:'as',ico:'📋',label:'回访问卷',desc:'批量发送回访并归档结果',opts:['批量发送回访问卷','归档问卷结果','生成回访摘要']},
+  ],
+  community:[
+    {id:'ct',ico:'🏷️',label:'标签写入',desc:'批量写入标签到后台系统',opts:['批量写入标签到后台','按车型打标','按等级分层']},
+    {id:'cw',ico:'👋',label:'入群引导',desc:'配置新用户欢迎与引导流程',opts:['执行新用户欢迎语','发送权益说明','引导资料补全']},
+    {id:'cs2',ico:'✍️',label:'内容排期',desc:'在各平台后台执行排期发布',opts:['执行本周内容排期','批量发布到各群','跨平台排期同步']},
+    {id:'ca',ico:'🔥',label:'沉默激活',desc:'批量发送激活提醒与关怀',opts:['批量发送激活提醒','执行唤醒活动','发送关怀消息']},
+    {id:'cd',ico:'📊',label:'数据抓取',desc:'定时抓取多平台社群数据',opts:['抓取微信群数据','抓取抖音社群数据','归档多平台数据']},
+  ],
+  member:[
+    {id:'ms',ico:'🔄',label:'等级同步',desc:'同步升降级到老 DMS/CRM',opts:['同步升级会员','同步降级会员','查看同步日志']},
+    {id:'mr',ico:'🎁',label:'权益触达',desc:'执行权益批量发放',opts:['执行权益发放','批量发券','查看触达失败']},
+    {id:'mb',ico:'🛡️',label:'黑白名单',desc:'录入和执行风控名单操作',opts:['识别异常账号','冻结异常账号','录入黑名单']},
+  ],
+  points:[
+    {id:'pf',ico:'📥',label:'流水抓取',desc:'定时登录平台抓取积分流水',opts:['抓取保险平台流水','抓取老 DMS 流水','定时抓取配置']},
+    {id:'pr',ico:'🔄',label:'对账执行',desc:'与内部账本比对并归档差异',opts:['跑本周积分对账','按渠道分项对账','对账回填操作']},
+    {id:'pk',ico:'🛡️',label:'风控操作',desc:'执行风控名单录入与冻结',opts:['录入风控名单','执行账号冻结','提交风控工单']},
+  ]
 };
 
-let currentAssistant = 'shop';
-let chatActive = false;
-let demoStage = 0;
+const ACTIONS=[
+  {id:'channel',ico:'💬',label:'消息渠道'},
+  {id:'feishu',ico:'🔗',label:'飞书配对'},
+  {id:'quick',ico:'⌘',label:'快捷指令'},
+  {id:'skills',ico:'🛠',label:'技能'},
+  {id:'schedule',ico:'⏰',label:'定时任务'},
+  {id:'persona',ico:'🙂',label:'人格'}
+];
 
-function switchAssistant(el, name, key) {
-  document.querySelectorAll('.sb-item').forEach(i => i.classList.remove('active'));
-  el.classList.add('active');
-  currentAssistant = key;
-  const a = ASSISTANTS[key];
-  document.getElementById('tb-tag').textContent = a.name;
-  document.getElementById('tb-session').textContent = '新会话';
-  document.getElementById('rp-assistant').textContent = a.name;
-  resetChat();
-  document.getElementById('w-avatar').textContent = a.icon;
-  document.getElementById('w-title').textContent = a.name;
-  document.getElementById('w-sub').textContent = a.sub;
-  const cmds = document.getElementById('quick-cmds');
-  cmds.innerHTML = '';
-  a.cmds.forEach(c => {
-    const d = document.createElement('div');
-    d.className = 'qcmd';
-    d.textContent = c;
-    d.onclick = () => sendQuick(c);
-    cmds.appendChild(d);
-  });
-  document.getElementById('user-input').placeholder = '向助手发出任务指令... 试试：' + a.demo;
+const AS={
+  shop:{name:'商城运营助手',sub:'我负责在第三方平台后台批量同步库存与价格、执行活动配置与时间窗设置、将商品内容批量填充至商城后台并跨平台发布。Hi-Agent 负责规则设计，我来执行。',cmds:['把雨季出行安全服务包同步到小程序商城和京东联营','今天 20:00 上线夏季保养节活动配置','批量填充新品详情页内容到商城后台','抓取京东和天猫竞品商城商品表现报表'],role:['选品规则 · 同步策略','库存同步 · 活动配置','审核活动 · 处理异常'],recent:[['商品同步京东联营','今天 18:05 · 128成功 3失败'],['保养节活动上线','3月13日 · 3个后台'],['新品详情页批量填充','3月12日 · 24个商品']],notif:['3 个商品同步失败待处理','1 个活动上线待人工审核','2 个商品详情页待抽检']},
+  activity:{name:'活动运营助手',sub:'我负责在多个后台执行活动规则配置与时间窗设置、批量奖励发放与状态写入、活动物料上传与跨渠道定时分发。Hi-Agent 负责策略设计，我来执行。',cmds:['今天 20:00 上线夏季保养节，执行多后台联动配置','执行本次活动积分奖励批量发放','把活动海报和短信分发到各渠道后台','定时抓取活动进度报表并归档'],role:['活动策划 · 规则设计','规则配置 · 物料分发','审核主题 · 审批高风险'],recent:[['夏季保养节多后台上线','今天 19:58 · 3个系统'],['活动奖励批量发放','3月13日 · 4,231人次'],['活动海报跨渠道分发','3月12日 · 6个渠道']],notif:['1 个活动规则配置待人工审批','奖励发放 12 条异常','2 个渠道物料分发失败']},
+  community:{name:'社群运营助手',sub:'我负责在无 API 场景下批量写入标签、执行入群引导、在各平台执行内容排期与发布、批量发送激活提醒。Hi-Agent 负责策略设计，我来执行。',cmds:['把本周雨季安全用车专题内容排到 12 个车主群','执行本周新入群用户欢迎引导任务','批量发送沉默用户激活提醒','抓取微信群、抖音、小红书社群数据并归档'],role:['分层规则 · 内容策略','标签写入 · 内容发布','审核内容 · 处理投诉'],recent:[['内容排期分发12个车主群','今天 10:00 · 已完成'],['新用户入群欢迎引导','3月13日 · 87人'],['沉默用户激活推送','3月11日 · 324人']],notif:['3 个社群活跃度预警','1 条高价值用户投诉待处理','本周内容排期待审核']},
+  member:{name:'会员等级助手',sub:'我负责登录老 DMS/CRM 批量写入等级字段、权益触达执行和风控名单录入。Hi-Agent 负责规则设计，我来执行。',cmds:['同步昨天升级到金卡和钻石的会员到老 CRM','查看今日降级预警名单','执行本周权益发放任务','识别异常成长值账号'],role:['规则设计 · 策略建议','界面执行 · 同步留痕','审批 · 例外处理'],recent:[['等级同步至老 DMS','昨天 23:00 · 自动触发'],['权益批量发放','3月13日 · 234人次'],['异常账号冻结','3月11日 · 3个账号']],notif:['2 个异常账号待人工审批','18 人降级预警未处理','钻石会员权益待确认']},
+  points:{name:'积分运营助手',sub:'我负责无 API 平台的流水抓取与对账回填、到期名单抓取与提醒同步、风控名单录入与冻结操作。Hi-Agent 设计规则，我来执行。',cmds:['抓取本周保险平台积分流水并对账','执行本月到期积分提醒任务','录入风控异常名单','调取争议工单流水截图'],role:['规则设计 · 对账逻辑','流水抓取 · 执行留痕','审批差异 · 豁免决策'],recent:[['保险平台流水对账','昨天 22:00 · 自动触发'],['到期积分提醒推送','3月13日 · 1,240人'],['风控名单录入','3月11日 · 5个账号']],notif:['3 条对账差异待人工审批','本月 2,847 人积分将到期','2 条争议工单待核查']}
+};
+
+/* ─── STATE (single source of truth) ─── */
+const state={cur:'shop',busy:false,activeSk:null,msgCount:0,voiceSupported:false,recording:false,recognition:null,manualQueue:[],manualPanelOpen:false,linkedFocus:{anchor:'',key:''},channelCfg:{platform:'feishu',pairing:'fast'},packageFlow:{step:'idle'}};
+
+/* ─── UTILS ─── */
+const $=id=>document.getElementById(id);
+const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const jsq=s=>String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+const now=()=>{const d=new Date();return`${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`};
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+function mkManualKey(prefix='manual'){
+  return `${prefix}-${Date.now()}-${Math.random().toString(36).slice(2,6)}`;
 }
-
-function resetChat() {
-  chatActive = false;
-  demoStage = 0;
-  document.getElementById('welcome').style.display = 'flex';
-  const ml = document.getElementById('msg-list');
-  ml.innerHTML = '';
-  ml.style.display = 'none';
-  document.getElementById('rp-task').textContent = '待接收任务';
-  document.getElementById('rp-status-txt').textContent = '等待中';
-  document.getElementById('rp-dot').className = 'status-dot idle';
+function ensureAnchor(el,prefix='manual'){
+  if(!el)return'';
+  if(!el.id)el.id=mkManualKey(prefix);
+  return el.id;
 }
-
-function handleKey(e) {
-  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); }
+function currentManualItems(){
+  return state.manualQueue.filter(i=>i.agentKey===state.cur);
 }
-
-function handleSend() {
-  const inp = document.getElementById('user-input');
-  const val = inp.value.trim();
-  if (!val) return;
-  inp.value = '';
-  startChat(val);
+function splitManualItems(items=currentManualItems()){
+  const urgent=[],later=[];
+  items.forEach(i=>((i.priority||'later')==='urgent'?urgent:later).push(i));
+  return {urgent,later};
 }
-
-function sendQuick(cmd) {
-  startChat(cmd);
-}
-
-function startChat(text) {
-  if (!chatActive) {
-    document.getElementById('welcome').style.display = 'none';
-    document.getElementById('msg-list').style.display = 'flex';
-    chatActive = true;
-    demoStage = 0;
+function bindManualInline(item){
+  if(!item||!item.anchor)return;
+  const root=document.getElementById(item.anchor);
+  if(!root)return;
+  const inline=(root.matches&&root.matches('.handoff-inline')?root:root.querySelector('.handoff-inline:not([data-manual-bound="1"])'))||root.querySelector('.handoff-inline');
+  if(!inline)return;
+  inline.dataset.manualKey=item.key;
+  inline.dataset.manualBound='1';
+  const pri=inline.querySelector('[data-manual-priority]');
+  if(pri){
+    const p=(item.priority||'later')==='urgent'?'urgent':'later';
+    pri.className=`manual-priority ${p}`;
+    pri.textContent=p==='urgent'?'立即处理':'可稍后';
   }
-  addUserMsg(text);
-  const a = ASSISTANTS[currentAssistant];
-  document.getElementById('tb-session').textContent = text.slice(0, 20) + (text.length > 20 ? '...' : '');
-
-  // Demo flow for shop assistant
-  if (currentAssistant === 'shop' && text.includes('雨季') || text.includes('同步') && demoStage === 0) {
-    demoStage = 1;
-    runShopDemo(text);
-  } else if (demoStage === 2 && (text.includes('确认') || text.includes('执行'))) {
-    demoStage = 3;
-    runExecution();
-  } else if (demoStage === 4 && text.includes('失败')) {
-    runFailureExplain();
-  } else if (demoStage === 4 && text.includes('重试')) {
-    runRetry();
-  } else {
-    genericReply(text, a);
-  }
+  const st=inline.querySelector('[data-manual-status]');
+  if(st){st.className='meta-pill warn';st.textContent='待你处理';}
+  const act=inline.querySelector('[data-manual-actions]');
+  if(act)act.innerHTML=manualActionButtons(item.key,item.anchor,item.actionLabel||'去处理');
 }
-
-function addUserMsg(text) {
-  const ml = document.getElementById('msg-list');
-  const el = document.createElement('div');
-  el.className = 'msg-row user fade-in';
-  el.innerHTML = `
-    <div class="msg-avatar user">王</div>
-    <div class="msg-body">
-      <div class="msg-meta" style="text-align:right">总部运营经理</div>
-      <div class="bubble">${escHtml(text)}</div>
-    </div>`;
-  ml.appendChild(el);
-  scrollBottom();
-}
-
-function addAssistantBubble(html, delay) {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      const ml = document.getElementById('msg-list');
-      const el = document.createElement('div');
-      el.className = 'msg-row fade-in';
-      const a = ASSISTANTS[currentAssistant];
-      el.innerHTML = `
-        <div class="msg-avatar">${a.icon}</div>
-        <div class="msg-body">
-          <div class="msg-meta">ArkClaw · ${a.name}</div>
-          <div class="bubble">${html}</div>
-        </div>`;
-      ml.appendChild(el);
-      scrollBottom();
-      resolve();
-    }, delay || 0);
-  });
-}
-
-function addCard(html, delay) {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      const ml = document.getElementById('msg-list');
-      const el = document.createElement('div');
-      el.className = 'msg-row fade-in';
-      const a = ASSISTANTS[currentAssistant];
-      el.innerHTML = `
-        <div class="msg-avatar">${a.icon}</div>
-        <div class="msg-body" style="max-width:90%">
-          <div class="msg-meta">ArkClaw · ${a.name}</div>
-          ${html}
-        </div>`;
-      ml.appendChild(el);
-      scrollBottom();
-      resolve();
-    }, delay || 0);
-  });
-}
-
-function addTyping(delay) {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      const ml = document.getElementById('msg-list');
-      const el = document.createElement('div');
-      el.id = 'typing-indicator';
-      el.className = 'msg-row fade-in';
-      const a = ASSISTANTS[currentAssistant];
-      el.innerHTML = `
-        <div class="msg-avatar">${a.icon}</div>
-        <div class="msg-body">
-          <div class="msg-meta">ArkClaw · ${a.name}</div>
-          <div class="bubble" style="padding:10px 16px">
-            <div class="typing"><span></span><span></span><span></span></div>
-          </div>
-        </div>`;
-      ml.appendChild(el);
-      scrollBottom();
-      resolve(() => { const t = document.getElementById('typing-indicator'); if(t) t.remove(); });
-    }, delay || 0);
-  });
-}
-
-async function runShopDemo(text) {
-  document.getElementById('rp-task').textContent = '商品同步 · 处理中';
-  document.getElementById('rp-status-txt').textContent = '任务识别中';
-  document.getElementById('rp-dot').className = 'status-dot active';
-
-  const removeTyping = await addTyping(400);
-  removeTyping();
-
-  await addAssistantBubble(`我已识别到一项<strong style="font-weight:500">商品同步任务</strong>。<br>目标商品为「雨季出行安全服务包」，目标渠道为小程序商城、京东联营后台。<br>预计执行动作包括商品信息校验、库存价格同步和渠道配置检查。`, 1200);
-
-  await addCard(`<div class="card-msg">
-    <div class="card-header">
-      <div class="card-tag">任务确认</div>
-      <div class="card-title">商品同步请求</div>
-    </div>
-    <div class="card-body">
-      <div class="card-row"><span class="card-row-k">任务类型</span><span class="card-row-v">商品同步</span></div>
-      <div class="card-row"><span class="card-row-k">目标商品</span><span class="card-row-v">雨季出行安全服务包</span></div>
-      <div class="card-row"><span class="card-row-k">目标渠道</span><span class="card-row-v">小程序商城 / 京东联营</span></div>
-      <div class="card-row"><span class="card-row-k">关键动作</span><span class="card-row-v">商品页生成、库存同步、价格校验</span></div>
-    </div>
-    <div class="card-actions">
-      <button class="btn primary" onclick="confirmExec()">确认执行</button>
-      <button class="btn" onclick="addUserMsg('先预览一下')">先预览</button>
-      <button class="btn" onclick="addUserMsg('修改任务')">修改任务</button>
-    </div>
-  </div>`, 1800);
-
-  demoStage = 2;
-}
-
-function confirmExec() {
-  addUserMsg('确认执行');
-  demoStage = 3;
-  runExecution();
-}
-
-async function runExecution() {
-  document.getElementById('rp-status-txt').textContent = '执行中...';
-
-  const removeTyping = await addTyping(300);
-  removeTyping();
-
-  await addCard(`<div class="card-msg">
-    <div class="card-header">
-      <div class="card-tag" style="background:#fef3c7;color:#b45309">执行中</div>
-      <div class="card-title">正在处理商品同步</div>
-    </div>
-    <div class="step-list" id="step-list">
-      <div class="step-row done-row"><div class="step-dot done">✓</div>正在校验商品资料</div>
-      <div class="step-row"><div class="step-dot active">●</div>正在同步库存与价格</div>
-      <div class="step-row"><div class="step-dot pending">○</div>正在检查渠道配置</div>
-      <div class="step-row"><div class="step-dot pending">○</div>正在提交上线请求</div>
-      <div class="step-row"><div class="step-dot pending">○</div>正在生成执行日志</div>
-    </div>
-  </div>`, 1000);
-
-  setTimeout(updateSteps, 1800);
-}
-
-function updateSteps() {
-  const sl = document.getElementById('step-list');
-  if (!sl) return;
-  sl.innerHTML = `
-    <div class="step-row done-row"><div class="step-dot done">✓</div>商品资料校验完成</div>
-    <div class="step-row done-row"><div class="step-dot done">✓</div>库存与价格同步完成</div>
-    <div class="step-row done-row"><div class="step-dot done">✓</div>渠道配置检查完成</div>
-    <div class="step-row"><div class="step-dot active">●</div>正在提交上线请求</div>
-    <div class="step-row"><div class="step-dot pending">○</div>正在生成执行日志</div>`;
-  setTimeout(showResult, 2000);
-}
-
-async function showResult() {
-  document.getElementById('rp-status-txt').textContent = '执行完成';
-  document.getElementById('rp-task').textContent = '商品同步 · 已完成';
-
-  await addCard(`<div class="card-msg">
-    <div class="card-header">
-      <div class="card-tag ok">执行完成</div>
-      <div class="card-title">商品同步结果</div>
-    </div>
-    <div class="stat-row">
-      <div class="stat-box"><div class="stat-num ok">128</div><div class="stat-lbl">成功</div></div>
-      <div class="stat-box"><div class="stat-num bad">3</div><div class="stat-lbl">失败</div></div>
-      <div class="stat-box"><div class="stat-num">18:05</div><div class="stat-lbl">完成时间</div></div>
-    </div>
-    <div class="card-body" style="margin-top:8px">
-      <div class="card-row"><span class="card-row-k">执行时间</span><span class="card-row-v">2026-03-14 18:05</span></div>
-      <div class="card-row"><span class="card-row-k">附件</span><span class="card-row-v" style="color:#1a56db">执行日志 · 失败名单 · 截图</span></div>
-    </div>
-    <div class="card-actions">
-      <button class="btn primary sm" onclick="sendQuick('为什么有 3 个失败项？')">为什么有 3 个失败项？</button>
-      <button class="btn sm" onclick="sendQuick('只重试失败项')">重试失败项</button>
-      <button class="btn sm">导出结果</button>
-    </div>
-  </div>`, 500);
-
-  demoStage = 4;
-}
-
-async function runFailureExplain() {
-  const removeTyping = await addTyping(300);
-  removeTyping();
-  await addAssistantBubble(`经核查，3 个失败项原因如下：<br><br>
-    • SKU-8821：京东联营渠道品类资质过期，需重新认证<br>
-    • SKU-8824：小程序商城库存字段为空，来源 ERP 未推送<br>
-    • SKU-8829：渠道价格低于成本保护线，触发价格校验拦截<br><br>
-    建议先处理 SKU-8821 的资质问题，其余两项可直接修正后重试。`, 1000);
-}
-
-async function runRetry() {
-  const removeTyping = await addTyping(300);
-  removeTyping();
-  await addAssistantBubble(`好的，我将对 3 个失败项单独重新执行。请注意 SKU-8821 需要先完成资质认证，建议跳过该项，只重试另外 2 项。`, 1000);
-  await addCard(`<div class="card-msg">
-    <div class="card-header">
-      <div class="card-tag">重试确认</div>
-      <div class="card-title">重试失败项</div>
-    </div>
-    <div class="card-body">
-      <div class="card-row"><span class="card-row-k">重试范围</span><span class="card-row-v">SKU-8824, SKU-8829</span></div>
-      <div class="card-row"><span class="card-row-k">跳过项目</span><span class="card-row-v" style="color:#b45309">SKU-8821（资质待处理）</span></div>
-    </div>
-    <div class="card-actions">
-      <button class="btn primary sm" onclick="addAssistantBubble('SKU-8824 和 SKU-8829 重试成功，同步完成。SKU-8821 资质问题已记录，待你完成认证后可随时重触发。',400)">确认重试</button>
-      <button class="btn sm">取消</button>
-    </div>
-  </div>`, 1600);
-}
-
-async function genericReply(text, a) {
-  const removeTyping = await addTyping(400);
-  removeTyping();
-  const replies = {
-    member: `好的，我将为你处理「${text}」。正在检索相关会员数据，请稍候...`,
-    points: `收到，正在为你查询「${text}」相关积分数据，识别异常项...`,
-    activity: `明白，正在为你准备「${text}」的活动配置方案...`,
-    community: `好的，正在为你处理「${text}」的社群运营任务...`,
-    shop: `收到，正在处理你的商城运营请求...`,
+function addManualPoint(item={}){
+  const key=item.key||mkManualKey('handoff');
+  const payload={
+    id:mkManualKey('mp'),
+    key,
+    agentKey:item.agentKey||state.cur,
+    title:item.title||'需要人工确认',
+    desc:item.desc||'请先处理该节点，再继续后续动作。',
+    time:item.time||now(),
+    anchor:item.anchor||'',
+    actionLabel:item.actionLabel||'去处理',
+    priority:item.priority||'later'
   };
-  await addAssistantBubble(replies[currentAssistant] || `我已收到你的指令：「${escHtml(text)}」，正在分析处理中...`, 800);
+  const idx=state.manualQueue.findIndex(i=>i.key===payload.key&&i.agentKey===payload.agentKey);
+  if(idx>-1)state.manualQueue[idx]={...state.manualQueue[idx],...payload};
+  else state.manualQueue.unshift(payload);
+  bindManualInline(payload);
+  updateManualUi();
+  return payload;
+}
+function resolveManualPoint(key){
+  state.manualQueue=state.manualQueue.filter(i=>i.key!==key&&i.id!==key);
+  updateManualUi();
+}
+function clearManualFocus(){
+  state.linkedFocus={anchor:'',key:''};
+  document.querySelectorAll('.manual-item.focused').forEach(el=>el.classList.remove('focused'));
+  document.querySelectorAll('.manual-anchor-card.is-linked').forEach(el=>el.classList.remove('is-linked'));
+  document.querySelectorAll('.handoff-inline.focus-ring').forEach(el=>el.classList.remove('focus-ring'));
+}
+function highlightManualPoint(anchor,key='',keepPanel=false){
+  clearManualFocus();
+  if(key){
+    document.querySelectorAll(`.manual-item[data-manual-key="${key}"]`).forEach(el=>el.classList.add('focused'));
+  }
+  if(!anchor)return;
+  const el=document.getElementById(anchor);
+  if(!el)return;
+  state.linkedFocus={anchor,key:key||''};
+  const card=el.closest('.card')||el;
+  card.classList.add('manual-anchor-card','is-linked');
+  const inline=el.matches&&el.matches('.handoff-inline')?el:el.querySelector('.handoff-inline');
+  if(inline)inline.classList.add('focus-ring');
+  if(!keepPanel)toggleManualPanel(false);
+  el.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function focusManualPoint(anchor,key='',keepPanel=false){
+  highlightManualPoint(anchor,key,keepPanel);
+}
+function manualActionButtons(key,anchor,label='去处理'){
+  return `<button class="manual-mini p" onclick="focusManualPoint('${jsq(anchor||'')}','${jsq(key)}');event.stopPropagation()">${esc(label||'去处理')}</button><button class="manual-mini approve" onclick="actOnManualPoint('${jsq(key)}','approve');event.stopPropagation()">审批通过</button><button class="manual-mini reject" onclick="actOnManualPoint('${jsq(key)}','reject');event.stopPropagation()">驳回</button><button class="manual-mini defer" onclick="actOnManualPoint('${jsq(key)}','later');event.stopPropagation()">稍后处理</button>`;
+}
+function renderManualItem(i){
+  const pri=(i.priority||'later')==='urgent'?'urgent':'later';
+  const label=pri==='urgent'?'立即处理':'可稍后处理';
+  return `<div class="manual-item ${pri}" data-manual-key="${esc(i.key)}" onclick="focusManualPoint('${jsq(i.anchor||'')}','${jsq(i.key)}',true)" onmouseenter="highlightManualPoint('${jsq(i.anchor||'')}','${jsq(i.key)}',true)" onmouseleave="clearManualFocus()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();focusManualPoint('${jsq(i.anchor||'')}','${jsq(i.key)}',true)}">
+    <div class="manual-item-top">
+      <span class="manual-item-tag ${pri}">${label}</span>
+      <span class="manual-item-time">${esc(i.time)}</span>
+    </div>
+    <div class="manual-item-title">${esc(i.title)}</div>
+    <div class="manual-item-desc">${esc(i.desc)}</div>
+    <div class="manual-item-actions">${manualActionButtons(i.key,i.anchor,i.actionLabel||'去处理')}</div>
+  </div>`;
+}
+function renderManualSection(title,cls,items){
+  if(!items.length)return '';
+  return `<div class="manual-panel-section ${cls}">
+    <div class="manual-section-head">
+      <div class="manual-section-title ${cls}">${title}</div>
+      <div class="manual-section-count">${items.length} 项</div>
+    </div>
+    ${items.map(renderManualItem).join('')}
+  </div>`;
+}
+function renderManualPanel(){
+  const panel=$('manualPanel');
+  if(!panel)return;
+  const items=currentManualItems();
+  if(!items.length){
+    panel.innerHTML='';
+    panel.classList.remove('show');
+    state.manualPanelOpen=false;
+    clearManualFocus();
+    return;
+  }
+  const {urgent,later}=splitManualItems(items);
+  panel.innerHTML=`<div class="manual-panel-head"><div><div class="manual-panel-title">待人工干预</div><div class="manual-panel-sub">${esc(AS[state.cur].name)} · ${items.length} 个节点待处理</div><div class="manual-head-meta"><span class="manual-head-chip urgent">紧急 ${urgent.length}</span><span class="manual-head-chip later">稍后 ${later.length}</span></div></div><button type="button" class="manual-panel-close" onclick="toggleManualPanel(false)" aria-label="关闭">×</button></div><div class="manual-panel-list">${renderManualSection('必须立即处理','urgent',urgent)}${renderManualSection('可稍后处理','later',later)}</div><div class="manual-panel-foot"><span class="manual-panel-foot-dot" aria-hidden="true"></span><span>点击待处理项可高亮定位到会话里的对应人工接管节点。</span></div>`;
+  panel.classList.toggle('show',!!state.manualPanelOpen);
+}
+function updateManualUi(){
+  const fab=$('manualFab');
+  const count=$('manualFabCount');
+  const sub=$('manualFabSub');
+  if(!fab||!count||!sub)return;
+  const items=currentManualItems();
+  if(!items.length){
+    fab.classList.remove('show','urgent','later');
+    state.manualPanelOpen=false;
+    clearManualFocus();
+    renderManualPanel();
+    return;
+  }
+  const {urgent,later}=splitManualItems(items);
+  const top=urgent[0]||later[0];
+  const hasUrgent=urgent.length>0;
+  fab.classList.add('show');
+  fab.classList.toggle('urgent',hasUrgent);
+  fab.classList.toggle('later',!hasUrgent);
+  count.textContent=String(items.length);
+  if(hasUrgent&&later.length) sub.textContent=`${urgent.length} 项需立即处理，${later.length} 项可稍后`;
+  else if(hasUrgent) sub.textContent=urgent.length>1?`${urgent.length} 项需立即处理`:top.title;
+  else sub.textContent=later.length>1?`${later.length} 项可稍后处理`:top.title;
+  renderManualPanel();
+}
+function syncManualInlineState(key,action){
+  const stateMap={
+    approve:{wrap:'resolved',pillClass:'ok',pillText:'已通过',priorityClass:'later',priorityText:'已处理'},
+    reject:{wrap:'rejected',pillClass:'err',pillText:'已驳回',priorityClass:'later',priorityText:'已退回'},
+    later:{wrap:'deferred',pillClass:'warn',pillText:'稍后处理',priorityClass:'later',priorityText:'可稍后'}
+  };
+  const conf=stateMap[action]||stateMap.later;
+  document.querySelectorAll(`.handoff-inline[data-manual-key="${key}"]`).forEach(el=>{
+    el.classList.remove('resolved','rejected','deferred');
+    el.classList.add(conf.wrap);
+    const pri=el.querySelector('[data-manual-priority]');
+    if(pri){pri.className=`manual-priority ${conf.priorityClass}`;pri.textContent=conf.priorityText;}
+    const st=el.querySelector('[data-manual-status]');
+    if(st){st.className=`meta-pill ${conf.pillClass}`;st.textContent=conf.pillText;}
+    const act=el.querySelector('[data-manual-actions]');
+    if(act)act.innerHTML='';
+  });
+}
+function appendManualAuditCard(item,action){
+  const conf={
+    approve:{tag:'人工审批',tagClass:'green',title:'人工审批已通过',pillClass:'ok',pill:'已通过',next:'ArkClaw 将继续推进后续执行节点。'},
+    reject:{tag:'人工审批',tagClass:'red',title:'人工审批已驳回',pillClass:'err',pill:'已驳回',next:'相关自动动作已暂停，待调整后可重新提交。'},
+    later:{tag:'人工干预',tagClass:'amber',title:'已标记为稍后处理',pillClass:'warn',pill:'稍后处理',next:'该节点已降为稍后处理，不阻塞当前浏览。'}
+  }[action]||{tag:'人工干预',tagClass:'amber',title:'已记录人工动作',pillClass:'warn',pill:'已记录',next:'已记录人工处理结果。'};
+  const actions=[item.anchor?`<button class="btn" onclick="focusManualPoint('${jsq(item.anchor)}','${jsq(item.key||'')}')">定位原节点</button>`:'',`<button class="btn p" onclick="toggleManualPanel(true)">查看剩余待处理</button>`].filter(Boolean).join('');
+  mkCard(`<div class="card"><div class="cardh"><div class="tag ${conf.tagClass}">${conf.tag}</div><div class="ctitle">${conf.title}</div></div><div class="cardb"><div class="kv"><span class="kk">处理对象</span><span class="kvv">${esc(item.title)}</span></div><div class="kv"><span class="kk">处理结果</span><span class="kvv"><span class="meta-pill ${conf.pillClass}">${conf.pill}</span></span></div><div class="kv"><span class="kk">后续动作</span><span class="kvv">${conf.next}</span></div></div><div class="acts">${actions}</div></div>`);
 }
 
-function scrollBottom() {
-  const ca = document.getElementById('chat-area');
-  setTimeout(() => { ca.scrollTop = ca.scrollHeight; }, 50);
+function manualDecisionPreset(item={}){
+  const key=item.key||'';
+  const generic={
+    domain:'当前任务',
+    approveBubble:'收到，我已根据你的审批结果继续推进后续节点，新的执行路径和回执会直接补到会话里。',
+    approveSummary:'沿用你确认后的执行口径继续推进自动动作与留痕回写。',
+    approvePath:'按确认边界继续执行 → 汇总系统回执 → 输出可交付结果',
+    approveAuto:['继续推进当前自动动作','补充执行日志与系统回执','回写最新状态到执行中心'],
+    approveDeliver:['执行回执','异常与例外说明','下一步动作建议'],
+    approveReceiptTitle:'审批通过后的续跑回执',
+    approveRows:[
+      {src:'执行中心',note:'已接收人工审批结果，当前任务恢复自动推进。',state:'已续跑',stateClass:'ok'},
+      {src:'审计日志',note:'审批结果、节点状态和恢复时间已自动留痕。',state:'已记录',stateClass:'ok'},
+      {src:'ArkClaw',note:'后续若出现新高风险节点，将再次浮出人工接管。',state:'监听中',stateClass:'warn'}
+    ],
+    rejectBubble:'收到，我已暂停当前自动推进，并按你的驳回意见整理了一版调整建议。',
+    rejectTitle:'驳回后的调整建议',
+    rejectItems:[
+      {ico:'改',title:'收敛自动执行范围',desc:'先把高风险写入、例外处理和强依赖审批的动作剥离出来。',pill:'待调整',pillClass:'warn',note:'降低重提交时的审批阻力'},
+      {ico:'补',title:'补齐缺失依据',desc:'把缺少的口径、边界或说明补全后，再重新提交执行方案。',pill:'需补充',pillClass:'warn',note:'避免再次因信息不完整被退回'},
+      {ico:'提',title:'生成调整后方案',desc:'按驳回意见重生成一版更收敛的执行方案，供你再次确认。',pill:'可重提',pillClass:'ok',note:'会保留原审批轨迹与调整痕迹'}
+    ],
+    rebuildBubble:'我已根据你的驳回意见，把执行范围和风险边界重新收紧，下面是调整后的方案。',
+    resubmitSummary:'按驳回意见收敛风险边界后，重新生成可再次确认的执行方案。',
+    resubmitAuto:['剥离高风险动作并单独标注','补全执行前置条件与说明','保留后续可恢复自动推进的主路径'],
+    resubmitPath:'收敛风险边界 → 重新确认执行路径 → 通过后恢复自动推进',
+    resubmitRunBubble:'已收到重新提交指令，我会按调整后的方案继续执行。'
+  };
+  if(/^shop-sync/.test(key)) return {
+    domain:'商品同步',
+    approveBubble:'收到，你已完成拍板。我会继续推进商品同步续跑、异常回补和日志留痕。',
+    approveSummary:'按你确认的处理口径，继续推进商品同步续跑与异常回补。',
+    approvePath:'修正字段与资质边界 → 重跑渠道写入 → 校验结果并生成回执',
+    approveAuto:['重跑通过审批的商品同步项','补写同步日志与异常说明','回写渠道状态并更新执行中心'],
+    approveDeliver:['商品同步续跑回执','剩余失败项清单','可继续分发的修复单'],
+    approveReceiptTitle:'商品同步续跑回执',
+    approveRows:[
+      {src:'商品中心',note:'已按审批结果恢复 3 个失败项中的可执行同步。',state:'已续跑',stateClass:'ok'},
+      {src:'渠道网关',note:'京东 / 小程序回写状态已同步刷新。',state:'已回写',stateClass:'ok'},
+      {src:'执行日志',note:'资质异常与价格冲突项已单独留痕，方便继续跟进。',state:'已留痕',stateClass:'warn'}
+    ],
+    rejectBubble:'收到，我已暂停继续写入商品渠道，并按失败原因整理了一版调整建议。',
+    rejectTitle:'商品同步调整建议',
+    rejectItems:[
+      {ico:'表',title:'先修正字段映射',desc:'优先补齐库存、规格和价格字段映射，再重新提交同步。',pill:'字段待修',pillClass:'warn',note:'可直接分发给商城运营'},
+      {ico:'证',title:'补传资质后再重跑',desc:'资质过期商品先停止同步，补齐后再进入待重试队列。',pill:'资质待补',pillClass:'warn',note:'减少无效重试'},
+      {ico:'价',title:'先确认价格保护边界',desc:'涉及最低价策略冲突的商品，建议先明确经营口径。',pill:'需拍板',pillClass:'warn',note:'确认后可自动恢复主链路'}
+    ],
+    rebuildBubble:'我已根据你的驳回意见，把字段、资质和价格边界重新收紧，下面是调整后的商品同步方案。',
+    resubmitSummary:'先收敛高风险商品与异常项，再重提商品同步方案。',
+    resubmitAuto:['仅保留低风险商品进入同步主链路','异常商品改为人工补齐后再重跑','同步日志与回退策略保持自动留痕'],
+    resubmitPath:'拆分低风险与异常商品 → 保留低风险自动同步 → 人工补齐后恢复异常项',
+    resubmitRunBubble:'已收到重提指令，我会按收敛后的商品同步方案继续执行。'
+  };
+  if(/^shop-activity|^act-config/.test(key)) return {
+    domain:'活动上线',
+    approveBubble:'收到，我会继续推进活动配置写入、资源位联动和上线前回执汇总。',
+    approveSummary:'按审批结果继续推进多后台活动配置与上线前校验。',
+    approvePath:'写入多后台配置 → 校验预算与资源位 → 输出上线清单与回执',
+    approveAuto:['继续推进三系统活动配置写入','校验预算边界与资源位冲突','生成上线清单与操作留痕'],
+    approveDeliver:['活动上线回执','上线清单','异常资源位说明'],
+    approveReceiptTitle:'活动上线续跑回执',
+    approveRows:[
+      {src:'活动后台',note:'配置写入已恢复，多后台联动继续推进。',state:'执行中',stateClass:'ok'},
+      {src:'资源位中心',note:'高风险资源位已按审批结果完成校验。',state:'已校验',stateClass:'ok'},
+      {src:'上线清单',note:'最终上线前检查项正在汇总。',state:'生成中',stateClass:'warn'}
+    ],
+    rejectBubble:'收到，我已暂停继续写入活动后台，并按资源位、预算和规则边界整理调整建议。',
+    rejectTitle:'活动上线调整建议',
+    rejectItems:[
+      {ico:'位',title:'先收敛高风险资源位',desc:'高曝光资源位与复杂联动先拆出，不和基础配置一起提交。',pill:'资源位待调',pillClass:'warn',note:'降低审批复杂度'},
+      {ico:'费',title:'预算边界先明确',desc:'对预算波动较大的方案，建议先锁定上限与兜底规则。',pill:'预算待定',pillClass:'warn',note:'避免上线后触发异常'},
+      {ico:'规',title:'复杂规则拆分提交',desc:'先保留主链路规则，把例外规则改成后置补配。',pill:'规则待拆',pillClass:'ok',note:'更容易通过审批'}
+    ],
+    rebuildBubble:'我已根据驳回意见，把高风险资源位和复杂规则剥离出来，下面是更收敛的活动方案。',
+    resubmitSummary:'先上线主链路配置，再把高风险资源位和例外规则后置处理。',
+    resubmitAuto:['保留主链路配置写入','高风险资源位改为后置审核','预算与回滚边界单独说明'],
+    resubmitPath:'主链路先上线 → 高风险资源位后置 → 例外规则补配',
+    resubmitRunBubble:'已收到重提指令，我会按收敛后的活动方案继续执行。'
+  };
+  if(/^com-/.test(key)) return {
+    domain:'社群运营',
+    approveBubble:'收到，我会继续推进内容排期、抽检后的上线动作以及用户分层处理。',
+    approveSummary:'按确认口径继续推进内容排期、抽检结果回写和人工接管分发。',
+    approvePath:'完成抽检确认 → 继续执行排期与触达 → 输出上线与分发回执',
+    approveAuto:['恢复内容排期与上线动作','回写抽检结果与高价值用户分流状态','汇总触达与执行留痕'],
+    approveDeliver:['社群执行回执','需继续跟进用户名单','内容与触达留痕'],
+    approveReceiptTitle:'社群运营续跑回执',
+    approveRows:[
+      {src:'排期中心',note:'内容排期与上线动作已恢复推进。',state:'已续跑',stateClass:'ok'},
+      {src:'用户分层',note:'高价值用户与高风险用户分流状态已更新。',state:'已更新',stateClass:'ok'},
+      {src:'触达留痕',note:'人工接管与自动触达边界已回写。',state:'已留痕',stateClass:'warn'}
+    ],
+    rejectBubble:'收到，我已先暂停继续触达，并把内容、调性和用户分流三类调整建议整理好了。',
+    rejectTitle:'社群运营调整建议',
+    rejectItems:[
+      {ico:'稿',title:'先修正文案与调性',desc:'把敏感表达和品牌调性风险先修正后，再恢复排期。',pill:'文案待改',pillClass:'warn',note:'避免重复抽检失败'},
+      {ico:'群',title:'高价值用户改人工接管',desc:'对重点用户，先从自动流程中剥离，转人工承接。',pill:'需接管',pillClass:'warn',note:'保护高价值客户体验'},
+      {ico:'路',title:'重排自动触达路径',desc:'收敛自动触达频次和时段，避免触达过重。',pill:'路径待调',pillClass:'ok',note:'便于重提交通过'}
+    ],
+    rebuildBubble:'我已根据驳回意见，把文案、触达频次和高价值用户路径都收紧了一轮。',
+    resubmitSummary:'先收敛文案与触达路径，再重提社群执行方案。',
+    resubmitAuto:['敏感内容改为上线前必抽检','高价值用户单独进入人工接管','普通用户保留低风险自动触达'],
+    resubmitPath:'先过内容抽检 → 普通用户低风险触达 → 高价值用户人工承接',
+    resubmitRunBubble:'已收到重提指令，我会按收紧后的社群方案继续执行。'
+  };
+  if(/^member-/.test(key)) return {
+    domain:'会员等级',
+    approveBubble:'收到，我会继续推进会员等级同步、例外账号处理与结果回执生成。',
+    approveSummary:'按你确认的口径继续推进会员等级同步与例外账号处理。',
+    approvePath:'同步主档等级 → 处理例外账号 → 输出变更回执与异常说明',
+    approveAuto:['恢复会员主档与等级同步','例外账号按审批口径继续处理','输出变更明细和留痕记录'],
+    approveDeliver:['会员等级同步回执','例外账号说明','后续复核建议'],
+    approveReceiptTitle:'会员等级续跑回执',
+    approveRows:[
+      {src:'会员主档',note:'等级同步已恢复，例外账号按确认口径继续处理。',state:'执行中',stateClass:'ok'},
+      {src:'权益引擎',note:'等级结果同步后将继续回写权益状态。',state:'排队中',stateClass:'warn'},
+      {src:'执行日志',note:'例外账号处理轨迹已自动留痕。',state:'已记录',stateClass:'ok'}
+    ],
+    rejectBubble:'收到，我已暂停例外账号写入，并整理了一版更稳妥的会员等级调整建议。',
+    rejectTitle:'会员等级调整建议',
+    rejectItems:[
+      {ico:'档',title:'先清理重复主档',desc:'先处理重复主档与归属冲突，再恢复等级同步。',pill:'主档待清',pillClass:'warn',note:'减少后续错配'},
+      {ico:'例',title:'例外账号单独审批',desc:'把特殊会员与边界账号从主链路剥离，改为单独审批。',pill:'例外待审',pillClass:'warn',note:'避免批量误写'},
+      {ico:'权',title:'权益回写后置',desc:'先完成等级确认，再恢复权益发放与回写。',pill:'后置处理',pillClass:'ok',note:'降低风险'}
+    ],
+    rebuildBubble:'我已把重复主档、例外账号和权益回写重新拆分，下面是调整后的会员方案。',
+    resubmitSummary:'把例外账号与权益回写拆出后，重新生成更稳妥的会员等级方案。',
+    resubmitAuto:['正常账号继续保留自动同步','例外账号移到单独审批支线','权益回写改为等级确认后执行'],
+    resubmitPath:'正常账号主链路同步 → 例外账号后置审批 → 权益回写延后执行',
+    resubmitRunBubble:'已收到重提指令，我会按调整后的会员等级方案继续执行。'
+  };
+  if(/^points-/.test(key)) return {
+    domain:'积分与风控',
+    approveBubble:'收到，我会继续推进积分对账、VIP 到期激励或风险冻结的后续动作。',
+    approveSummary:'按你的审批结果继续推进积分差异处理、VIP 激励或风控动作。',
+    approvePath:'确认人工口径 → 恢复差异处理 / 激励 / 风控动作 → 输出回执',
+    approveAuto:['继续推进积分与风控主链路动作','更新高差异、高风险节点状态','生成回执与后续跟进建议'],
+    approveDeliver:['积分 / 风控回执','需继续跟进名单','处理留痕与说明'],
+    approveReceiptTitle:'积分与风控续跑回执',
+    approveRows:[
+      {src:'积分账本',note:'差异处理与到期激励已按审批结果恢复推进。',state:'已续跑',stateClass:'ok'},
+      {src:'风控中心',note:'冻结 / 放行结果已进入后续执行队列。',state:'已提交',stateClass:'ok'},
+      {src:'审计日志',note:'高差异和高风险动作均已自动留痕。',state:'已记录',stateClass:'warn'}
+    ],
+    rejectBubble:'收到，我已暂停继续处理积分与风控动作，并按差异、补偿和冻结边界整理了调整建议。',
+    rejectTitle:'积分与风控调整建议',
+    rejectItems:[
+      {ico:'差',title:'先拆分大额差异',desc:'把大额差异和争议流水从主链路剥离，单独核验。',pill:'差异待核',pillClass:'warn',note:'避免批量误处理'},
+      {ico:'补',title:'VIP 补偿力度先拍板',desc:'VIP 会员的补偿额度与触达方式建议单独审批。',pill:'补偿待定',pillClass:'warn',note:'兼顾体验与成本'},
+      {ico:'冻',title:'冻结动作分级处理',desc:'高风险冻结先查看风控报告，低风险动作留在自动主链路。',pill:'需分级',pillClass:'ok',note:'降低误冻风险'}
+    ],
+    rebuildBubble:'我已根据驳回意见，把大额差异、VIP 补偿和高风险冻结动作重新分级。',
+    resubmitSummary:'先剥离高争议与高风险动作，再重提积分与风控方案。',
+    resubmitAuto:['普通差异保持自动处理','大额差异与高风险冻结后置审批','VIP 补偿单独给出建议档位'],
+    resubmitPath:'保留低风险主链路 → 高争议动作后置 → 通过后恢复全量执行',
+    resubmitRunBubble:'已收到重提指令，我会按分级后的积分与风控方案继续执行。'
+  };
+  return generic;
 }
 
-function escHtml(s) {
-  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+function appendAutoResumeDelivery(preset,taskId,item){
+  mkCard(mkDeliveryCard({
+    tag:'续跑交付',
+    tagClass:'purple',
+    title:`${preset.domain}已形成可交付结果`,
+    status:'可交付结果',
+    stage:'deliver',
+    taskId,
+    eta:'已完成',
+    updatedAt:now(),
+    items:(preset.approveDeliver||[]).map((title,idx)=>({
+      ico:['回','异','下'][idx]||'件',
+      title,
+      desc:idx===0?'已生成本轮自动续跑后的执行回执，可直接查看。':(idx===1?'异常、例外与人工接管边界已一并整理。':'可直接继续推进后续动作或分发给对应岗位。'),
+      pill:idx===0?'已生成':'可查看',
+      pillClass:idx===0?'ok':'idle',
+      note:idx===0?'已回写到执行中心':'已同步到任务面板'
+    })),
+    actions:[
+      item.anchor?{label:'定位原节点',onClick:`focusManualPoint('${jsq(item.anchor)}','${jsq(item.key||'')}')`}:null,
+      {label:'查看剩余待处理',onClick:`toggleManualPanel(true)`}
+    ].filter(Boolean)
+  }));
+  setRp(`${preset.domain} · 已交付`, '自动续跑完成', 'ok');
+  doneTask();
+  scr();
 }
 
-// init demo hint
-document.getElementById('user-input').placeholder = '试试：把雨季出行安全服务包同步到小程序商城和京东联营后台';
+function appendManualDecisionFollowup(item,action){
+  const preset=manualDecisionPreset(item||{});
+  if(action==='later') return;
+  if(action==='approve'){
+    setRp(`${preset.domain} · 审批通过`, '续跑中', 'running');
+    const b=mkBubble();
+    typeText(b,preset.approveBubble).then(()=>{
+      const taskId=mkTaskId('RUN');
+      mkCard(mkExecutionCard({
+        tag:'自动续跑',
+        tagClass:'green',
+        title:`${preset.domain}已继续推进后续节点`,
+        status:'续跑中',
+        taskId,
+        eta:'预计 30 秒内生成回执',
+        stage:'run',
+        summary:preset.approveSummary,
+        currentText:'已接收你的审批结果，ArkClaw 正在按确认口径推进后续节点。',
+        autoText:(preset.approveAuto||[]).slice(0,2).join('；'),
+        manualText:'当前审批节点已通过，后续只有在出现新的高风险动作或例外项时才会再次浮出人工接管。',
+        pathText:preset.approvePath,
+        manualPoint:false,
+        left:{title:'我正在继续执行',items:preset.approveAuto||[]},
+        right:{title:'随后会交付',items:preset.approveDeliver||[]},
+        actions:[
+          item.anchor?{label:'定位原节点',onClick:`focusManualPoint('${jsq(item.anchor)}','${jsq(item.key||'')}')`}:null,
+          {label:'查看剩余待处理',onClick:`toggleManualPanel(true)`}
+        ].filter(Boolean)
+      }));
+      scr();
+      setTimeout(()=>{
+        mkCard(mkReceiptCard(
+          preset.approveReceiptTitle,
+          (preset.approveRows||[]).map(r=>({...r,time:r.time||now()})),
+          [{label:'查看剩余待处理',onClick:`toggleManualPanel(true)`}],
+          {status:'续跑回执',stage:'receipt',taskId,eta:'已完成',updatedAt:now()}
+        ));
+        setRp(`${preset.domain} · 系统回执`, '继续生成交付物', 'running');
+        scr();
+        setTimeout(()=>appendAutoResumeDelivery(preset,taskId,item),560);
+      },520);
+    });
+    return;
+  }
+  if(action==='reject'){
+    setRp(`${preset.domain} · 已驳回`, '调整中', 'warn');
+    const b=mkBubble();
+    typeText(b,preset.rejectBubble).then(()=>{
+      mkCard(mkDeliveryCard({
+        tag:'调整建议',
+        tagClass:'amber',
+        title:preset.rejectTitle,
+        status:'待重新提交',
+        stage:'deliver',
+        items:preset.rejectItems||[],
+        actions:[
+          {label:'按建议重新生成方案',onClick:`rebuildManualPlan('${jsq(item.key||'')}')`,primary:true},
+          item.anchor?{label:'定位原节点',onClick:`focusManualPoint('${jsq(item.anchor)}','${jsq(item.key||'')}')`}:null
+        ].filter(Boolean)
+      }));
+      setRp(`${preset.domain} · 待调整`, '等待确认', 'warn');
+      doneTask();
+      scr();
+    });
+  }
+}
+
+function rebuildManualPlan(key){
+  state.manualHistory=state.manualHistory||{};
+  const item=(state.manualHistory&&state.manualHistory[key])||{key,title:'当前节点',desc:'已根据你的驳回意见收敛执行范围。'};
+  const preset=manualDecisionPreset(item);
+  setRp(`${preset.domain} · 调整后方案`, '待确认', 'warn');
+  const b=mkBubble();
+  typeText(b,preset.rebuildBubble||'我已根据你的驳回意见，重生成了一版更收敛的执行方案。').then(()=>{
+    mkCard(mkExecutionCard({
+      tag:'重新提交',
+      tagClass:'blue',
+      title:`${preset.domain}调整后执行方案`,
+      status:'待确认',
+      taskId:mkTaskId('REV'),
+      eta:'等待你确认',
+      stage:'confirm',
+      summary:preset.resubmitSummary||preset.approveSummary,
+      currentText:'已按驳回意见收敛风险边界，等待你决定是否再次提交执行。',
+      autoText:((preset.resubmitAuto||preset.approveAuto)||[]).slice(0,2).join('；'),
+      manualText:'本次方案已收敛高风险动作，确认后才会恢复自动执行。',
+      pathText:preset.resubmitPath||preset.approvePath,
+      manualPoint:false,
+      left:{title:'已调整内容',items:preset.resubmitAuto||preset.approveAuto||[]},
+      right:{title:'确认后会交付',items:preset.approveDeliver||[]},
+      actions:[
+        {label:'重新提交并继续执行',onClick:`runResubmittedManualPlan('${jsq(key||'')}')`,primary:true},
+        item.anchor?{label:'定位原节点',onClick:`focusManualPoint('${jsq(item.anchor)}','${jsq(item.key||'')}')`}:null
+      ].filter(Boolean)
+    }));
+    doneTask();
+    scr();
+  });
+}
+
+function runResubmittedManualPlan(key){
+  state.manualHistory=state.manualHistory||{};
+  const item=(state.manualHistory&&state.manualHistory[key])||{key,title:'当前节点'};
+  const preset=manualDecisionPreset(item);
+  const taskId=mkTaskId('RSM');
+  setRp(`${preset.domain} · 调整后已提交`, '执行中', 'running');
+  const b=mkBubble();
+  typeText(b,preset.resubmitRunBubble||'已收到重新提交指令，我会按调整后的方案继续执行。').then(()=>{
+    mkCard(mkExecutionCard({
+      tag:'调整后续跑',
+      tagClass:'green',
+      title:`${preset.domain}调整后方案已恢复执行`,
+      status:'执行中',
+      taskId,
+      eta:'预计 30 秒内生成回执',
+      stage:'run',
+      summary:preset.resubmitSummary||preset.approveSummary,
+      currentText:'当前已按调整后的边界恢复自动执行，系统正在推进主链路。',
+      autoText:((preset.resubmitAuto||preset.approveAuto)||[]).slice(0,2).join('；'),
+      manualText:'高风险动作仍会在新的节点再次请求人工确认。',
+      pathText:preset.resubmitPath||preset.approvePath,
+      manualPoint:false,
+      left:{title:'当前正在执行',items:preset.resubmitAuto||preset.approveAuto||[]},
+      right:{title:'随后会交付',items:preset.approveDeliver||[]},
+      actions:[{label:'查看剩余待处理',onClick:`toggleManualPanel(true)`}]
+    }));
+    scr();
+    setTimeout(()=>{
+      mkCard(mkReceiptCard(`${preset.domain}调整后方案已进入执行`,[
+        {src:'调整方案',note:'已按新的边界恢复自动执行。',state:'已续跑',stateClass:'ok',time:now()},
+        {src:'执行中心',note:'原驳回记录与本次重提交关系已自动留痕。',state:'已回写',stateClass:'ok',time:now()},
+        {src:'风险边界',note:'高风险动作仍会在新节点处再次请求人工确认。',state:'已生效',stateClass:'warn',time:now()}
+      ],[
+        {label:'查看剩余待处理',onClick:`toggleManualPanel(true)`}
+      ],{status:'已重新提交',stage:'receipt',taskId,eta:'已启动',updatedAt:now()}));
+      setRp(`${preset.domain} · 系统回执`, '继续生成交付物', 'running');
+      scr();
+      setTimeout(()=>appendAutoResumeDelivery(preset,taskId,item),560);
+    },520);
+  });
+}
+
+function actOnManualPoint(key,action='approve'){
+  const item=state.manualQueue.find(i=>i.key===key||i.id===key);
+  if(!item)return;
+  state.manualHistory=state.manualHistory||{};
+  state.manualHistory[item.key||key]={...item,action,updatedAt:now()};
+  clearManualFocus();
+  if(action==='later'){
+    item.priority='later';
+    item.time=now();
+    bindManualInline(item);
+    syncManualInlineState(item.key,'later');
+    updateManualUi();
+  }else{
+    syncManualInlineState(item.key,action);
+    resolveManualPoint(item.key);
+  }
+  appendManualAuditCard(item,action);
+  appendManualDecisionFollowup({...item},action);
+  scr();
+}
+function toggleManualPanel(force){
+  const panel=$('manualPanel');
+  if(!panel)return;
+  const items=currentManualItems();
+  if(!items.length){
+    state.manualPanelOpen=false;
+    panel.classList.remove('show');
+    return;
+  }
+  state.manualPanelOpen=typeof force==='boolean'?force:!state.manualPanelOpen;
+  renderManualPanel();
+}
+
+/* ─── SCROLL ─── */
+let scrollTimer=null;
+function scr(){
+  if(scrollTimer)return;
+  scrollTimer=requestAnimationFrame(()=>{
+    const c=$('cs');if(c)c.scrollTop=c.scrollHeight;
+    scrollTimer=null;
+  });
+}
+
+/* ─── AUTO-RESIZE TEXTAREA ─── */
+function autoResize(el){
+  el.style.height='auto';
+  el.style.height=Math.min(el.scrollHeight,120)+'px';
+}
+
+/* ─── MULTIMODAL INPUT ─── */
+function setVoiceStatus(text,mode='idle'){
+  const el=$('voiceState');
+  if(!el)return;
+  el.textContent=text;
+  el.className='voice-state'+(mode?' '+mode:'');
+}
+function syncVoiceUi(){
+  const btn=$('voiceBtn');
+  const composer=$('composer');
+  if(btn){
+    btn.classList.toggle('on',!!state.recording);
+    btn.setAttribute('aria-pressed',String(!!state.recording));
+  }
+  if(composer)composer.classList.toggle('recording',!!state.recording);
+}
+function insertMediaToken(kind){
+  if(state.busy)return;
+  const inp=$('inp');
+  if(!inp)return;
+  const token=kind==='image'?'[已添加图片]':'[已添加文件]';
+  inp.value=(inp.value.trim()?inp.value.trim()+' ':'')+token;
+  inp.focus();
+  autoResize(inp);
+  setVoiceStatus(kind==='image'?'已添加图片，可继续补充说明':'已添加文件，可继续补充说明','idle');
+}
+function initInputModes(){
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  state.voiceSupported=!!SR;
+  if(!state.voiceSupported){
+    setVoiceStatus('当前浏览器不支持语音输入','off');
+    syncVoiceUi();
+    return;
+  }
+  const rec=new SR();
+  rec.lang='zh-CN';
+  rec.continuous=true;
+  rec.interimResults=true;
+  rec.onstart=()=>{
+    state.recording=true;
+    setVoiceStatus('语音输入中…','recording');
+    syncVoiceUi();
+  };
+  rec.onresult=e=>{
+    const inp=$('inp');
+    if(!inp)return;
+    const base=inp.dataset.voiceBase??inp.value;
+    let finalText='';
+    let interim='';
+    for(let i=e.resultIndex;i<e.results.length;i++){
+      const txt=(e.results[i][0]&&e.results[i][0].transcript||'').trim();
+      if(!txt)continue;
+      if(e.results[i].isFinal)finalText+=txt;
+      else interim+=txt;
+    }
+    const joiner=base&&!(base.endsWith(' ')||base.endsWith('\n'))?' ':'';
+    inp.value=base+joiner+finalText+interim;
+    autoResize(inp);
+  };
+  rec.onerror=e=>{
+    state.recording=false;
+    const inp=$('inp');
+    if(inp)delete inp.dataset.voiceBase;
+    const map={
+      'not-allowed':'未获得麦克风权限',
+      'audio-capture':'未检测到可用麦克风',
+      'network':'语音识别网络异常',
+      'no-speech':'未识别到语音'
+    };
+    setVoiceStatus(map[e.error]||'语音输入暂不可用','off');
+    syncVoiceUi();
+  };
+  rec.onend=()=>{
+    const inp=$('inp');
+    if(inp)delete inp.dataset.voiceBase;
+    const wasRecording=state.recording;
+    state.recording=false;
+    syncVoiceUi();
+    if(wasRecording)setVoiceStatus('语音已结束，可发送','idle');
+  };
+  state.recognition=rec;
+  setVoiceStatus('语音待命','idle');
+  syncVoiceUi();
+}
+function stopVoice(){
+  if(!state.recognition||!state.recording)return;
+  try{state.recognition.stop();}catch(_){/* noop */}
+}
+function toggleVoice(){
+  if(state.busy)return;
+  if(!state.voiceSupported||!state.recognition){
+    setVoiceStatus('当前浏览器不支持语音输入','off');
+    return;
+  }
+  if(state.recording){stopVoice();return;}
+  const inp=$('inp');
+  if(inp)inp.dataset.voiceBase=inp.value;
+  try{state.recognition.start();}
+  catch(_){setVoiceStatus('语音输入启动失败，请重试','off');}
+}
+
+/* ─── ACTION BAR ─── */
+function renderSkills(){
+  const bar=$('skillbar');
+  if(!bar)return;
+  const frag=document.createDocumentFragment();
+  ACTIONS.forEach(a=>{
+    const p=document.createElement('div');
+    p.className='spill'+(state.activeSk===a.id?' on':'');
+    p.setAttribute('role','button');
+    p.setAttribute('tabindex','0');
+    p.setAttribute('aria-label',a.label);
+    p.innerHTML=`<span class="spico" aria-hidden="true">${a.ico}</span><span>${a.label}</span>`;
+    p.onclick=()=>toggleSk(a);
+    p.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleSk(a);}};
+    frag.appendChild(p);
+  });
+  bar.innerHTML='';
+  bar.appendChild(frag);
+}
+
+function panelMeta(id){
+  const a=AS[state.cur];
+  const meta={
+    channel:{
+      name:'消息渠道',
+      desc:`为 ${a.name} 选择消息触达与通知方式。`
+    },
+    feishu:{
+      name:'飞书配对',
+      desc:'将当前助手或会话能力映射到飞书入口、群、任务卡片或审批流。'
+    },
+    quick:{
+      name:'快捷指令',
+      desc:`已收纳 ${a.name} 的常用预置命令，点击即可填入输入框。`
+    },
+    skills:{
+      name:'技能',
+      desc:`查看 ${a.name} 可直接调用的执行技能。`
+    },
+    schedule:{
+      name:'定时任务',
+      desc:'把常规动作收纳为定时执行或提醒。'
+    },
+    persona:{
+      name:'人格',
+      desc:'切换当前助手的交互风格与执行语气。'
+    }
+  };
+  return meta[id];
+}
+
+function actionOptions(id){
+  const a=AS[state.cur];
+  switch(id){
+    case 'channel':
+      return [];
+    case 'feishu':
+      return ['绑定当前助手到飞书群','同步会话到飞书','配置审批结果推送','生成飞书任务卡片'];
+    case 'quick':
+      return a.cmds || [];
+    case 'schedule':
+      return ['每天 09:00 运行一次','工作日 18:00 汇总日报','活动开始前 30 分钟提醒','异常发生时立即通知'];
+    case 'persona':
+      return ['严谨执行型','经营分析型','服务沟通型','高优先级推进型'];
+    default:
+      return [];
+  }
+}
+
+function actionPrompt(actionId,label){
+  if(actionId==='channel')return '配置消息渠道：'+label;
+  if(actionId==='schedule')return '请设置定时任务：'+label;
+  if(actionId==='persona')return '切换助手回复风格为'+label;
+  return label;
+}
+
+function skillPanelHtml(){
+  const skills=SKILLS[state.cur]||[];
+  return `<div class="sp-scroll"><div class="sp-grid">${skills.map(s=>`
+    <div class="skill-group">
+      <div class="sp-name"><span aria-hidden="true">${s.ico}</span><span>${esc(s.label)}</span></div>
+      <div class="sp-desc">${esc(s.desc)}</div>
+      <div class="spopts">${s.opts.map(o=>`<div class="spopt" role="button" tabindex="0" onclick="applyAction('skills','${jsq(o)}')" onkeydown="if(event.key==='Enter')applyAction('skills','${jsq(o)}')">${esc(o)}</div>`).join('')}</div>
+    </div>
+  `).join('')}</div></div>`;
+}
+
+function genericPanelHtml(id){
+  const opts=actionOptions(id);
+  return `<div class="spopts">${opts.map(o=>`<div class="spopt" role="button" tabindex="0" onclick="applyAction('${id}','${jsq(o)}')" onkeydown="if(event.key==='Enter')applyAction('${id}','${jsq(o)}')">${esc(o)}</div>`).join('')}</div>`;
+}
+
+function channelSummary(){
+  const platformMap={feishu:'飞书',wecom:'企业微信',ding:'钉钉'};
+  const pairingMap={fast:'极速配对',existing:'关联已有机器人'};
+  return `${platformMap[state.channelCfg.platform]} · ${pairingMap[state.channelCfg.pairing]}`;
+}
+function closeChannelModal(resetActive=true){
+  const modal=$('channelModal');
+  if(modal){
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden','true');
+    modal.innerHTML='';
+  }
+  if(resetActive && state.activeSk==='channel'){
+    state.activeSk=null;
+    renderSkills();
+  }
+}
+function selectChannelCfg(type,value){
+  state.channelCfg[type]=value;
+  renderChannelModal();
+}
+function renderChannelModal(){
+  const modal=$('channelModal');
+  if(!modal)return;
+  const p=state.channelCfg.platform;
+  const t=state.channelCfg.pairing;
+  modal.innerHTML=`<div class="channel-modal fadein" role="dialog" aria-modal="true" aria-label="消息渠道配置" onclick="event.stopPropagation()">
+    <div class="cm-head">
+      <div class="cm-title">消息渠道配置</div>
+      <button class="cm-x" type="button" onclick="closeChannelModal()" aria-label="关闭">×</button>
+    </div>
+    <div class="cm-tip"><span class="bell" aria-hidden="true">🔔</span><span>选择需要集成的消息渠道，确认后将自动为 ArkClaw 接入，详见 <a href="javascript:void(0)">实践教程 ↗</a></span></div>
+    <div class="cm-body">
+      <div class="cm-sec">
+        <div class="cm-label">消息渠道</div>
+        <div class="cm-row">
+          <button type="button" class="cm-option ${p==='feishu'?'sel':''}" onclick="selectChannelCfg('platform','feishu')"><span class="cm-logo feishu">飞</span><span>飞书</span></button>
+          <button type="button" class="cm-option ${p==='wecom'?'sel':''}" onclick="selectChannelCfg('platform','wecom')"><span class="cm-logo wecom">企</span><span>企业微信</span></button>
+          <button type="button" class="cm-option ${p==='ding'?'sel':''}" onclick="selectChannelCfg('platform','ding')"><span class="cm-logo ding">钉</span><span>钉钉</span></button>
+        </div>
+      </div>
+      <div class="cm-sec">
+        <div class="cm-label">类型</div>
+        <div class="cm-row">
+          <button type="button" class="cm-option cm-type ${t==='fast'?'sel':''}" onclick="selectChannelCfg('pairing','fast')"><span>极速配对</span><span class="cm-badge">推荐</span></button>
+          <button type="button" class="cm-option cm-type ${t==='existing'?'sel':''}" onclick="selectChannelCfg('pairing','existing')"><span>关联已有机器人</span></button>
+        </div>
+      </div>
+      <div class="cm-note">
+        <div class="cm-note-title">使用说明：</div>
+        <p>新建机器人，推荐使用极速配对。点击后自动唤起终端，ArkClaw 将花费 8–10s 进行初始化并生成二维码，使用飞书扫描二维码，完成飞书机器人创建和配对。</p>
+        <div class="cm-warn"><span class="dot" aria-hidden="true">⚠️</span><span>如果已有关联机器人，飞书扫码后原有机器人会被替换。</span></div>
+      </div>
+      <div class="cm-actions">
+        <button type="button" class="cm-btn" onclick="closeChannelModal()">取消</button>
+        <button type="button" class="cm-btn p" onclick="executeChannelConfig()">立即执行</button>
+      </div>
+    </div>
+  </div>`;
+  modal.classList.add('show');
+  modal.setAttribute('aria-hidden','false');
+  modal.onclick=e=>{ if(e.target===modal) closeChannelModal(); };
+}
+function executeChannelConfig(){
+  applyAction('channel',channelSummary());
+  setVoiceStatus('消息渠道配置已更新','idle');
+  closeChannelModal();
+}
+
+function toggleSk(action){
+  const w=$('spwrap');if(!w)return;
+  if(state.activeSk===action.id){closeSk();return;}
+  closeChannelModal(false);
+  state.activeSk=action.id;
+  renderSkills();
+  if(action.id==='channel'){
+    w.innerHTML='';
+    renderChannelModal();
+    return;
+  }
+  const meta=panelMeta(action.id);
+  const body=action.id==='skills'?skillPanelHtml():genericPanelHtml(action.id);
+  w.innerHTML=`<div class="spanel fadein">
+    <div class="sp-head">
+      <div class="sp-name"><span aria-hidden="true">${action.ico}</span><span>${meta.name}</span></div>
+      <button class="spclose" onclick="closeSk()" aria-label="关闭">×</button>
+    </div>
+    <div class="sp-desc">${meta.desc}</div>
+    ${body}
+  </div>`;
+}
+
+function closeSk(){
+  closeChannelModal(false);
+  state.activeSk=null;
+  const w=$('spwrap');
+  if(w)w.innerHTML='';
+  renderSkills();
+}
+function applyAction(actionId,label){
+  const i=$('inp');
+  if(i){
+    i.value=actionPrompt(actionId,label);
+    i.focus();
+    autoResize(i);
+  }
+  closeSk();
+}
+/* ─── SWITCH ASSISTANT ─── */
+function swA(el){
+  if(state.busy)return;
+  clearManualFocus();
+  document.querySelectorAll('.sbi[data-key]').forEach(i=>{
+    i.classList.remove('on');
+    i.removeAttribute('aria-current');
+  });
+  el.classList.add('on');
+  el.setAttribute('aria-current','true');
+  state.cur=el.dataset.key;
+  const a=AS[state.cur];
+  $('tbd').textContent=a.name;
+  $('rpa').textContent=a.name;
+  $('wtitle').textContent=a.name;
+  $('wsub').textContent=a.sub;
+  const rl=$('rp-role');
+  rl.innerHTML=`
+    <div style="display:flex;align-items:center;gap:5px"><span class="rb ag">Hi-Agent</span><span style="font-size:10px;color:var(--color-text-secondary)">${a.role[0]}</span></div>
+    <div style="display:flex;align-items:center;gap:5px"><span class="rb rpa">ArkClaw</span><span style="font-size:10px;color:var(--color-text-secondary)">${a.role[1]}</span></div>
+    <div style="display:flex;align-items:center;gap:5px"><span class="rb hu">人工</span><span style="font-size:10px;color:var(--color-text-secondary)">${a.role[2]}</span></div>`;
+  $('rp-recent').innerHTML=a.recent.map(r=>`<div class="rpc"><div class="rpct">${esc(r[0])}</div><div class="rpcs">${esc(r[1])}</div></div>`).join('');
+  $('rp-notif').innerHTML=a.notif.map((n,i)=>`<div class="ni"><div class="ndot ${i===0?'r':'a'}" aria-hidden="true"></div><div class="nt">${esc(n)}</div></div>`).join('');
+  state.activeSk=null;renderSkills();newChat();
+}
+
+function newChat(){
+  state.busy=false;state.msgCount=0;
+  if(state.recording)stopVoice();
+  clearManualFocus();
+  $('wlc').style.display='flex';
+  const ml=$('ml');ml.innerHTML='';ml.style.display='none';
+  setRp('等待任务中','空闲','idle');
+  $('tss').textContent='—';
+  $('sbcur').textContent='当前会话';
+  setSendDisabled(false);
+  state.manualQueue=[];
+  state.manualPanelOpen=false;
+  updateManualUi();
+  setPackageFlow('idle');
+  setVoiceStatus(state.voiceSupported?'语音待命':'当前浏览器不支持语音输入',state.voiceSupported?'idle':'off');
+  closeSk();
+}
+
+/* ─── INPUT ─── */
+function onKey(e){
+  if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();doSend();}
+}
+function go(t){
+  if(state.busy)return;
+  const i=$('inp');if(i){i.value=t;autoResize(i);}
+  doSend();
+}
+function setSendDisabled(v){
+  const b=$('ssbtn'),i=$('inp');
+  if(v&&state.recording)stopVoice();
+  if(b){b.disabled=v;b.setAttribute('aria-disabled',String(v));}
+  if(i)i.disabled=v;
+  document.querySelectorAll('.mm-btn').forEach(btn=>btn.disabled=v);
+  syncVoiceUi();
+}
+function doSend(){
+  if(state.busy)return;
+  const inp=$('inp');
+  if(state.recording)stopVoice();
+  const v=inp.value.trim();
+  if(!v)return;
+  inp.value='';
+  delete inp.dataset.voiceBase;
+  autoResize(inp);
+  closeSk();
+  setVoiceStatus(state.voiceSupported?'语音待命':'当前浏览器不支持语音输入',state.voiceSupported?'idle':'off');
+  $('wlc').style.display='none';
+  const ml=$('ml');
+  if(ml.style.display==='none'){ml.style.display='flex';ml.style.flexDirection='column';}
+  addTs();addUser(v);
+  const short=v.length>16?v.slice(0,16)+'…':v;
+  $('tss').textContent=short;
+  $('sbcur').textContent=v.length>12?v.slice(0,12)+'…':v;
+  state.busy=true;
+  setSendDisabled(true);
+  route(v).catch(err=>console.error('route error',err));
+}
+
+/* ─── DOM HELPERS ─── */
+function addTs(){
+  const ml=$('ml');
+  const el=document.createElement('div');
+  el.className='msg-ts';el.setAttribute('aria-hidden','true');el.textContent=now();
+  ml.appendChild(el);
+}
+
+function addUser(t){
+  const ml=$('ml');
+  const g=document.createElement('div');
+  g.className='msg-group fadein';
+  g.setAttribute('role','listitem');
+  g.innerHTML=`<div class="mr u"><div class="mava">${SVG_WOMAN}</div><div class="mbody"><div class="mmeta"><span class="meta-time">${now()}</span>总部运营经理</div><div class="bubble">${esc(t)}</div></div></div>`;
+  ml.appendChild(g);scr();
+}
+
+function mkBubble(){
+  const a=AS[state.cur];
+  const ml=$('ml');
+  const g=document.createElement('div');
+  g.className='msg-group fadein';
+  g.setAttribute('role','listitem');
+  const id='b'+Date.now()+Math.random().toString(36).slice(2,6);
+  g.innerHTML=`<div class="mr"><div class="mava">${SVG_LOBSTER}</div><div class="mbody"><div class="mmeta">ArkClaw · ${esc(a.name)}<span class="meta-time">${now()}</span></div><div class="bubble" id="${id}"></div></div></div>`;
+  ml.appendChild(g);scr();
+  return $( id);
+}
+
+function mkThink(){
+  const a=AS[state.cur];
+  const ml=$('ml');
+  const g=document.createElement('div');
+  g.className='msg-group fadein';
+  g.setAttribute('role','listitem');
+  const tid='tc'+Date.now()+Math.random().toString(36).slice(2,6);
+  const bid='tb'+Date.now()+Math.random().toString(36).slice(2,6);
+  const dotId='dot'+bid;
+  g.innerHTML=`<div class="mr"><div class="mava">${SVG_LOBSTER}</div><div class="mbody"><div class="mmeta">ArkClaw · ${esc(a.name)}<span class="meta-time">${now()}</span></div><div class="think-wrap"><div class="think-header" onclick="toggleThink('${bid}',this)" role="button" tabindex="0" aria-expanded="true" onkeydown="if(event.key==='Enter'||event.key===' ')toggleThink('${bid}',this)"><div class="think-label"><div class="tdot" id="${dotId}" aria-hidden="true"></div>正在思考…</div><span class="think-toggle" id="tog${bid}" aria-hidden="true">收起</span></div><div class="thinkb" id="${bid}" aria-live="polite"><div id="${tid}" style="white-space:pre-wrap;word-break:break-word"></div></div></div></div></div>`;
+  ml.appendChild(g);scr();
+  return{row:g,c:$(tid),bid,dotId};
+}
+
+function mkCard(html){
+  const a=AS[state.cur];
+  const ml=$('ml');
+  const g=document.createElement('div');
+  g.className='msg-group fadein';
+  g.setAttribute('role','listitem');
+  g.innerHTML=`<div class="mr"><div class="mava">${SVG_LOBSTER}</div><div class="mbody" style="max-width:95%"><div class="mmeta">ArkClaw · ${esc(a.name)}<span class="meta-time">${now()}</span></div>${html}</div></div>`;
+  ml.appendChild(g);scr();
+  return g;
+}
+
+function toggleThink(bid,hdr){
+  const tb=$(bid);const tog=$('tog'+bid);
+  if(!tb)return;
+  const collapsed=tb.classList.toggle('collapsed');
+  if(hdr)hdr.setAttribute('aria-expanded',String(!collapsed));
+  if(tog)tog.textContent=collapsed?'展开':'收起';
+}
+
+/* ─── TYPING ANIMATIONS ─── */
+async function typeText(el,txt,spd=22){
+  if(!el)return;
+  const chars=[...txt];let s='';
+  for(const ch of chars){
+    s+=ch;
+    el.innerHTML=s+'<span class="cursor" aria-hidden="true"></span>';
+    scr();
+    await sleep(spd+(Math.random()>.88?42:0));
+  }
+  el.innerHTML=s;
+}
+
+async function typeThink(el,txt,dotId){
+  if(!el)return;
+  const chars=[...txt];let s='';
+  for(const ch of chars){
+    s+=ch;el.textContent=s;scr();
+    await sleep(12+(Math.random()>.9?22:0));
+  }
+  const dot=$(dotId);
+  if(dot)dot.style.animation='none';
+}
+
+/* ─── STEPS ─── */
+function mkStepsHtml(sid,steps){
+  const first=steps&&steps[0]?steps[0]:'开始执行';
+  const last=steps&&steps.length?steps[steps.length-1]:'生成结果';
+  return `<div class="exec-path"><div class="exec-path-inner"><span class="exec-path-ico" aria-hidden="true">◎</span><div class="exec-path-main"><div class="exec-path-title">当前执行路径</div><div class="exec-path-text">当前节点：${esc(first)}；最终会输出：${esc(last)}</div></div></div></div><div class="steps" id="${sid}">`+steps.map((s,i)=>`<div class="step" id="${sid}${i}"><div class="sdot ${i===0?'act':'idle'}" id="${sid}d${i}" aria-hidden="true">${i===0?'●':'○'}</div><span>${esc(s)}</span></div>`).join('')+'</div>';
+}
+async function runSteps(sid,steps){
+  for(let i=0;i<steps.length-1;i++){
+    await sleep(680+i*55);
+    const de=$(sid+i);if(de)de.className='step done';
+    const dd=$(sid+'d'+i);if(dd){dd.className='sdot done';dd.textContent='✓';}
+    const ne=$(sid+(i+1));if(ne)ne.className='step';
+    const nd=$(sid+'d'+(i+1));if(nd){nd.className='sdot act';nd.textContent='●';}
+    scr();
+  }
+  await sleep(680);
+  const li=steps.length-1;
+  const le=$(sid+li);if(le)le.className='step done';
+  const ld=$(sid+'d'+li);if(ld){ld.className='sdot done';ld.textContent='✓';}
+  scr();
+}
+
+
+function renderActionButton(a,pill=false){
+  const cls=pill?'ghost-btn':`btn${a.primary?' p':''}${a.warn?' warn':''}`;
+  const onclick=a.onClick?a.onClick:`go('${jsq(a.prompt||a.label)}')`;
+  return `<button class="${cls}" onclick="${onclick}">${esc(a.label)}</button>`;
+}
+function mkOwner(roleClass,name,desc){
+  return `<div class="owner-role"><span class="rb ${roleClass}">${esc(name)}</span><span class="owner-desc">${esc(desc)}</span></div>`;
+}
+function mkExecBox(title,items){
+  return `<div class="exec-box"><div class="exec-title">${esc(title)}</div><div class="exec-list">${items.map(i=>`<div class="exec-item"><span class="exec-dot" aria-hidden="true">✓</span><span>${esc(i)}</span></div>`).join('')}</div></div>`;
+}
+function mkBriefItem(label,value,cls=''){
+  return `<div class="exec-brief-item ${cls}"><div class="exec-brief-k">${esc(label)}</div><div class="exec-brief-v">${esc(value)}</div></div>`;
+}
+function mkManualInline(point={},fallbackText=''){
+  const title=point.title||'需要人工接管';
+  const desc=point.desc||fallbackText||'请先完成人工确认，再继续后续动作。';
+  const pri=(point.priority||'later')==='urgent'?'urgent':'later';
+  const label=pri==='urgent'?'立即处理':'可稍后';
+  const keyAttr=point.key?` data-manual-key="${esc(point.key)}" data-manual-bound="1"`:'';
+  const actions=point.key?manualActionButtons(point.key,point.anchor||'',point.actionLabel||'去处理'):'';
+  return `<div class="handoff-inline"${keyAttr}><div><div class="handoff-inline-k">人工接管节点</div><div class="handoff-inline-title">${esc(title)}</div><div class="handoff-inline-desc">${esc(desc)}</div><div class="handoff-inline-actions" data-manual-actions>${actions}</div></div><div class="handoff-inline-side"><span class="manual-priority ${pri}" data-manual-priority>${label}</span><span class="meta-pill warn" data-manual-status>待你处理</span></div></div>`;
+}
+function inferCurrentText(stage='plan'){
+  const map={
+    plan:'正在识别目标系统、所需数据以及审批边界。',
+    confirm:'执行路径已拆解完成，等待你确认是否启动。',
+    run:'任务正在按既定节点推进，异常会被单独拎出。',
+    receipt:'系统动作已完成，正在汇总回执与留痕。',
+    deliver:'结果已整理成可交付件，可继续流转。',
+    done:'结果已整理成可交付件，可继续流转。'
+  };
+  return map[stage]||map.plan;
+}
+function mkTaskId(prefix='AC'){
+  return `${prefix}-${String(Date.now()).slice(-6)}`;
+}
+function mkTaskMeta(cfg={},kind='执行任务'){
+  const status=cfg.status||kind;
+  const taskId=cfg.taskId||mkTaskId(cfg.idPrefix||'AC');
+  const updated=cfg.updatedAt||now();
+  const eta=cfg.eta||'已记录';
+  return `<div class="task-meta">
+    <div class="task-meta-left">
+      <span class="meta-pill key">${esc(status)}</span>
+      <span class="meta-pill id">${esc(taskId)}</span>
+    </div>
+    <div class="task-meta-right">
+      <span class="meta-pill">${esc(eta)}</span>
+      <span class="meta-pill">更新于 ${esc(updated)}</span>
+    </div>
+  </div>`;
+}
+function mkPhaseTrack(stage='plan'){
+  const phases=[
+    {k:'阶段 1',v:'识别边界'},
+    {k:'阶段 2',v:'执行动作'},
+    {k:'阶段 3',v:'系统回执'},
+    {k:'阶段 4',v:'交付输出'}
+  ];
+  const idxMap={plan:0,confirm:0,run:1,receipt:2,deliver:3,done:3};
+  const etaMap={plan:'预计 2 分钟内进入执行',confirm:'等待确认后推进',run:'预计 1 分钟内生成回执',receipt:'预计 30 秒内形成交付',deliver:'已进入最终输出',done:'已完成'};
+  const idx=idxMap[stage]??0;
+  const pct=((idx+1)/phases.length)*100;
+  const current=phases[idx]||phases[0];
+  const next=phases[idx+1]||null;
+  const liveClass=(stage==='run'||stage==='receipt')?' live':'';
+  const liveText=(stage==='run'||stage==='receipt')?'<span class="phase-live">实时推进中</span>':'';
+  const etaText=etaMap[stage]||etaMap.plan;
+  const markerLeft=((idx+0.5)/phases.length)*100;
+  const nextText=next?`下一步：${next.k} · ${next.v}`:'下一步：当前任务已进入最终交付';
+  return `<div class="phase-track">
+    <div class="phase-progress${liveClass}"><div class="phase-progress-bar" style="width:${pct}%"></div></div>
+    <div class="phase-progress-label"><span>${liveText} 当前进行到：${current.k} · ${current.v}</span><span class="phase-eta">进度 ${Math.round(pct)}% · ${etaText}</span></div>
+    <div class="phase-progress-note"><span><b>当前节点</b> 已明显高亮，可直接看出任务推进到哪一步</span><span>${nextText}</span></div>
+    <div class="phase-guides"><div class="phase-guide-line"></div><div class="phase-guide-marker" style="left:${markerLeft}%">当前执行节点</div></div>
+    <div class="phase-grid">`+phases.map((p,i)=>{
+      const state=i<idx?'done':(i===idx?'on':'pending');
+      const stateText=i<idx?'已完成':(i===idx?'进行中':'待开始');
+      return `<div class="phase ${state}">
+        <div class="phase-top"><span class="phase-num">${i<idx?'✓':i+1}</span><span class="phase-state">${stateText}</span></div>
+        <div class="phase-k">${p.k}</div><div class="phase-v">${p.v}</div>
+      </div>`;
+    }).join('')+`</div></div>`;
+}
+function mkExecutionCard(cfg){
+  const autoText=cfg.autoText||(cfg.left&&cfg.left.items?cfg.left.items.slice(0,2).join('；'):'待识别自动动作');
+  const manualText=cfg.manualText||'高风险、跨系统写入、预算或权益边界需要你拍板';
+  const deliverText=cfg.deliverText||(cfg.right&&cfg.right.items?cfg.right.items.join('；'):'执行回执；异常清单；后续动作');
+  const currentText=cfg.currentText||inferCurrentText(cfg.stage||'plan');
+  return `<div class="card"><div class="cardh"><div class="tag ${cfg.tagClass||'blue'}">${esc(cfg.tag||'执行拆解')}</div><div class="ctitle">${esc(cfg.title)}</div></div>
+    ${mkTaskMeta(cfg,'执行任务')}
+    ${mkPhaseTrack(cfg.stage||'plan')}
+    <div class="exec-brief">
+      ${mkBriefItem('执行目标',cfg.summary||'待补充目标','emph')}
+      ${mkBriefItem('当前判断',currentText)}
+      ${mkBriefItem('可自动执行',autoText)}
+      ${mkBriefItem('需要人工确认',manualText,'warn')}
+    </div>
+    ${cfg.manualPoint===false?'':mkManualInline(cfg.manualPoint||{},manualText)}
+    ${cfg.pathText?`<div class="exec-path"><div class="exec-path-inner"><span class="exec-path-ico" aria-hidden="true">→</span><div class="exec-path-main"><div class="exec-path-title">执行路径</div><div class="exec-path-text">${esc(cfg.pathText)}</div></div></div></div>`:''}
+    ${cfg.ownerHtml?`<div class="section-block"><div class="section-title">协同分工</div><div class="owner-grid">${cfg.ownerHtml}</div></div>`:''}
+    <div class="exec-split">
+      ${cfg.left?mkExecBox(cfg.left.title,cfg.left.items):''}
+      ${cfg.right?mkExecBox(cfg.right.title,cfg.right.items):''}
+    </div>
+    ${cfg.actions&&cfg.actions.length?`<div class="acts">${cfg.actions.map(a=>renderActionButton(a)).join('')}</div>`:''}
+  </div>`;
+}
+function mkReceiptCard(title,rows,next=[],cfg={}){
+  return `<div class="card"><div class="cardh"><div class="tag green">系统回执</div><div class="ctitle">${esc(title)}</div></div>
+    ${mkTaskMeta({...cfg,status:cfg.status||'系统回执'},'系统回执')}
+    ${mkPhaseTrack(cfg.stage||'receipt')}
+    <div class="receipt">${rows.map(r=>`<div class="receipt-row"><div class="receipt-src">${esc(r.src)}</div><div class="receipt-note">${esc(r.note)}</div><div class="receipt-state ${esc(r.stateClass||'')}">${esc(r.state||'已写入')}</div><div class="receipt-time">${esc(r.time||now())}</div></div>`).join('')}</div>
+    ${next.length?`<div class="next-row">${next.map(a=>renderActionButton(a,true)).join('')}</div>`:''}
+  </div>`;
+}
+function mkPackageFlow(cfg={}){
+  const ops=cfg.packageOps&&cfg.packageOps.length?cfg.packageOps:[
+    {k:'导出',title:'结果包',desc:'把执行日志、异常清单和复盘摘要打包到文件中心。',state:'可执行',stateClass:'ready'},
+    {k:'分发',title:'团队同步',desc:'将结果同步给飞书群、负责人或项目群继续推进。',state:'待分发',stateClass:'pending'},
+    {k:'回写',title:'状态闭环',desc:'把执行结果回写到任务中心与业务系统状态流。',state:'待回写',stateClass:'pending'}
+  ];
+  return `<div class="package-flow">
+    <div class="package-strip">
+      <div><div class="package-strip-title">${esc(cfg.packageTitle||'结果包流转')}</div><div class="package-strip-sub">${esc(cfg.packageSub||'这次输出不只停留在聊天窗口，还可以继续导出、分发和回写闭环。')}</div></div>
+      <div class="package-chips">
+        <span class="package-chip">${esc(cfg.packageStatus||'已形成结果包')}</span>
+        <span class="package-chip">${esc(cfg.packageOwner||'可继续流转')}</span>
+      </div>
+    </div>
+    <div class="package-grid">${ops.map(op=>`<div class="package-op">
+      <div class="package-op-top"><span class="package-op-k">${esc(op.k||'步骤')}</span><span class="package-op-state ${esc(op.stateClass||'ready')}">${esc(op.state||'可执行')}</span></div>
+      <div class="package-op-title">${esc(op.title||'结果项')}</div>
+      <div class="package-op-desc">${esc(op.desc||'已可继续推进。')}</div>
+    </div>`).join('')}</div>
+  </div>`;
+}
+function mkDeliveryCard(cfg){
+  const packageActions=cfg.enablePackageOps===false?'':`<div class="next-row package-actions">${[
+    renderActionButton({label:'导出结果包',prompt:'导出交付包',primary:!(cfg.actions&&cfg.actions.length)}),
+    renderActionButton({label:'分发给团队',prompt:'分发给团队'}),
+    renderActionButton({label:'回写完成状态',prompt:'回写完成状态'})
+  ].join('')}</div>`;
+  return `<div class="card"><div class="cardh"><div class="tag ${cfg.tagClass||'purple'}">${esc(cfg.tag||'本次交付')}</div><div class="ctitle">${esc(cfg.title)}</div></div>
+    ${mkTaskMeta({...cfg,status:cfg.status||'可交付结果'},'可交付结果')}
+    ${mkPhaseTrack(cfg.stage||'deliver')}
+    <div class="delivery">${cfg.items.map(i=>`<div class="delivery-item"><div class="delivery-head"><span class="delivery-icon" aria-hidden="true">${esc(i.ico||'件')}</span><span class="delivery-title">${esc(i.title)}</span></div><div class="delivery-desc">${esc(i.desc)}</div><div class="delivery-meta"><span class="meta-pill ${esc(i.pillClass||'ok')}">${esc(i.pill||'可导出')}</span><span class="delivery-note">${esc(i.note||'已归档到执行中心')}</span></div></div>`).join('')}</div>
+    ${cfg.enablePackageOps===false?'':mkPackageFlow(cfg)}
+    ${packageActions}
+    ${cfg.actions&&cfg.actions.length?`<div class="acts">${cfg.actions.map(a=>renderActionButton(a)).join('')}</div>`:''}
+  </div>`;
+}
+
+/* ─── STATUS ─── */
+function setRp(task,st,dotClass){
+  const t=$('rptask'),s=$('rpst'),d=$('rpdot');
+  if(t)t.textContent=task;
+  if(s)s.textContent=st;
+  if(d)d.className='status-dot '+dotClass;
+}
+function doneTask(){state.busy=false;setSendDisabled(false);}
+function setPkgNode(key,mode,label,desc){
+  const row=$(key+'Row'),stateEl=$(key+'State'),descEl=$(key+'Desc');
+  if(row)row.className='rp-flow-item '+mode;
+  if(stateEl){stateEl.textContent=label;stateEl.className='rp-flow-state '+(mode==='current'?'current':mode==='done'?'done':'');}
+  if(descEl)descEl.textContent=desc;
+}
+function setPackageFlow(stage='idle'){
+  state.packageFlow.step=stage;
+  const bar=$('pkgFlowBarFill'),title=$('pkgFlowOverall'),hint=$('pkgFlowHint'),chip=$('pkgFlowChip');
+  const cfg={
+    idle:{w:'0%',title:'等待形成结果包',hint:'交付输出形成后，这里会同步展示导出、分发、回写的闭环进度。',chip:'未开始'},
+    export:{w:'34%',title:'结果包已生成',hint:'当前可先导出结果包，再继续分发给团队。',chip:'流转中'},
+    distribute:{w:'68%',title:'结果包已分发',hint:'团队已经收到结果，下一步建议回写完成状态形成闭环。',chip:'流转中'},
+    done:{w:'100%',title:'结果已完成闭环',hint:'导出、分发、回写都已完成，当前任务可直接进入复盘或归档。',chip:'已闭环'}
+  }[stage]||{w:'0%',title:'等待形成结果包',hint:'交付输出形成后，这里会同步展示导出、分发、回写的闭环进度。',chip:'未开始'};
+  if(bar)bar.style.width=cfg.w;
+  if(title)title.textContent=cfg.title;
+  if(hint)hint.textContent=cfg.hint;
+  if(chip)chip.textContent=cfg.chip;
+  if(stage==='idle'){
+    setPkgNode('pkgExport','wait','待开始','等待交付输出生成');
+    setPkgNode('pkgDist','wait','待开始','等待结果包导出后分发');
+    setPkgNode('pkgWrite','wait','待开始','等待团队确认后回写系统');
+  }else if(stage==='export'){
+    setPkgNode('pkgExport','done','已导出','执行日志、异常清单与复盘摘要已打包到结果包');
+    setPkgNode('pkgDist','current','待分发','建议同步给项目团队与负责人继续推进');
+    setPkgNode('pkgWrite','wait','待开始','分发完成后再回写任务中心与业务系统');
+  }else if(stage==='distribute'){
+    setPkgNode('pkgExport','done','已导出','结果包已归档，可随时再次下载');
+    setPkgNode('pkgDist','done','已分发','项目团队、负责人和执行中心均已收到结果');
+    setPkgNode('pkgWrite','current','待回写','建议立即回写完成状态，形成系统闭环');
+  }else if(stage==='done'){
+    setPkgNode('pkgExport','done','已导出','结果包已归档，可继续沉淀到复盘材料');
+    setPkgNode('pkgDist','done','已分发','团队同步回执已形成');
+    setPkgNode('pkgWrite','done','已回写','任务中心、业务系统和协同看板都已完成更新');
+  }
+}
+function pushRpRecent(title,meta){
+  const box=$('rp-recent');
+  if(!box)return;
+  const item=document.createElement('div');
+  item.className='rpc';
+  item.innerHTML=`<div class="rpct">${esc(title)}</div><div class="rpcs">${esc(meta)}</div>`;
+  box.prepend(item);
+  while(box.children.length>4)box.removeChild(box.lastElementChild);
+}
+function prependNotif(text,kind='a'){
+  const box=$('rp-notif');
+  if(!box)return;
+  const item=document.createElement('div');
+  item.className='ni';
+  item.innerHTML=`<div class="ndot ${kind}" aria-hidden="true"></div><div class="nt">${esc(text)}</div>`;
+  box.prepend(item);
+  while(box.children.length>4)box.removeChild(box.lastElementChild);
+}
+
+const GLOBAL_ROUTES=[
+  {test:v=>/查看 3 个失败项详情|失败项详情/.test(v),fn:viewShopFailures},
+  {test:v=>/导出同步日志|导出执行日志|导出交付包/.test(v),fn:exportDeliveryPack},
+  {test:v=>/分发交付包|分发给团队|分发给项目组/.test(v),fn:distributeDeliveryPack},
+  {test:v=>/回写完成状态|回写系统|回写任务状态/.test(v),fn:writebackCompletion},
+  {test:v=>/生成执行复盘|执行复盘/.test(v),fn:generateRetro},
+  {test:v=>/查看审批项/.test(v),fn:viewApprovalItems},
+  {test:v=>/查看上线清单/.test(v),fn:viewGoLiveChecklist},
+  {test:v=>/查看内容预览/.test(v),fn:viewContentPreview},
+  {test:v=>/查看高价值客户|查看高风险名单/.test(v),fn:viewPriorityList},
+  {test:v=>/生成失败项修复建议|修复建议/.test(v),fn:viewFailureFixPlan},
+];
+
+/* ─── ROUTER (pattern matching, not if/else chain) ─── */
+const ROUTES={
+  shop:[
+    {test:v=>/同步|服务包/.test(v)&&/小程序|京东/.test(v),fn:shopSync},
+    {test:v=>/活动/.test(v)&&/上线|配置/.test(v),fn:shopActivity},
+    {test:v=>/详情页|填充/.test(v),fn:shopContent},
+    {test:v=>/抓取|竞品|报表/.test(v),fn:shopScrape},
+  ],
+  activity:[
+    {test:v=>/联动|多后台/.test(v)||(/上线/.test(v)&&/多/.test(v)),fn:actConfig},
+    {test:v=>/奖励/.test(v)&&/发放/.test(v),fn:actReward},
+    {test:v=>/海报|物料|分发/.test(v),fn:actMaterial},
+    {test:v=>/监控|报表.*抓取/.test(v),fn:actMonitor},
+  ],
+  community:[
+    {test:v=>/排期|排到/.test(v),fn:comSchedule},
+    {test:v=>/欢迎|入群/.test(v),fn:comWelcome},
+    {test:v=>/沉默|激活/.test(v),fn:comActivate},
+    {test:v=>/抓取.*数据|数据.*抓取/.test(v),fn:comData},
+  ],
+  member:[
+    {test:v=>/升级/.test(v)&&(/同步|金卡/.test(v)),fn:memberSync},
+  ],
+  points:[
+    {test:v=>/流水|对账/.test(v),fn:pointsReconcile},
+    {test:v=>/到期|提醒/.test(v),fn:pointsExpire},
+    {test:v=>/风控|名单/.test(v),fn:pointsRisk},
+  ],
+};
+async function route(v){
+  for(const r of GLOBAL_ROUTES){if(r.test(v)){await r.fn(v);return;}}
+  const rules=ROUTES[state.cur]||[];
+  for(const r of rules){if(r.test(v)){await r.fn(v);return;}}
+  await generic(v);
+}
+
+/* ─── FLOW HANDLERS ─── */
+
+async function viewShopFailures(){
+  setRp('失败项详情 · 已展开','查看中','running');await sleep(180);
+  const b=mkBubble();
+  await typeText(b,'已展开 3 个失败项。我先把可直接处理和需要人工介入的边界分开给你。');
+  mkCard(`<div class="card"><div class="cardh"><div class="tag red">异常清单</div><div class="ctitle">京东联营 3 个失败项详情</div></div><div class="cardb">
+    <div class="diff-row"><div class="diff-src">SKU-0281</div><div class="diff-note">库存字段与渠道模板不匹配，系统已回退，待修正字段映射。</div><div class="diff-amt bad">阻塞</div></div>
+    <div class="diff-row"><div class="diff-src">SKU-0417</div><div class="diff-note">资质文件过期，已停止上架同步，需人工补传资质后重试。</div><div class="diff-amt warn">人工</div></div>
+    <div class="diff-row"><div class="diff-src">SKU-0663</div><div class="diff-note">价格保护策略冲突，未写入京东联营，建议先确认最低价边界。</div><div class="diff-amt warn">确认</div></div>
+  </div><div class="acts"><button class="btn p" onclick="go('生成失败项修复建议')">生成修复建议</button><button class="btn" onclick="go('导出同步日志')">导出同步日志</button></div></div>`);
+  doneTask();
+}
+async function viewFailureFixPlan(){
+  setRp('修复建议 · 已生成','查看中','running');await sleep(180);
+  const b=mkBubble();
+  await typeText(b,'我已经按“字段、资质、价格策略”三类拆好修复路径，方便你直接分发给对应角色处理。');
+  mkCard(mkDeliveryCard({
+    tag:'修复建议',
+    tagClass:'amber',
+    title:'失败项修复路径',
+    items:[
+      {ico:'表',title:'字段映射修复单',desc:'给商城运营：补齐 SKU-0281 的库存字段映射后可直接重跑。'},
+      {ico:'证',title:'资质补传提醒',desc:'给品牌运营：SKU-0417 需补传最新资质，补齐后自动进入待重试队列。'},
+      {ico:'价',title:'价格冲突核对单',desc:'给经营负责人：SKU-0663 需先确认最低价边界，再放开同步。'}
+    ],
+    actions:[{label:'导出执行日志',prompt:'导出同步日志',primary:true},{label:'生成执行复盘',prompt:'生成执行复盘'}]
+  }));
+  doneTask();
+}
+async function exportDeliveryPack(){
+  setRp('交付包 · 已生成','已完成','done');
+  setPackageFlow('export');
+  pushRpRecent('结果包已导出',`${now()} · 等待团队分发`);
+  prependNotif('结果包已生成，建议继续分发给团队','a');
+  await sleep(180);
+  const b=mkBubble();
+  await typeText(b,'已整理成结果包，不只是聊天结论。现在可以直接导出、分发给团队，并把完成状态回写到系统里。');
+  mkCard(mkDeliveryCard({
+    tag:'交付包',
+    tagClass:'purple',
+    title:'本次执行交付件',
+    packageTitle:'结果包流转面板',
+    packageSub:'这次输出已经具备继续协同的条件，可直接进入导出、团队分发与状态回写。',
+    packageStatus:'结果包已生成',
+    packageOwner:'等待继续流转',
+    packageOps:[
+      {k:'导出',title:'导出到文件中心',desc:'把执行日志、异常清单与复盘摘要打包成标准结果包。',state:'已生成',stateClass:'done'},
+      {k:'分发',title:'同步给项目团队',desc:'把结果发送给飞书群、负责人和继续执行的角色。',state:'待分发',stateClass:'pending'},
+      {k:'回写',title:'完成状态闭环',desc:'将结果回写到任务中心与业务系统，形成真正闭环。',state:'待回写',stateClass:'pending'}
+    ],
+    items:[
+      {ico:'志',title:'执行日志',desc:'包含任务编号、系统动作、执行时间、成功/失败结果和责任边界。',pill:'可导出',note:'适合直接发给执行团队'},
+      {ico:'单',title:'异常清单',desc:'异常项已按“自动修复 / 待人工确认 / 阻塞项”完成分层。',pill:'待确认',pillClass:'warn',note:'便于主管快速拍板'},
+      {ico:'报',title:'复盘摘要',desc:'自动抽取本次任务的关键结果、风险点和建议下一步。',pill:'已归档',note:'适合进入周会复盘材料'}
+    ],
+    actions:[{label:'生成执行复盘',prompt:'生成执行复盘',primary:true},{label:'继续处理失败项',prompt:'查看 3 个失败项详情'}]
+  }));
+  doneTask();
+}
+
+async function distributeDeliveryPack(){
+  setRp('交付包 · 已分发','已完成','done');
+  setPackageFlow('distribute');
+  pushRpRecent('结果包已分发',`${now()} · 已同步项目团队`);
+  prependNotif('结果包已分发，建议继续回写完成状态','a');
+  await sleep(180);
+  const b=mkBubble();
+  await typeText(b,'结果包已经分发出去了，不需要你再手工转发说明。我把团队同步回执也一起补给你。');
+  const owner=(AGENTS[state.cur]&&AGENTS[state.cur].name?AGENTS[state.cur].name.replace('助手','负责人'):'对应负责人');
+  mkCard(mkReceiptCard('结果包分发回执',[
+    {src:'飞书群',note:'已把执行摘要、异常清单和下一步动作同步到项目群。',state:'已分发',time:now()},
+    {src:'负责人',note:`已发送给${owner}，附带待拍板项与后续建议。`,state:'已送达',time:now()},
+    {src:'执行中心',note:'结果包链接已挂载到任务流转区，后续协同可直接接续。',state:'已挂载',time:now()}
+  ],[
+    {label:'回写完成状态',prompt:'回写完成状态',primary:true},
+    {label:'生成执行复盘',prompt:'生成执行复盘'}
+  ],{stage:'deliver',status:'结果包已分发'}));
+  doneTask();
+}
+async function writebackCompletion(){
+  setRp('任务状态 · 已回写','已完成','done');
+  setPackageFlow('done');
+  pushRpRecent('完成状态已回写',`${now()} · 任务闭环完成`);
+  prependNotif('当前任务已完成闭环，可进入复盘或归档','a');
+  await sleep(180);
+  const b=mkBubble();
+  await typeText(b,'完成状态已经回写到系统，后续看板、任务中心和业务状态会显示为已闭环。');
+  mkCard(mkReceiptCard('完成状态回写回执',[
+    {src:'任务中心',note:'任务状态已更新为“已完成”，并写入执行结束时间。',state:'已回写',time:now()},
+    {src:'业务系统',note:'关键结果与异常备注已回写到对应业务单据。',state:'已同步',time:now()},
+    {src:'协同看板',note:'当前节点已从“执行中”切换为“已交付”，便于领导查看。',state:'已更新',time:now()}
+  ],[
+    {label:'分发给团队',prompt:'分发给团队',primary:true},
+    {label:'生成执行复盘',prompt:'生成执行复盘'}
+  ],{stage:'done',status:'已回写完成状态'}));
+  doneTask();
+}
+async function generateRetro(){
+  setRp('执行复盘 · 已生成','已完成','done');await sleep(180);
+  const b=mkBubble();
+  await typeText(b,'复盘已经整理成主管可读版本，重点看结果、风险和后续动作。');
+  mkCard(`<div class="card"><div class="cardh"><div class="tag blue">执行复盘</div><div class="ctitle">任务复盘摘要</div></div><div class="cardb">
+    <div class="kv"><span class="kk">任务结果</span><span class="kvv">主流程已完成，异常项已留痕并分配后续处理</span></div>
+    <div class="kv"><span class="kk">效率收益</span><span class="kvv">重复后台操作已由 ArkClaw 自动完成</span></div>
+    <div class="kv"><span class="kk">主要风险</span><span class="kvv">资质、价格边界、特殊名单仍需人工兜底</span></div>
+    <div class="kv"><span class="kk">建议下一步</span><span class="kvv">先清异常，再沉淀为可复用 SOP</span></div>
+  </div><div class="acts"><button class="btn p" onclick="go('导出同步日志')">导出交付包</button></div></div>`);
+  doneTask();
+}
+async function viewApprovalItems(){
+  setRp('审批项 · 已展开','查看中','running');await sleep(180);
+  const b=mkBubble();
+  await typeText(b,'我已把需要人工拍板的点抽出来，方便你一眼确认真正需要人参与的部分。');
+  mkCard(`<div class="card"><div class="cardh"><div class="tag amber">人工审批</div><div class="ctitle">待确认审批项</div></div><div class="cardb">
+    <div class="diff-row"><div class="diff-src">资源位</div><div class="diff-note">首页首屏 Banner 与弹窗是否同时开启，存在打扰风险。</div><div class="diff-amt warn">确认</div></div>
+    <div class="diff-row"><div class="diff-src">权益</div><div class="diff-note">高价值客户奖励上限需确认，避免超预算发放。</div><div class="diff-amt warn">确认</div></div>
+    <div class="diff-row"><div class="diff-src">风控</div><div class="diff-note">复杂规则命中名单 12 人，建议先复核再放量。</div><div class="diff-amt warn">复核</div></div>
+  </div><div class="acts"><button class="btn p" onclick="go('提交审批并执行活动上线')">审批通过并执行</button><button class="btn" onclick="go('查看上线清单')">查看上线清单</button></div></div>`);
+  doneTask();
+}
+async function viewGoLiveChecklist(){
+  setRp('上线清单 · 已展开','查看中','running');await sleep(180);
+  const b=mkBubble();
+  await typeText(b,'上线清单已经整理成最后一道确认列表，适合给运营负责人做上线前检查。');
+  mkCard(mkReceiptCard('活动上线前检查清单',[
+    {src:'商城',note:'满减规则、时间窗、资源位跳转已配置完成',time:'T-18m'},
+    {src:'积分',note:'加倍规则和预算阈值已校验通过',time:'T-16m'},
+    {src:'CRM',note:'目标人群圈选、短信模板和 App Push 已准备',time:'T-14m'}
+  ],[{label:'查看审批项',prompt:'查看审批项'},{label:'提交审批并执行',prompt:'提交审批并执行活动上线'}]));
+  doneTask();
+}
+async function viewContentPreview(){
+  setRp('内容预览 · 已展开','查看中','running');await sleep(180);
+  const b=mkBubble();
+  await typeText(b,'我已经把可交付的内容样本抽出来了，方便你判断它是不是“能直接上线”的质量。');
+  mkCard(`<div class="card"><div class="cardh"><div class="tag teal">内容样本</div><div class="ctitle">商品内容预览</div></div><div class="cardb">
+    <div class="kv"><span class="kk">标题</span><span class="kvv">雨季出行安全服务包｜轮胎、雨刷、玻璃水一键配齐</span></div>
+    <div class="kv"><span class="kk">卖点</span><span class="kvv">高频刚需组合 · 门店可核销 · 48 小时内可预约</span></div>
+    <div class="kv"><span class="kk">FAQ</span><span class="kvv">支持哪些车型、是否可叠券、如何预约均已生成</span></div>
+    <div class="kv"><span class="kk">状态</span><span class="kvv">可批量写入后台，建议先抽检 3 个样本</span></div>
+  </div></div>`);
+  doneTask();
+}
+async function viewPriorityList(){
+  setRp('重点名单 · 已展开','查看中','running');await sleep(180);
+  const b=mkBubble();
+  await typeText(b,'这部分我不会直接替你发出去，而是把重点名单先捞出来给你做人机协同处理。');
+  mkCard(`<div class="card"><div class="cardh"><div class="tag amber">重点名单</div><div class="ctitle">需要人工接管的对象</div></div><div class="cardb">
+    <div class="diff-row"><div class="diff-src">张女士</div><div class="diff-note">高价值客户，近 30 天沉默，建议门店顾问一对一回访。</div><div class="diff-amt warn">人工</div></div>
+    <div class="diff-row"><div class="diff-src">李先生</div><div class="diff-note">权益争议中，不建议自动触达，需先处理工单。</div><div class="diff-amt warn">人工</div></div>
+    <div class="diff-row"><div class="diff-src">王先生</div><div class="diff-note">近期投诉后重新入群，欢迎引导需更谨慎。</div><div class="diff-amt warn">人工</div></div>
+  </div></div>`);
+  doneTask();
+}
+
+async function shopSync(){
+  setRp('商品同步 · 识别中','思考中','thinking');await sleep(300);
+  const{c:tc,bid,dotId}=mkThink();
+  await typeThink(tc,'Hi-Agent 已输出同步规则和字段更新节奏。我需要：\n1. 登录小程序商城后台，更新库存与价格\n2. 登录京东联营后台，同步上下架状态\n3. 校验渠道配置，记录同步结果\n4. 异常项留痕，失败项等待人工处理',dotId);
+  await sleep(300);
+  const b=mkBubble();
+  await typeText(b,'收到商品同步任务。Hi-Agent 已输出同步规则，我来负责登录各渠道后台批量执行。\n\n目标商品：雨季出行安全服务包，目标渠道：小程序商城 + 京东联营后台。');
+  await sleep(160);
+  const syncPlanCard=mkCard(mkExecutionCard({
+    tag:'任务确认',
+    tagClass:'blue',
+    title:'商品同步请求',
+    summary:'把雨季出行安全服务包同步到小程序商城与京东联营，并给出失败项回执。',
+    currentText:'同步规则已拿到，当前只差确认是否启动批量写入与跨渠道校验。',
+    autoText:'登录两套后台；写入库存/价格/上下架字段；同步后自动校验并记录异常。',
+    manualText:'渠道资质异常、字段冲突、价格策略例外项需要人工确认。',
+    deliverText:'同步结果回执；失败项异常清单；可导出的执行日志。',
+    pathText:'先写小程序商城，再切到京东联营完成状态同步；校验完成后自动生成回执和失败项。',
+    ownerHtml:[mkOwner('ag','Hi-Agent','输出同步规则与字段节奏'),mkOwner('rpa','ArkClaw','登录后台执行同步与校验'),mkOwner('hu','人工','处理特殊异常与例外项')].join(''),
+    ownerCount:3,
+    left:{title:'系统动作',items:['登录小程序商城后台，写入库存与价格','登录京东联营后台，同步上下架状态','同步后自动校验字段和渠道配置']},
+    right:{title:'本次交付',items:['同步结果回执','失败项异常清单','可导出的执行日志']},
+    actions:[{label:'确认执行',primary:true,onClick:'shopSyncRun()'},{label:'预览字段清单',prompt:'查看内容预览'},{label:'取消',prompt:'取消当前任务'}]
+  }));
+  addManualPoint({key:'shop-sync-plan',title:'商品同步审批边界待确认',desc:'渠道资质异常、字段冲突、价格策略例外项需要你拍板。',priority:'later',anchor:ensureAnchor(syncPlanCard,'manual')});
+  setRp('商品同步 · 待确认','待确认','idle');doneTask();
+}
+async function shopSyncRun(){
+  if(state.busy)return;addUser('确认执行');state.busy=true;setSendDisabled(true);
+  setRp('商品同步 · 执行中','执行中','running');await sleep(200);
+  const{c:tc,bid,dotId}=mkThink();
+  await typeThink(tc,'开始登录小程序商城后台，更新库存和价格字段，然后切换京东联营后台执行同步。',dotId);
+  const sid='sp'+Date.now();
+  mkCard(`<div class="card"><div class="cardh"><div class="tag amber">执行中</div><div class="ctitle">正在执行商品同步</div></div>${mkStepsHtml(sid,['登录小程序商城后台','更新库存与价格字段（128条）','登录京东联营后台','同步上下架状态与渠道配置','校验同步结果，标注异常项','生成同步日志并留痕'])}</div>`);
+  await runSteps(sid,['a','b','c','d','e','f']);
+  await sleep(280);
+  const b=mkBubble();
+  await typeText(b,'同步完成。共处理 131 条记录，128 条成功，3 条因渠道配置异常失败。失败项已标注，需人工确认后处理。');
+  await sleep(140);
+  const syncResultCard=mkCard(`<div class="card"><div class="cardh"><div class="tag green">同步完成</div><div class="ctitle">商品同步结果</div></div><div class="stats"><div class="stat"><div class="snum ok">128</div><div class="slbl">成功同步</div></div><div class="stat"><div class="snum bad">3</div><div class="slbl">异常失败</div></div><div class="stat"><div class="snum">4m22s</div><div class="slbl">耗时</div></div></div><div class="cardb"><div class="kv"><span class="kk">小程序商城</span><span class="kvv" style="color:#3b6d11">全部成功</span></div><div class="kv"><span class="kk">京东联营</span><span class="kvv">125 成功，<span style="color:#a32d2d">3 失败</span></span></div><div class="kv"><span class="kk">失败原因</span><span class="kvv">渠道资质 / 库存字段异常</span></div></div><div class="acts"><button class="btn p" onclick="go('查看 3 个失败项详情')">查看失败详情</button><button class="btn">导出同步日志</button></div></div>`);
+  resolveManualPoint('shop-sync-plan');
+  addManualPoint({key:'shop-sync-fail',title:'3 个商品同步失败待人工处理',desc:'渠道资质和库存字段异常已单独拎出，需你决定补资质、跳过还是重新写入。',priority:'urgent',anchor:ensureAnchor(syncResultCard,'manual')});
+  mkCard(mkReceiptCard('系统执行回执',[
+    {src:'小程序',note:'库存、价格、上下架状态已全部写入并通过校验',time:'18:06'},
+    {src:'京东联营',note:'125 条完成写入，3 条已自动中止并进入异常队列',time:'18:08'},
+    {src:'日志中心',note:'任务编号 SYNC-240314-018 已归档，可追溯操作步骤',time:'18:09'}
+  ],[{label:'查看失败详情',prompt:'查看 3 个失败项详情'},{label:'导出同步日志',prompt:'导出同步日志'}]));
+  mkCard(mkDeliveryCard({
+    title:'这次不是只回复结论，已经形成可交付结果',
+    items:[
+      {ico:'表',title:'同步结果回执',desc:'按渠道拆分完成情况，可直接同步给运营和商品同学。'},
+      {ico:'异',title:'异常清单',desc:'3 个失败项已自动归类到字段、资质、价格策略三类。'},
+      {ico:'复',title:'执行复盘摘要',desc:'可一键生成主管视角复盘，说明做了什么、哪里卡住、下一步是什么。'}
+    ],
+    actions:[{label:'生成执行复盘',prompt:'生成执行复盘',primary:true},{label:'继续处理失败项',prompt:'查看 3 个失败项详情'}]
+  }));
+  setRp('商品同步 · 完成','已完成','done');doneTask();
+}
+async function shopActivity(){
+  setRp('活动配置 · 识别中','思考中','thinking');await sleep(300);
+  const{c:tc,bid,dotId}=mkThink();
+  await typeThink(tc,'Hi-Agent 已输出活动参数结构和上线清单。我需要在 3 个后台执行配置：小程序商城、会员积分系统、CRM 营销中台。重点资源位设置需人工审批后才执行。',dotId);
+  await sleep(300);
+  const b=mkBubble();
+  await typeText(b,'收到活动上线任务。本次涉及 3 个系统，复杂规则和关键资源位需人工审批后才执行。');
+  await sleep(160);
+  const shopActivityCard=mkCard(mkExecutionCard({
+    tag:'活动配置',
+    tagClass:'amber',
+    title:'夏季保养节活动上线',
+    summary:'今天 20:00 在商城、积分系统、CRM 三个系统完成联动上线。',
+    currentText:'活动参数和清单都已齐备，当前关键是先把审批边界锁住再执行联动配置。',
+    autoText:'商城写规则与时间窗；积分系统配置倍数；CRM 配目标人群与触达节奏。',
+    manualText:'高风险资源位、预算边界和复杂规则变更需要审批后才能写入。',
+    deliverText:'上线清单；审批项列表；上线后系统回执。',
+    pathText:'先走审批，再分别写三套系统；上线前会跑一致性校验，最后沉淀回执与审批留痕。',
+    ownerHtml:[mkOwner('ag','Hi-Agent','生成活动规则与上线清单'),mkOwner('rpa','ArkClaw','完成三系统配置与联动校验'),mkOwner('hu','人工','审批高风险资源位与预算边界')].join(''),
+    ownerCount:3,
+    left:{title:'系统动作',items:['商城配置满减与时间窗','积分系统配置 3 倍积分规则','CRM 配置目标人群与触达节奏']},
+    right:{title:'需要交付的结果',items:['上线清单','审批项列表','上线后系统回执']},
+    actions:[{label:'提交审批并执行',primary:true,prompt:'提交审批并执行活动上线'},{label:'查看审批项',warn:true,prompt:'查看审批项'},{label:'查看上线清单',prompt:'查看上线清单'}]
+  }));
+  addManualPoint({key:'shop-activity-approval',title:'活动上线审批待处理',desc:'高风险资源位、预算边界和复杂规则变更需要先审批。',priority:'urgent',anchor:ensureAnchor(shopActivityCard,'manual')});
+  setRp('活动配置 · 待审批','待审批','idle');doneTask();
+}
+async function shopContent(){
+  setRp('内容填充 · 识别中','思考中','thinking');await sleep(300);
+  const{c:tc,bid,dotId}=mkThink();
+  await typeThink(tc,'Hi-Agent 已生成商品标题、卖点、FAQ 和权益说明。我负责批量填充到商城后台各字段，并执行跨平台发布。品牌表达和合规性由人工抽检。',dotId);
+  await sleep(300);
+  const b=mkBubble();
+  await typeText(b,'内容填充任务就绪。本次涉及新品 24 个，覆盖小程序商城和京东联营两个终端。');
+  await sleep(160);
+  mkCard(`<div class="card"><div class="cardh"><div class="tag teal">内容填充</div><div class="ctitle">批量商品内容填充与发布</div></div><div class="cardb"><div class="kv"><span class="kk">商品数量</span><span class="kvv">24 个新品</span></div><div class="kv"><span class="kk">填充字段</span><span class="kvv">标题 · 卖点 · FAQ · 权益说明</span></div><div class="kv"><span class="kk">发布终端</span><span class="kvv">小程序商城 + 京东联营</span></div><div class="kv"><span class="kk"><span class="rb rpa">ArkClaw</span></span><span class="kvv">批量填充 · 跨平台发布</span></div><div class="kv"><span class="kk"><span class="rb hu">人工</span></span><span class="kvv">抽检品牌表达与合规性</span></div></div><div class="acts"><button class="btn p">确认执行</button><button class="btn">预览内容样本</button></div></div>`);
+  doneTask();
+}
+async function shopScrape(){
+  setRp('竞品抓取 · 执行中','执行中','running');await sleep(300);
+  const{c:tc,bid,dotId}=mkThink();
+  await typeThink(tc,'定时登录京东和天猫后台，抓取商品表现报表：点击率、转化率、价格区间、库存状态。归档后供 Hi-Agent 进行热销分析和选品建议。',dotId);
+  await sleep(300);
+  const b=mkBubble();
+  await typeText(b,'收到竞品报表抓取任务，开始登录各平台后台导出数据。');
+  await sleep(140);
+  const sid='sc'+Date.now();
+  mkCard(`<div class="card"><div class="cardh"><div class="tag purple">竞品抓取</div><div class="ctitle">多平台商品表现报表抓取</div></div>${mkStepsHtml(sid,['登录京东商城运营后台','导出本周商品表现报表','登录天猫旗舰店后台','导出销量与评价数据','数据归档并格式化','传递给 Hi-Agent 进行分析'])}</div>`);
+  await runSteps(sid,['a','b','c','d','e','f']);
+  const b2=mkBubble();
+  await typeText(b2,'两个平台报表抓取完成，共归档 3 份数据文件，已传递给 Hi-Agent 进行热销商品分析。分析结果预计 10 分钟后输出。');
+  setRp('竞品抓取 · 完成','已完成','done');doneTask();
+}
+async function actConfig(){
+  setRp('活动配置 · 识别中','思考中','thinking');await sleep(300);
+  const{c:tc,bid,dotId}=mkThink();
+  await typeThink(tc,'Hi-Agent 已输出参数结构、校验规则和上线清单。多后台联动上线涉及：小程序商城、会员积分系统、CRM 营销中台。复杂规则和高风险资源位需人工审批。',dotId);
+  await sleep(300);
+  const b=mkBubble();
+  await typeText(b,'收到多后台联动上线任务。本次活动涉及 3 个系统，复杂规则和关键资源位需人工审批后才执行。');
+  await sleep(160);
+  const actConfigCard=mkCard(`<div class="card"><div class="cardh"><div class="tag amber">多后台联动</div><div class="ctitle">夏季保养节活动配置上线</div></div><div class="cardb"><div class="kv"><span class="kk">涉及系统</span><span class="kvv">商城 + 积分系统 + CRM</span></div><div class="kv"><span class="kk">活动规则</span><span class="kvv">满减 · 积分加倍 · 限时秒杀</span></div><div class="kv"><span class="kk">上线时间</span><span class="kvv">今天 20:00</span></div><div class="kv"><span class="kk"><span class="rb rpa">ArkClaw</span></span><span class="kvv">规则配置 · 时间窗 · 联动上线</span></div><div class="kv"><span class="kk"><span class="rb hu">人工</span> 审批</span><span class="kvv" style="color:#854f0b">复杂规则与高风险资源位</span></div></div><div class="acts"><button class="btn p" onclick="actConfigRun()">提交审批并执行</button><button class="btn warn">查看审批项</button><button class="btn">查看上线清单</button></div></div>`);
+  addManualPoint({key:'act-config-approval',title:'多后台联动审批待处理',desc:'复杂规则与高风险资源位需要先人工审批，再进入三系统联动写入。',priority:'urgent',anchor:ensureAnchor(actConfigCard,'manual')});
+  setRp('活动配置 · 待审批','待审批','idle');doneTask();
+}
+async function actConfigRun(){
+  if(state.busy)return;addUser('提交审批并执行');state.busy=true;setSendDisabled(true);
+  setRp('活动配置 · 执行中','执行中','running');await sleep(300);
+  const sid='acc'+Date.now();
+  mkCard(`<div class="card"><div class="cardh"><div class="tag amber">执行中</div><div class="ctitle">多后台联动配置进度</div></div>${mkStepsHtml(sid,['小程序商城：配置满减规则与时间窗','积分系统：配置积分加倍规则','CRM 营销中台：配置目标人群','三系统联动校验一致性','20:00 自动触发上线'])}</div>`);
+  await runSteps(sid,['a','b','c','d','e']);
+  const b=mkBubble();
+  await typeText(b,'三个系统配置完成并通过一致性校验。活动将在 20:00 准时触发，资源位已按审批方案设置完毕。操作记录已存档。');
+  resolveManualPoint('act-config-approval');
+  mkCard(mkReceiptCard('活动上线系统回执',[
+    {src:'商城',note:'满减、秒杀、时间窗已写入并校验通过',time:'19:41'},
+    {src:'积分',note:'3 倍积分规则与预算阈值已生效',time:'19:43'},
+    {src:'CRM',note:'目标人群、短信模板、Push 节奏已配置完成',time:'19:45'}
+  ],[{label:'查看上线清单',prompt:'查看上线清单'},{label:'生成执行复盘',prompt:'生成执行复盘'}]));
+  mkCard(mkDeliveryCard({
+    title:'活动上线交付件',
+    items:[
+      {ico:'单',title:'上线清单',desc:'可给运营负责人做最后核对。'},
+      {ico:'审',title:'审批留痕',desc:'高风险资源位与预算边界已保留审批记录。'},
+      {ico:'回',title:'系统回执',desc:'三个系统的执行结果已固化成回执，便于追溯。'}
+    ],
+    actions:[{label:'生成执行复盘',prompt:'生成执行复盘',primary:true}]
+  }));
+  setRp('活动配置 · 完成','已完成','done');doneTask();
+}
+async function actReward(){
+  setRp('奖励发放 · 识别中','思考中','thinking');await sleep(300);
+  const{c:tc,bid,dotId}=mkThink();
+  await typeThink(tc,'Hi-Agent 已完成奖励路径判断和规则校验，防重复已通过。我负责：批量发放积分 + 优惠券，写入会员中心，同步短信通知。稀缺权益边界由人工确认。',dotId);
+  await sleep(300);
+  const b=mkBubble();
+  await typeText(b,'活动奖励发放任务就绪。本次发放 4,231 人，积分 + 优惠券双通道，需同步写入会员中心和短信平台。');
+  await sleep(160);
+  mkCard(`<div class="card"><div class="cardh"><div class="tag green">奖励发放</div><div class="ctitle">活动奖励批量发放</div></div><div class="cardb"><div class="kv"><span class="kk">发放人数</span><span class="kvv">4,231 人</span></div><div class="kv"><span class="kk">奖励类型</span><span class="kvv">积分 + 50 元保养优惠券</span></div><div class="kv"><span class="kk">发放渠道</span><span class="kvv">会员中心 + 短信通知</span></div><div class="kv"><span class="kk"><span class="rb rpa">ArkClaw</span></span><span class="kvv">批量发放 · 状态写入 · 结果同步</span></div><div class="kv"><span class="kk"><span class="rb hu">人工</span></span><span class="kvv">稀缺权益和高价值奖励边界</span></div></div><div class="acts"><button class="btn p">确认执行发放</button><button class="btn warn">查看稀缺权益项</button><button class="btn">查看奖励清单</button></div></div>`);
+  doneTask();
+}
+async function actMaterial(){
+  setRp('物料分发 · 识别中','思考中','thinking');await sleep(300);
+  const{c:tc,bid,dotId}=mkThink();
+  await typeThink(tc,'Hi-Agent 已生成分发节奏和内容版本。我负责在各后台执行上传、定时发布和配置动作。重点物料和分发节奏由人工抽检。',dotId);
+  await sleep(300);
+  const b=mkBubble();
+  await typeText(b,'活动物料分发任务就绪。我来负责在 6 个渠道后台执行上传、定时发布和配置。');
+  await sleep(140);
+  const sid='amm'+Date.now();
+  mkCard(`<div class="card"><div class="cardh"><div class="tag coral">物料分发</div><div class="ctitle">活动物料跨渠道分发</div></div>${mkStepsHtml(sid,['短信平台：上传文案并设置定时发送','微信公众号：上传图文并预约发布','小程序首页：配置 Banner 与跳转','CRM 推送：配置 App 推送内容','抖音企业号：上传视频与活动链接','微博：上传海报并定时发布'])}</div>`);
+  await runSteps(sid,['a','b','c','d','e','f']);
+  const b2=mkBubble();
+  await typeText(b2,'6 个渠道物料分发配置完成，定时发布节点已全部设置。重点物料已标注待人工抽检。');
+  setRp('物料分发 · 完成','已完成','done');doneTask();
+}
+async function actMonitor(){
+  setRp('数据监控 · 执行中','执行中','running');await sleep(300);
+  const b=mkBubble();
+  await typeText(b,'活动数据监控已启动，定时每 30 分钟抓取一次各后台报表。当前快照如下：');
+  await sleep(140);
+  mkCard(`<div class="card"><div class="cardh"><div class="tag blue">实时监控</div><div class="ctitle">夏季保养节活动数据快照</div></div><div class="stats"><div class="stat"><div class="snum">12,847</div><div class="slbl">参与人数</div></div><div class="stat"><div class="snum ok">68%</div><div class="slbl">预算使用</div></div><div class="stat"><div class="snum warn">3.2%</div><div class="slbl">转化率</div></div></div><div class="cardb"><div class="kv"><span class="kk">报名趋势</span><span class="kvv" style="color:#3b6d11">正常，高于预期 12%</span></div><div class="kv"><span class="kk">奖励发放</span><span class="kvv">4,231 / 预计 6,000</span></div><div class="kv"><span class="kk">下次抓取</span><span class="kvv">30 分钟后自动执行</span></div></div><div class="acts"><button class="btn">立即刷新</button><button class="btn p">归档当前快照</button></div></div>`);
+  setRp('数据监控 · 运行中','监控中','running');doneTask();
+}
+async function comSchedule(){
+  setRp('内容排期 · 识别中','思考中','thinking');await sleep(300);
+  const{c:tc,bid,dotId}=mkThink();
+  await typeThink(tc,'Hi-Agent 已生成内容日历和草案。我负责在各群/平台后台执行重复排期、上传和发布动作。重点内容和敏感表达由人工审核。',dotId);
+  await sleep(300);
+  const b=mkBubble();
+  await typeText(b,'收到内容排期分发任务。本周主题：雨季安全用车专题，共 5 篇内容，分 3 天推送到 12 个车主群。');
+  await sleep(160);
+  const comScheduleCard=mkCard(mkExecutionCard({
+    tag:'内容排期',
+    tagClass:'teal',
+    title:'本周车主群内容分发计划',
+    status:'待执行排期',
+    stage:'plan',
+    eta:'确认后预计 5 分钟完成',
+    summary:'将 5 篇雨季安全用车内容分 3 天排进 12 个车主群，并回传排期结果。',
+    currentText:'内容和群组对象都已就绪，当前主要确认发布时间和抽检边界。',
+    autoText:'上传 5 篇图文；配置 12 个车主群；设置三个发布时间并回传发布日志。',
+    manualText:'敏感表达、重点内容和品牌调性抽检仍需人工确认。',
+    deliverText:'排期回执；内容样本预览；发布日志与抽检提醒。',
+    pathText:'先上传内容样本，再绑定群组和时间节点；配置完成后自动生成排期回执。',
+    ownerHtml:[mkOwner('ag','Hi-Agent','生成内容日历与分发草案'),mkOwner('rpa','ArkClaw','配置排期、上传内容并回传日志'),mkOwner('hu','人工','审核敏感表达与重点内容')].join(''),
+    ownerCount:3,
+    left:{title:'系统动作',items:['上传 5 篇图文到群发工具后台','配置 12 个车主群接收对象','设置周一、周三、周五三个时间节点']},
+    right:{title:'交付结果',items:['排期回执','内容样本预览','发布日志与抽检提醒']},
+    actions:[{label:'确认执行排期',primary:true,onClick:'comScheduleRun()'},{label:'查看内容预览',prompt:'查看内容预览'}]
+  }));
+  addManualPoint({key:'com-schedule-review',title:'内容抽检待处理',desc:'敏感表达、重点内容和品牌调性需要在上线前完成人工抽检。',priority:'urgent',anchor:ensureAnchor(comScheduleCard,'manual')});
+  setRp('内容排期 · 待确认','待确认','idle');doneTask();
+}
+async function comScheduleRun(){
+  if(state.busy)return;addUser('确认执行排期');state.busy=true;setSendDisabled(true);
+  setRp('内容排期 · 执行中','执行中','running');await sleep(300);
+  const sid='csr'+Date.now();
+  mkCard(`<div class="card"><div class="cardh"><div class="tag amber">执行中</div><div class="ctitle">内容排期配置进度</div></div>${mkStepsHtml(sid,['上传内容到群发工具后台','配置 12 个车主群接收对象','设置周一 10:00 第一波发布','设置周三 10:00 第二波发布','设置周五 18:00 第三波发布','确认排期并生成发布日志'])}</div>`);
+  await runSteps(sid,['a','b','c','d','e','f']);
+  const b=mkBubble();
+  await typeText(b,'12 个车主群内容排期配置完成，三个时间节点均已设置。发布日志已存档，重点内容已标注待人工抽检。');
+  mkCard(mkReceiptCard('内容排期执行回执',[
+    {src:'群发工具',note:'5 篇图文已上传并完成排期绑定',time:'10:02'},
+    {src:'群组配置',note:'12 个车主群接收对象已校验完成',time:'10:04'},
+    {src:'日志中心',note:'发布日志已归档，重点内容已打上抽检标记',time:'10:05'}
+  ],[{label:'查看内容预览',prompt:'查看内容预览'},{label:'生成执行复盘',prompt:'生成执行复盘'}]));
+  mkCard(mkDeliveryCard({
+    title:'内容排期交付件',
+    items:[
+      {ico:'排',title:'排期回执',desc:'告诉运营“哪些内容、发到哪里、什么时候发”。'},
+      {ico:'样',title:'内容样本',desc:'方便审核内容是否达到可直接上线的质量。'},
+      {ico:'志',title:'发布日志',desc:'出现漏发或错发时，可快速追溯到具体节点。'}
+    ],
+    actions:[{label:'生成执行复盘',prompt:'生成执行复盘',primary:true}]
+  }));
+  setRp('内容排期 · 完成','已完成','done');doneTask();
+}
+async function comWelcome(){
+  setRp('入群引导 · 识别中','思考中','thinking');await sleep(300);
+  const{c:tc,bid,dotId}=mkThink();
+  await typeThink(tc,'Hi-Agent 已生成欢迎话术和引导路径。我负责在社群工具后台配置标准欢迎语触发、提醒和资料引导动作。高价值客户入群由人工处理。',dotId);
+  await sleep(300);
+  const b=mkBubble();
+  await typeText(b,'本周新入群用户欢迎引导任务就绪。新入群 87 人，高价值客户已单独标注等待人工接管。');
+  const welcomeCard=mkCard(`<div class="card"><div class="cardh"><div class="tag green">入群引导</div><div class="ctitle">新用户入群欢迎与引导</div></div><div class="cardb"><div class="kv"><span class="kk">本周新入群</span><span class="kvv">87 人</span></div><div class="kv"><span class="kk">高价值客户</span><span class="kvv" style="color:#854f0b">3 人（等待人工接管）</span></div><div class="kv"><span class="kk">引导步骤</span><span class="kvv">欢迎语 → 权益说明 → 账号绑定</span></div><div class="kv"><span class="kk"><span class="rb rpa">ArkClaw</span></span><span class="kvv">欢迎语配置 · 提醒 · 引导动作</span></div><div class="kv"><span class="kk"><span class="rb hu">人工</span></span><span class="kvv">高价值客户和特殊入群场景</span></div></div><div class="acts"><button class="btn p">确认执行</button><button class="btn warn">查看高价值客户</button></div></div>`);
+  addManualPoint({key:'com-welcome-vip',title:'3 位高价值客户等待人工接管',desc:'这 3 位客户不建议走标准欢迎流程，建议由门店顾问一对一回访。',priority:'later',anchor:ensureAnchor(welcomeCard,'manual')});
+  doneTask();
+}
+async function comActivate(){
+  setRp('沉默激活 · 识别中','思考中','thinking');await sleep(300);
+  const{c:tc,bid,dotId}=mkThink();
+  await typeThink(tc,'Hi-Agent 已完成活跃度打分，识别出 324 个沉默用户。我负责批量发送标准激活提醒和关怀消息。是否升级为人工专项关怀由运营决定。',dotId);
+  await sleep(300);
+  const b=mkBubble();
+  await typeText(b,'Hi-Agent 已完成本周沉默用户识别，共 324 人。其中 42 人超过 30 天沉默，建议升级为人工专项关怀。普通用户激活提醒已就绪。');
+  const activateCard=mkCard(`<div class="card"><div class="cardh"><div class="tag amber">沉默激活</div><div class="ctitle">本周沉默用户激活任务</div></div><div class="cardb"><div class="kv"><span class="kk">沉默用户</span><span class="kvv">324 人（连续 14 天无互动）</span></div><div class="kv"><span class="kk">高风险</span><span class="kvv" style="color:#854f0b">42 人（30天+ 沉默）</span></div><div class="kv"><span class="kk">激活方式</span><span class="kvv">标准提醒 + 专属关怀消息</span></div><div class="kv"><span class="kk"><span class="rb rpa">ArkClaw</span></span><span class="kvv">批量发送激活提醒和关怀消息</span></div><div class="kv"><span class="kk"><span class="rb hu">人工</span></span><span class="kvv">判断是否升级为专项人工关怀</span></div></div><div class="acts"><button class="btn p">执行普通激活</button><button class="btn warn">查看高风险名单</button></div></div>`);
+  addManualPoint({key:'com-activate-special',title:'42 位沉默高风险用户待判断是否升级人工关怀',desc:'超过 30 天沉默的高风险用户不建议直接自动触达，需先决定是否升级为专项人工关怀。',priority:'later',anchor:ensureAnchor(activateCard,'manual')});
+  doneTask();
+}
+async function comData(){
+  setRp('数据抓取 · 执行中','执行中','running');await sleep(300);
+  const{c:tc,bid,dotId}=mkThink();
+  await typeThink(tc,'定时抓取微信群、抖音、小红书各平台社群数据，导出并归档。口径统一和分析看板由 Hi-Agent 处理，我负责定时拉取和文件归档。',dotId);
+  await sleep(300);
+  const b=mkBubble();
+  await typeText(b,'收到多平台社群数据抓取任务，开始依次登录各平台后台导出数据。');
+  const sid='cd'+Date.now();
+  mkCard(`<div class="card"><div class="cardh"><div class="tag blue">数据抓取</div><div class="ctitle">多平台社群数据定时抓取</div></div>${mkStepsHtml(sid,['登录企业微信后台，导出群成员与互动数据','登录抖音企业号，导出粉丝与互动数据','登录小红书品牌号，导出评论与转化数据','数据格式化与归档','传递给 Hi-Agent 生成统一看板'])}</div>`);
+  await runSteps(sid,['a','b','c','d','e']);
+  const b2=mkBubble();
+  await typeText(b2,'三个平台数据抓取完成并归档。已传递给 Hi-Agent 进行口径统一，社群经营周报预计 15 分钟后输出。');
+  mkCard(mkReceiptCard('社群数据抓取回执',[
+    {src:'企业微信',note:'群成员与互动数据已导出归档',time:'15:02'},
+    {src:'抖音',note:'粉丝、互动与转化数据已完成拉取',time:'15:04'},
+    {src:'小红书',note:'评论和转化数据已格式化并归档',time:'15:06'}
+  ],[{label:'导出交付包',prompt:'导出交付包'}]));
+  mkCard(mkDeliveryCard({
+    title:'数据抓取交付件',
+    items:[
+      {ico:'数',title:'原始导出文件',desc:'每个平台的原始数据已单独归档。'},
+      {ico:'口',title:'统一口径输入包',desc:'已传递给 Hi-Agent 继续生成统一看板。'},
+      {ico:'志',title:'抓取日志',desc:'便于确认每个平台抓取时间和完整度。'}
+    ],
+    actions:[{label:'导出交付包',prompt:'导出交付包',primary:true}]
+  }));
+  setRp('数据抓取 · 完成','已完成','done');doneTask();
+}
+async function memberSync(){
+  setRp('等级同步 · 执行中','执行中','running');await sleep(300);
+  const{c:tc,bid,dotId}=mkThink();
+  await typeThink(tc,'Hi-Agent 已输出昨日升级名单（金卡 47 + 钻石 12）。登录老 DMS 和 CRM，逐条写入等级字段，留存操作日志。',dotId);
+  await sleep(280);
+  const b=mkBubble();
+  await typeText(b,'收到同步任务。本次待同步 59 人（金卡 47 + 钻石 12），目标为老 DMS + 集团 CRM，UI 自动化批量写入后留痕。');
+  const memberSyncCard=mkCard(mkExecutionCard({
+    tag:'等级同步',
+    tagClass:'blue',
+    title:'会员等级同步任务',
+    status:'待执行同步',
+    stage:'plan',
+    eta:'确认后预计 3 分钟完成',
+    summary:'把昨日升级名单批量写入老 DMS 与集团 CRM，并形成留痕回执。',
+    currentText:'升级名单已生成，当前等待确认是否开始写入两套老系统。',
+    autoText:'登录老 DMS 与集团 CRM；批量写入等级字段；失败账号自动归档到例外清单。',
+    manualText:'例外账号、重复主档和特殊会员场景需要人工拍板。',
+    deliverText:'同步回执；例外账号清单；操作日志。',
+    pathText:'先写 DMS 再同步 CRM；每一笔写入都会留痕，失败项不会直接丢失。',
+    ownerHtml:[mkOwner('ag','Hi-Agent','输出升级名单与同步口径'),mkOwner('rpa','ArkClaw','写入 DMS / CRM 并生成留痕'),mkOwner('hu','人工','审批例外账号与特殊场景')].join(''),
+    ownerCount:3,
+    left:{title:'系统动作',items:['登录老 DMS 写入等级字段','同步到集团 CRM 会员主档','失败账号自动进入例外清单']},
+    right:{title:'交付结果',items:['同步回执','例外账号清单','操作日志']},
+    actions:[{label:'确认执行同步',primary:true,prompt:'同步昨天升级到金卡和钻石的会员到老 CRM'}]
+  }));
+  addManualPoint({key:'member-sync-approval',title:'会员等级例外账号待人工拍板',desc:'重复主档、例外账号和特殊会员场景需要你先决定处理口径。',priority:'later',anchor:ensureAnchor(memberSyncCard,'manual')});
+  doneTask();
+}
+async function pointsReconcile(){
+  setRp('积分对账 · 执行中','执行中','running');await sleep(300);
+  const{c:tc,bid,dotId}=mkThink();
+  await typeThink(tc,'Hi-Agent 已定义对账范围。我需要登录保险合作平台和老 DMS，导出本周积分流水，与内部账本逐条比对，差异报告提交人工审批。',dotId);
+  await sleep(280);
+  const b=mkBubble();
+  await typeText(b,'收到对账任务。对账范围：保险合作平台（3家）+ 老 DMS，共约 12,400 条流水。请确认后开始执行。');
+  const pointsReconCard=mkCard(mkExecutionCard({
+    tag:'积分对账',
+    tagClass:'purple',
+    title:'本周积分流水对账',
+    status:'待执行对账',
+    stage:'plan',
+    eta:'确认后预计 8 分钟完成',
+    summary:'完成三家保险合作平台与老 DMS 的流水拉取、比对和差异归类。',
+    currentText:'对账口径已明确，当前等待确认是否启动多平台流水拉取与差异比对。',
+    autoText:'逐平台导出流水；与内部账本逐条比对；按规则归类差异并回填。',
+    manualText:'大额差异、争议流水和豁免处理需要人工审批。',
+    deliverText:'差异报告；对账回执；待审批清单。',
+    pathText:'先拉流水，再跑逐条比对；差异会自动分层，避免你只看到一句“有问题”。',
+    ownerHtml:[mkOwner('ag','Hi-Agent','定义对账范围与差异口径'),mkOwner('rpa','ArkClaw','拉取流水、比对并归类差异'),mkOwner('hu','人工','审批异常差异与后续处理')].join(''),
+    ownerCount:3,
+    left:{title:'系统动作',items:['逐平台导出流水','与内部账本逐条比对','将差异按规则归类并回填']},
+    right:{title:'交付结果',items:['差异报告','对账回执','待审批清单']},
+    actions:[{label:'确认执行对账',primary:true,prompt:'抓取本周保险平台积分流水并对账'}]
+  }));
+  addManualPoint({key:'points-reconcile-approval',title:'积分差异待人工审批',desc:'大额差异、争议流水和豁免处理需要你明确后续处理方式。',priority:'urgent',anchor:ensureAnchor(pointsReconCard,'manual')});
+  doneTask();
+}
+async function pointsExpire(){
+  setRp('到期提醒 · 识别中','思考中','thinking');await sleep(300);
+  const b=mkBubble();
+  await typeText(b,'本月即将到期 2,847 人，VIP 会员 89 人需人工确认激励力度。普通用户提醒已就绪，确认后立即执行。');
+  addManualPoint({key:'points-expire-vip',title:'89 位 VIP 会员到期激励力度待确认',desc:'普通用户可自动提醒，但 VIP 的补偿力度和触达方式需要先拍板。',priority:'later',anchor:ensureAnchor(b.closest('.msg-group'),'manual')});
+  doneTask();
+}
+async function pointsRisk(){
+  setRp('风控操作 · 识别中','思考中','thinking');await sleep(300);
+  const b=mkBubble();
+  await typeText(b,'Hi-Agent 本周风控扫描识别到 5 个高风险账号，冻结操作需人工审批后才执行，请先查看风控报告。');
+  addManualPoint({key:'points-risk-freeze',title:'5 个高风险账号冻结待审批',desc:'冻结属于高风险动作，需先查看风控报告并决定是否执行。',priority:'urgent',anchor:ensureAnchor(b.closest('.msg-group'),'manual')});
+  doneTask();
+}
+async function generic(v){
+  const{c:tc,bid,dotId}=mkThink();
+  await typeThink(tc,'理解指令，先判断目标系统、执行边界、需要人介入的节点，以及最终要交付什么。',dotId);
+  await sleep(240);
+  const b=mkBubble();
+  await typeText(b,'收到指令「'+esc(v)+'」。我不会只给你一句建议，而是会先拆解执行路径，再回传回执和交付件。');
+  const genericPlanCard=mkCard(mkExecutionCard({
+    tag:'执行拆解',
+    tagClass:'blue',
+    title:'待确认的执行路径',
+    status:'待你确认',
+    stage:'confirm',
+    eta:'预计 1 分钟内给出细化方案',
+    summary:'当前正在识别这条指令涉及的系统、数据和审批边界。',
+    currentText:'先判断这条指令落在哪些系统、哪些动作可自动执行，以及哪里必须人工拍板。',
+    autoText:'把任务拆成系统动作；标记可自动执行节点；预生成回执与日志骨架。',
+    manualText:'涉及审批、预算、高风险写入或例外处理的节点需要你确认。',
+    deliverText:'执行回执；异常与待确认清单；可继续推进的下一步动作。',
+    pathText:'先识别边界，再生成执行清单；确认后进入系统操作，最后回传回执与交付件。',
+    ownerHtml:[mkOwner('ag','Hi-Agent','识别系统、边界与判断策略'),mkOwner('rpa','ArkClaw','把策略落成具体系统动作'),mkOwner('hu','人工','兜底高风险节点与最终拍板')].join(''),
+    ownerCount:3,
+    left:{title:'我会先做什么',items:['拆成可执行的系统动作','识别哪些步骤可自动化完成','定位哪些步骤需要你拍板']},
+    right:{title:'最后会交付什么',items:['执行回执','异常与待确认清单','可继续推进的下一步动作']},
+    actions:[{label:'继续细化执行方案',primary:true,prompt:v},{label:'查看可交付样式',prompt:'导出交付包'}]
+  }));
+  addManualPoint({key:'generic-plan',title:'当前任务仍有人工拍板节点',desc:'审批、预算、高风险写入或例外处理的节点需要你先确认。',priority:'later',anchor:ensureAnchor(genericPlanCard,'manual')});
+  doneTask();
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    if(state.manualPanelOpen)toggleManualPanel(false);
+    else if(state.activeSk==='channel')closeChannelModal();
+    else if(state.activeSk)closeSk();
+  }
+});
+document.addEventListener('click',e=>{
+  const panel=$('manualPanel');
+  const fab=$('manualFab');
+  if(!state.manualPanelOpen||!panel||!fab)return;
+  if(panel.contains(e.target)||fab.contains(e.target))return;
+  toggleManualPanel(false);
+});
+
+/* ─── KEYBOARD NAV for sidebar ─── */
+document.querySelectorAll('.sbi[data-key]').forEach(el=>{
+  el.addEventListener('keydown',e=>{
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();swA(el);}
+  });
+});
+
+/* ─── INIT ─── */
+renderSkills();
+initInputModes();
 </script>
