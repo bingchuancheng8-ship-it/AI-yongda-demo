@@ -3645,6 +3645,64 @@ button:focus-visible,
 /* ══ CHANNEL PUSH CARD ══ */
 /* Uses existing report-bubble styles */
 
+
+/* ══ HOME TOOLBAR REDESIGN ══ */
+.home-toolbar{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:6px;padding-top:10px;margin-top:0;
+}
+.h-toolbar-left{display:flex;align-items:center;gap:6px}
+.h-toolbar-right{display:flex;align-items:center;gap:6px}
+
+/* Role chip — matches workspace comp-mode.on style */
+.h-role-new{
+  display:inline-flex;align-items:center;gap:6px;
+  height:26px;padding:0 10px;border-radius:7px;
+  border:1px solid #c0d8a0;
+  background:linear-gradient(135deg,#f0fae4,#e8f8d8);
+  color:#1e4810;font-size:11px;font-weight:700;
+  cursor:pointer;transition:.14s ease;
+  font-family:"Sora",sans-serif;
+}
+.h-role-new:hover{background:linear-gradient(135deg,#e4f5d4,#daf2c8);border-color:#a8cc80}
+.h-role-icon{font-size:14px;line-height:1}
+
+/* MCP chip — outlined style */
+.h-mcp-new{
+  display:inline-flex;align-items:center;gap:5px;
+  height:26px;padding:0 9px;border-radius:7px;
+  border:1px solid #d0e4b8;background:#fff;
+  color:#3a5028;font-size:11px;font-weight:600;
+  cursor:default;
+}
+.h-mcp-new svg{color:#7a9868;opacity:.85}
+.h-mcp-badge{
+  padding:1px 6px;border-radius:5px;
+  background:#e8f5d4;color:#2e5018;
+  font-size:10px;font-weight:800;
+  font-family:"Sora",sans-serif;
+}
+
+/* Tool button */
+.h-tool-btn{
+  width:26px;height:26px;border-radius:7px;
+  border:1px solid #dde8cc;background:transparent;
+  display:grid;place-items:center;color:#8a9878;
+  cursor:pointer;transition:.13s ease;
+}
+.h-tool-btn:hover{background:#f0f8e8;color:#3a5428;border-color:#c0d898}
+
+/* Send button — matches workspace comp-send */
+.h-send-new{
+  display:inline-flex;align-items:center;gap:6px;
+  height:26px;padding:0 14px;border-radius:8px;border:none;
+  background:#1a2818;
+  color:#fff;font-size:11px;font-weight:700;
+  cursor:pointer;transition:.14s ease;font-family:"DM Sans",sans-serif;
+}
+.h-send-new:hover{background:#2a3828}
+.h-send-new:active{transform:scale(.96)}
+
 </style>
 </head>
 <body>
@@ -3705,16 +3763,25 @@ button:focus-visible,
           placeholder="例如：春季保养节 20:00 上线，三个系统联动配置 + 奖励发放 + 转化监控，预算超 120% 先挂起别发。"></textarea>
         <div class="home-toolbar">
           <div class="h-toolbar-left">
-            <button id="homeRoleBtn" class="h-role" type="button">
-              <div class="h-role-ava" style="background:#f7e8da url(data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2064%2064%27%3E%3Crect%20width%3D%2764%27%20height%3D%2764%27%20rx%3D%2732%27%20fill%3D%27%23F7E8DA%27/%3E%3Ccircle%20cx%3D%2732%27%20cy%3D%2729%27%20r%3D%2714%27%20fill%3D%27%23FFD9C2%27/%3E%3Cpath%20d%3D%27M12%2028c0-13%209-22%2020-22s20%209%2020%2022v7H12z%27%20fill%3D%27%23F5CC54%27/%3E%3Cpath%20d%3D%27M17%2058c2-10%2010-16%2015-16s13%206%2015%2016%27%20fill%3D%27%23DDE7F7%27/%3E%3C/svg%3E) center/cover;border:1px solid #e8ddd0"></div>
+            <button id="homeRoleBtn" class="h-role-new" type="button" onclick="window.cycleRole && window.cycleRole()">
+              <span class="h-role-icon" id="homeRoleIcon">🛒</span>
               <span id="homeRoleLabel">商城运营助手</span>
-              <span style="color:#999;font-size:10px">▾</span>
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" style="opacity:.5"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
-            <div class="h-mcp">MCP <div class="h-mcp-n">17</div></div>
+            <div class="h-mcp-new">
+              <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="5" height="5" rx="1.3" stroke="currentColor" stroke-width="1.3"/><rect x="8" y="1" width="5" height="5" rx="1.3" stroke="currentColor" stroke-width="1.3"/><rect x="1" y="8" width="5" height="5" rx="1.3" stroke="currentColor" stroke-width="1.3"/><rect x="8" y="8" width="5" height="5" rx="1.3" stroke="currentColor" stroke-width="1.3"/></svg>
+              MCP
+              <span class="h-mcp-badge">17</span>
+            </div>
           </div>
           <div class="h-toolbar-right">
-            <button class="h-attach" title="上传文件">📎</button>
-            <button id="homeSend" class="h-send" type="button">✈ 发送</button>
+            <button class="h-tool-btn" title="上传文件">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M12 7.5l-5 5a3 3 0 0 1-4.24-4.24l5.65-5.65a2 2 0 0 1 2.83 2.83L5.9 10.79a1 1 0 0 1-1.41-1.41L10 3.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button id="homeSend" class="h-send-new" type="button">
+              <svg viewBox="0 0 16 16" fill="none" width="13" height="13"><path d="M3 8L13 3L9 13L7.5 8.5L3 8Z" fill="white"/></svg>
+              发送
+            </button>
           </div>
         </div>
         <div class="h-char-hint" id="hCharHint"></div>
@@ -4355,6 +4422,10 @@ function renderHomeCats(){
       renderHomeCats();
       renderCards();
       homeRoleLabelEl.textContent=cur().title;
+  const _ri=document.getElementById('homeRoleIcon');
+  if(_ri) _ri.textContent=cur().icon;
+  const ri=document.getElementById('homeRoleIcon');
+  if(ri) ri.textContent=cur().icon;
     });
   });
 }
@@ -4389,7 +4460,7 @@ const SCENE_TEMPLATES = {
 const FAVORITES = [{"key": "activity", "title": "春季保养节三系统联动上线", "desc": "小程序商城 + 积分中台 + CRM 联动配置，预算超 120% 自动挂起，准时上线。", "chips": ["活动上线", "预算管控"]}, {"key": "level", "title": "今日等级名单同步", "desc": "把升级/保级/降级名单同步到 CRM 和会员后台，权益批量发放。", "chips": ["等级同步", "权益发放"]}, {"key": "mall", "title": "新品批量上架配置", "desc": "从供应商平台抓取新品，录入商城后台，价格冲突自动检测。", "chips": ["新品录入", "价格校验"]}, {"key": "community", "title": "新成员入群欢迎自动化", "desc": "对新进群成员执行欢迎话术、资料补全引导、权益说明推送。", "chips": ["入群欢迎", "权益说明"]}];
 const MINE_TEMPLATES = [{"key": "activity", "title": "双十一活动全链路自动执行", "desc": "我搭建的活动执行模板，含三系统配置 + 奖励发放 + 数据监控完整流程。", "chips": ["活动", "自定义"]}, {"key": "level", "title": "月末等级批处理流程", "desc": "每月末自动拉取名单、批量回写、发放权益、生成复盘报告。", "chips": ["等级", "定时"]}, {"key": "points", "title": "周度积分对账自动化", "desc": "每周自动对账三平台，差异自动邮件提醒，90%情况无需人工介入。", "chips": ["对账", "自动化"]}];
 
-function setTplTab(tab){
+window.setTplTab=function setTplTab(tab){
   state.tplTab = tab;
   document.querySelectorAll('.tpl-tab').forEach(t=>t.classList.remove('on'));
   const el=document.getElementById('tab-'+tab);
@@ -4621,7 +4692,7 @@ function renderSidebar(){
   });
 }
 
-function toggleAgentPicker(){
+window.toggleAgentPicker=function toggleAgentPicker(){
   const picker=document.getElementById('agentPicker');
   if(!picker)return;
   const isOpen=picker.style.display!=='none';
@@ -4634,7 +4705,7 @@ function toggleAgentPicker(){
   if(navLabel) navLabel.style.display=isOpen?'':'none';
 }
 
-function newTaskForCurrent(){
+window.newTaskForCurrent=function newTaskForCurrent(){
   state.msgs[state.cur]=[];
   clearTimers();
   renderScene();
@@ -4739,7 +4810,7 @@ const SCENE_THINK = {
     {t:'生成并行执行计划',d:'欢迎引导 → 内容发布 → FAQ 回复 三路并行执行……',sys:null}]},
 };
 
-function setStatus(st){
+window.setStatus=function setStatus(st){
   const dot=document.getElementById('tbDot');
   const txt=document.getElementById('tbStatusText');
   if(!dot||!txt)return;
@@ -5607,7 +5678,7 @@ function buildMsg(m,s,idx){
 // Quick reply: pre-fill and send
 // Toast notification
 let _toastTimer;
-function showToast(msg, type){
+window.showToast=function showToast(msg, type){
   let t=document.getElementById('hcToast');
   if(!t){
     t=document.createElement('div');
@@ -5620,7 +5691,7 @@ function showToast(msg, type){
   _toastTimer=setTimeout(()=>{t.className='hc-toast';},2800);
 }
 
-function stopExecution(){
+window.stopExecution=function stopExecution(){
   clearTimers();
   setStatus('idle');
   const stopBtn=document.getElementById('stopBtn');
@@ -5828,6 +5899,7 @@ function syncAll(){
   if(ca) ca.innerHTML=LOBSTER_SM;
 })();
   homeRoleLabelEl.textContent=cur().title;
+  const _ri=document.getElementById('homeRoleIcon'); if(_ri) _ri.textContent=cur().icon;
   if(!appScreenEl.classList.contains('hidden')){
     renderSidebar();renderTopbar();renderQuick();renderScene();
     const sc=document.getElementById('tbStatusScene');
@@ -5847,7 +5919,7 @@ function syncAll(){
   }
 }
 
-function openScene(key,text=''){
+window.openScene=function openScene(key,text=''){
   state.cur=key;
   homeScreenEl.style.opacity='0';
   homeScreenEl.style.transition='opacity .15s ease';
@@ -5875,7 +5947,7 @@ function openScene(key,text=''){
   },150);
 }
 
-function setMode(m){
+window.setMode=function setMode(m){
   document.querySelectorAll('.comp-mode').forEach(b=>b.classList.remove('on'));
   const el=document.getElementById('mode'+m.charAt(0).toUpperCase()+m.slice(1));
   if(el) el.classList.add('on');
@@ -5900,20 +5972,20 @@ function switchScene(key){
   runFlow(key,cur().starter,'initial');
 }
 
-function showAgentPicker(){
+window.showAgentPicker=function showAgentPicker(){
   clearTimers();
   appScreenEl.classList.add('hidden');
   homeScreenEl.classList.remove('hidden');
   renderHomeCats();renderCards();
 }
-function goHome(){
+window.goHome=function goHome(){
   clearTimers();
   appScreenEl.classList.add('hidden');
   homeScreenEl.classList.remove('hidden');
   renderHomeCats();renderCards();
 }
 
-function cycleRole(){
+window.cycleRole=function cycleRole(){
   state.cur=ORDER[(ORDER.indexOf(state.cur)+1)%ORDER.length];
   syncAll();
 }
