@@ -2269,8 +2269,9 @@ body{font-family:"DM Sans","PingFang SC","Hiragino Sans GB",sans-serif}
 }
 /* Quick pills inline in bottom bar */
 .comp-quick-inline{
-  display:flex;gap:4px;overflow:hidden;flex:1;min-width:0;
+  display:flex;gap:4px;flex:1;min-width:0;
   margin-left:6px;
+  overflow:hidden;
 }
 .comp-quick-inline .quick-pill{
   font-size:10px;padding:2px 8px;flex-shrink:0;
@@ -2370,7 +2371,7 @@ body{font-family:"DM Sans","PingFang SC","Hiragino Sans GB",sans-serif}
 .bwrap{max-width:min(760px,82%)}
 
 /* Quick pill in bottom bar: prevent overflow */
-.comp-quick-inline{max-width:260px}
+.comp-quick-inline{max-width:none}
 
 /* Mode buttons: slightly more compact */
 .comp-mode{padding:0 8px;height:25px;font-size:11px}
