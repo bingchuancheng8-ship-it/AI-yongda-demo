@@ -5,7 +5,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Hi-Claw｜永达汽车运营工作台</title>
+<title>永小哒｜永达汽车运营工作台</title>
 <style>
 :root{
   --bg:#f8f8f3;
@@ -3601,38 +3601,47 @@ button:focus-visible,
   max-width:min(640px,88%)!important;
 }
 .pl-title{
+  font-family:'Sora',system-ui,sans-serif;
   font-size:11px;font-weight:800;color:#3a2860;
-  letter-spacing:.05em;margin-bottom:10px;
-  display:flex;align-items:center;gap:5px;
+  letter-spacing:.03em;margin-bottom:10px;
+  display:flex;align-items:center;gap:6px;
 }
-.pl-title::before{content:'🤖';font-size:13px}
 .pl-steps{
-  display:flex;align-items:center;gap:0;
+  display:flex;align-items:stretch;gap:0;
   flex-wrap:nowrap;overflow-x:auto;
   scrollbar-width:none;
-  padding-bottom:4px;
+  padding-bottom:2px;
 }
 .pl-steps::-webkit-scrollbar{display:none}
 .pl-step{
-  display:flex;flex-direction:column;align-items:center;gap:3px;
-  padding:8px 10px;border-radius:10px;
-  background:rgba(255,255,255,.8);border:1px solid rgba(180,160,240,.4);
-  min-width:60px;flex-shrink:0;
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  padding:10px 12px 8px;border-radius:10px;
+  background:rgba(255,255,255,.85);border:1px solid rgba(180,160,240,.35);
+  min-width:66px;flex-shrink:0;
   animation:plStepIn .3s ease both;
   transition:.15s ease;
 }
 .pl-step:hover{background:#fff;border-color:#a898e8;transform:translateY(-2px)}
-.pl-ico{font-size:18px;line-height:1}
-.pl-label{font-size:10px;font-weight:800;color:#2a1848;white-space:nowrap}
-.pl-sub{font-size:9px;color:#8870c0;white-space:nowrap}
-.pl-arrow{
-  font-size:14px;color:#c0b0e8;flex-shrink:0;
-  margin:0 2px;padding-bottom:8px;
-  font-weight:700;
+.pl-ico{font-size:16px;line-height:1;margin-bottom:2px}
+.pl-label{
+  font-family:'Sora',system-ui,sans-serif;
+  font-size:10px;font-weight:800;color:#2a1848;
+  white-space:nowrap;letter-spacing:-.01em;
+}
+.pl-sub{
+  font-family:system-ui,sans-serif;
+  font-size:9px;color:#8870c0;
+  white-space:nowrap;font-weight:500;
+}
+.pl-arr{
+  font-size:11px;color:#c0b0e8;flex-shrink:0;
+  margin:0 1px;padding-top:18px;
+  font-weight:600;align-self:flex-start;
 }
 .pl-note{
-  font-size:10px;color:#8878a8;margin-top:8px;
-  text-align:center;font-style:italic;
+  font-family:system-ui,sans-serif;
+  font-size:10px;color:#9888b8;margin-top:8px;
+  text-align:center;font-style:italic;font-weight:500;
 }
 @keyframes plStepIn{
   from{opacity:0;transform:scale(.85)}
@@ -4306,7 +4315,7 @@ button:focus-visible,
 
     <div class="hero">
       <div class="brand">
-        <div class="brand-name">Hi-Claw</div>
+        <div class="brand-name">永小哒</div>
         <div class="brand-faces" aria-hidden="true">
           <div class="bface bf1"></div>
           <div class="bface bf2"></div>
@@ -4458,6 +4467,15 @@ button:focus-visible,
 
 (() => {
 'use strict';
+// ── Local aliases for window-exposed functions ──
+const openScene=(...a)=>window.openScene(...a);
+const goHome=(...a)=>window.goHome(...a);
+const showToast=(...a)=>window.showToast(...a);
+const cycleRole=(...a)=>window.cycleRole(...a);
+const quickReply=(...a)=>window.quickReply(...a);
+const quickStartTask=(...a)=>window.quickStartTask(...a);
+
+
 
 /* ── DATA ── */
 const scenes = {
@@ -4478,7 +4496,7 @@ const scenes = {
     handoff:{
       title:'需要你来判断 · 12 个黑名单命中账号',
       urgency:'medium',
-      desc:'这 12 个账号命中风控黑名单，但同时满足本轮升级条件。Hi-Claw 已暂停权益发放，等你决策。',
+      desc:'这 12 个账号命中风控黑名单，但同时满足本轮升级条件。永小哒 已暂停权益发放，等你决策。',
       items:[
         {label:'账号 001-008 (8人)', detail:'疑似代刷行为，已标记 60 天，本轮升级属正常消费路径','risk':'低'},
         {label:'账号 009-010 (2人)', detail:'历史投诉记录，但近 3 个月无异常，消费金额真实','risk':'低'},
@@ -4528,7 +4546,7 @@ const scenes = {
     handoff:{
       title:'需要你来判断 · 6 个高频异常账户',
       urgency:'high',
-      desc:'以下账户在本周内积分获取频次远超正常水平，疑似薅羊毛行为，Hi-Claw 已标记但未自动冻结。',
+      desc:'以下账户在本周内积分获取频次远超正常水平，疑似薅羊毛行为，永小哒 已标记但未自动冻结。',
       items:[
         {label:'账户 A（手机尾号 8821）', detail:'7天获取积分 12,400，平均用户同期约 380','risk':'极高'},
         {label:'账户 B（手机尾号 3309）', detail:'7天获取 8,760，通过不同门店渠道分散操作','risk':'高'},
@@ -4669,7 +4687,7 @@ const scenes = {
           <div><span class="ar-label">关键节点：</span>清明节（4.4-6）+ 五一黄金周（5.1-5）双波次引爆</div>
         </div>
 
-        <div class="ar-subtitle"><span class="ar-ico">🤖</span>AI 自动化亮点（Hi-Claw + Hi Agent）</div>
+        <div class="ar-subtitle"><span class="ar-ico">🤖</span>AI 自动化亮点（永小哒 + Hi Agent）</div>
         <ul class="ar-list">
           <li>自动分层触达，精准推送企微/短信/App Push</li>
           <li>到店核销自动积分发放，零人工干预</li>
@@ -4708,7 +4726,7 @@ const scenes = {
     handoff:{
       title:'需要你来给口径 · 2 条品牌对比问题',
       urgency:'medium',
-      desc:'群内有车主问到竞品对比，这类问题涉及品牌立场，Hi-Claw 未自动回复，等你提供标准口径。',
+      desc:'群内有车主问到竞品对比，这类问题涉及品牌立场，永小哒 未自动回复，等你提供标准口径。',
       items:[
         {label:'车主@小李（宝马3系车主群）', detail:'"永达和4S店有什么区别？服务质量谁更好？" — 等待官方口径','risk':'中'},
         {label:'车主@张先生（奔驰C级车主群）', detail:'"听说BBA都在降价，永达价格能跟上吗？" — 涉及价格政策','risk':'中'},
@@ -4980,17 +4998,17 @@ const LOBSTER_TINY_SVG=`<svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/s
 
 const THINK = {
   initial:{
-    title:'Hi-Claw 正在理解任务',
+    title:'永小哒 正在理解任务',
     sub:'先读懂你的意图，再识别涉及的系统对象，最后拆解成可并行推进的标准化执行步骤。',
     steps:[
       {t:'读取任务意图',d:'解析你给出的目标、优先级、时效和特殊约束……',sys:null},
       {t:'识别后台系统对象',d:'确认需要登录哪些后台、读写哪些名单、操作哪些页面配置……',sys:'CRM / 会员中心 / 活动后台'},
-      {t:'校验 Hi-Claw 执行边界',d:'把"可自动批量处理"和"必须人工拍板"的节点分开标记……',sys:null},
+      {t:'校验 永小哒 执行边界',d:'把"可自动批量处理"和"必须人工拍板"的节点分开标记……',sys:null},
       {t:'生成并行执行计划',d:'按依赖关系拆解子任务，无依赖的步骤并行推进……',sys:null}
     ]
   },
   followup:{
-    title:'Hi-Claw 继续推进中',
+    title:'永小哒 继续推进中',
     sub:'读取当前上下文，把你补充的约束并入已有链路，只重跑受影响的步骤。',
     steps:[
       {t:'读取上一轮执行上下文',d:'继承已完成的任务结果、当前模块角色和异常挂起状态……',sys:null},
@@ -5029,7 +5047,7 @@ function renderDrawer(){
   drawerEl.innerHTML=`
     <div class="drawer-head">
       <div class="d-logo" style="overflow:visible">${LOBSTER_TINY_SVG}</div>
-      <div><div class="d-title">永达汽车工作台</div><div class="d-sub">Hi-Claw · 执行助理</div></div>
+      <div><div class="d-title">永达汽车工作台</div><div class="d-sub">永小哒 · 执行助理</div></div>
     </div>
     <div class="d-label">5 个助手模块</div>
     ${ORDER.map(k=>{const s=scenes[k];return`
@@ -5079,7 +5097,7 @@ function renderHomeCats(){
 const SCENE_TEMPLATES = {
   level:[
     {title:'今日等级名单同步',desc:'把升级/保级/降级名单同步到 CRM 和会员后台，权益批量发放，异常单独挂起。',chips:['等级同步','权益发放']},
-    {title:'高价值降级会员挽留',desc:'筛出本月降级高价值会员，整理关怀数据包，Hi-Claw 准备，人工主导跟进。',chips:['降级挽留','数据准备']},
+    {title:'高价值降级会员挽留',desc:'筛出本月降级高价值会员，整理关怀数据包，永小哒 准备，人工主导跟进。',chips:['降级挽留','数据准备']},
     {title:'新等级权益上线配置',desc:'把新等级权益规则写入权益中心，配置发放时间窗和触达渠道。',chips:['权益配置','规则上线']}
   ],
   points:[
@@ -5117,7 +5135,7 @@ const SCENE_TEMPLATES = {
 const FAVORITES = [{"key": "activity", "title": "春季保养节三系统联动上线", "desc": "小程序商城 + 积分中台 + CRM 联动配置，预算超 120% 自动挂起，准时上线。", "chips": ["活动上线", "预算管控"]}, {"key": "level", "title": "今日等级名单同步", "desc": "把升级/保级/降级名单同步到 CRM 和会员后台，权益批量发放。", "chips": ["等级同步", "权益发放"]}, {"key": "mall", "title": "新品批量上架配置", "desc": "从供应商平台抓取新品，录入商城后台，价格冲突自动检测。", "chips": ["新品录入", "价格校验"]}, {"key": "community", "title": "新成员入群欢迎自动化", "desc": "对新进群成员执行欢迎话术、资料补全引导、权益说明推送。", "chips": ["入群欢迎", "权益说明"]}];
 const MINE_TEMPLATES = [{"key": "activity", "title": "双十一活动全链路自动执行", "desc": "我搭建的活动执行模板，含三系统配置 + 奖励发放 + 数据监控完整流程。", "chips": ["活动", "自定义"]}, {"key": "level", "title": "月末等级批处理流程", "desc": "每月末自动拉取名单、批量回写、发放权益、生成复盘报告。", "chips": ["等级", "定时"]}, {"key": "points", "title": "周度积分对账自动化", "desc": "每周自动对账三平台，差异自动邮件提醒，90%情况无需人工介入。", "chips": ["对账", "自动化"]}];
 
-window.setTplTab=function setTplTab(tab){
+window.setTplTab=function(tab){
   state.tplTab = tab;
   document.querySelectorAll('.tpl-tab').forEach(t=>t.classList.remove('on'));
   const el=document.getElementById('tab-'+tab);
@@ -5374,7 +5392,7 @@ function renderSidebar(){
   });
 }
 
-window.toggleAgentPicker=function toggleAgentPicker(){
+window.toggleAgentPicker=function(){
   const picker=document.getElementById('agentPicker');
   if(!picker)return;
   const isOpen=picker.style.display!=='none';
@@ -5387,7 +5405,7 @@ window.toggleAgentPicker=function toggleAgentPicker(){
   if(navLabel) navLabel.style.display=isOpen?'':'none';
 }
 
-window.newTaskForCurrent=function newTaskForCurrent(){
+window.newTaskForCurrent=function(){
   state.msgs[state.cur]=[];
   clearTimers();
   renderScene();
@@ -5464,22 +5482,22 @@ function patchThink(list,patch){
 }
 
 const SCENE_THINK = {
-  level:{title:'Hi-Claw 拆解会员等级执行链路',sub:'解析等级名单来源、系统写入依赖和权益发放触发条件。',steps:[
+  level:{title:'永小哒 拆解会员等级执行链路',sub:'解析等级名单来源、系统写入依赖和权益发放触发条件。',steps:[
     {t:'读取等级变更名单',d:'从等级计算结果页抓取今日升级 / 保级 / 降级名单，校验名单完整性……',sys:'CRM 等级结果页'},
     {t:'识别系统写入对象',d:'确认 CRM 会员主档、权益中心、触达后台三套系统的写入顺序与依赖……',sys:'CRM · 会员中心 · 权益后台'},
     {t:'校验黑白名单冲突',d:'比对风控黑名单，识别黑名单命中但同时满足升级条件的异常账号……',sys:'风控系统'},
     {t:'生成并行执行计划',d:'等级回写 → 权益发放 → 异常挂起 三路并行，不互相阻塞……',sys:null}]},
-  points:{title:'Hi-Claw 拆解积分执行链路',sub:'解析多平台流水来源、对账逻辑和补录写入规则。',steps:[
+  points:{title:'永小哒 拆解积分执行链路',sub:'解析多平台流水来源、对账逻辑和补录写入规则。',steps:[
     {t:'抓取多渠道积分流水',d:'登录门店后台、积分中台、保险合作平台，提取本周积分明细……',sys:'门店后台 · 积分中台'},
     {t:'执行跨平台对账',d:'以积分中台为基准账本，逐条比对差异，标记未到账和延迟记录……',sys:'积分中台'},
     {t:'识别补录与争议件',d:'筛出已审批补录名单，识别到期预警名单和争议工单……',sys:'工单系统 · 积分中台'},
     {t:'生成并行执行计划',d:'补录写入 → 到期提醒 → 争议挂起 三路并行推进……',sys:null}]},
-  mall:{title:'Hi-Claw 拆解商城执行链路',sub:'解析商品数据来源、库存价格同步依赖和活动配置发布路径。',steps:[
+  mall:{title:'永小哒 拆解商城执行链路',sub:'解析商品数据来源、库存价格同步依赖和活动配置发布路径。',steps:[
     {t:'读取新品与库存数据',d:'登录供应商平台提取新品 SKU 信息、库存数量和最新报价……',sys:'供应商后台 · 商城后台'},
     {t:'识别系统写入对象',d:'确认商城后台、活动后台、第三方渠道同步顺序与数据依赖……',sys:'商城后台 · 京东 / 天猫'},
     {t:'校验价格保护规则',d:'比对平台最低价限制、活动专属价和现有商城价是否冲突……',sys:'价格保护系统'},
     {t:'生成并行执行计划',d:'新品录入 → 库存价格回写 → 活动页上线 三路并行执行……',sys:null}]},
-  activity:{title:'Hi-Claw 正在策划营销方案',
+  activity:{title:'永小哒 正在策划营销方案',
     sub:'分析用户行为数据，生成活动策略，圈选目标人群，匹配最优渠道。',
     steps:[
       {t:'读取积分用户行为数据',d:'分析近90天活跃度、到店频率、积分余额分布，识别可激活群体……',sys:'积分中台 · CRM · 到店记录'},
@@ -5487,7 +5505,7 @@ const SCENE_THINK = {
       {t:'自动圈选目标用户',d:'按积分余额 + 到店频率 + 消费金额三维度筛选，排除高风险账户……',sys:'用户画像系统 · 风控名单'},
       {t:'匹配渠道并生成物料',d:'企微/短信/朋友圈渠道优先级排序，生成对应话术模板……',sys:'企微 · 短信平台 · 广告系统'}
     ]},
-  marketing:{title:'Hi-Claw 协调营销推广全链路',
+  marketing:{title:'永小哒 协调营销推广全链路',
     sub:'调研目标平台，生成合规素材，执行多渠道推广，实时跟踪汇报。',
     steps:[
       {t:'平台调研与社区识别',d:'调研 inStreet Agent广场结构，识别 15 个目标垂类社区，分析活跃用户分布……',sys:'inStreet API · 社区数据库'},
@@ -5495,7 +5513,7 @@ const SCENE_THINK = {
       {t:'多渠道自动化推广',d:'向 15 个社区依次发布，subnodH API 执行，遵守频率限制（10分钟/轮）……',sys:'subnodH API · 推广调度器'},
       {t:'实时跟踪汇报',d:'监控互动数据（赞/回复/Karma），生成推广进度看板，等待决策指令……',sys:'数据监控 · 实时看板'}
     ]},
-    content:{title:'Hi-Claw 协调多 Agent 内容生产',
+    content:{title:'永小哒 协调多 Agent 内容生产',
     sub:'搜索智驾热点，调度选题/写稿/审核三个 Agent，生成选题报告与推文。',
     steps:[
       {t:'搜索智驾热点',d:'连接懂车帝、汽车之家、微博、36氪，抓取今日智驾相关热点 10 条……',sys:'热点监控平台 · 汽车内容库'},
@@ -5503,7 +5521,7 @@ const SCENE_THINK = {
       {t:'生成选题分析报告',d:'整理 10 维度推理过程，生成完整选题报告，等待运营经理确认……',sys:'报告生成模块'},
       {t:'确认后启动写稿 Agent',d:'运营经理确认选题后，调度写稿 Agent 深度创作 2000+ 字推文……',sys:'写稿 Agent · 审核 Agent'}
     ]},
-    community:{title:'Hi-Claw 拆解社群执行链路',sub:'解析社群成员数据来源、内容排期依赖和 FAQ 回复规则。',steps:[
+    community:{title:'永小哒 拆解社群执行链路',sub:'解析社群成员数据来源、内容排期依赖和 FAQ 回复规则。',steps:[
     {t:'同步社群成员标签',d:'从 CRM 读取车型、等级、购车时间等标签，更新社群名单分层……',sys:'CRM · 社群后台'},
     {t:'读取内容排期计划',d:'获取已审批内容排期，确认各平台发布时间窗和素材合规情况……',sys:'内容平台 · 微信群 / 抖音'},
     {t:'识别 FAQ 与互动规则',d:'提取高频问题库，确认自动回复边界和需要人工处理的敏感问题……',sys:'社群后台'},
@@ -5748,7 +5766,7 @@ function buildMsg(m,s,idx){
     :`<div class="msg-ava user"></div>`;
   const timeStr = new Date().toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit'});
   if(m.from==='bot'){
-    row.innerHTML=`${AVA}<div class="bwrap"><div class="msg-name"><span class="name-hi">Hi-Claw</span><span class="name-badge">${s.title}</span><span class="name-time">${timeStr}</span></div></div>`;
+    row.innerHTML=`${AVA}<div class="bwrap"><div class="msg-name"><span class="name-hi">永小哒</span><span class="name-badge">${s.title}</span><span class="name-time">${timeStr}</span></div></div>`;
   } else {
     // User: bubble on right, avatar on far right
     row.innerHTML=`<div class="bwrap user-bwrap"><div class="msg-name user-name"><span class="name-time">${timeStr}</span><span class="name-role">${s.role}</span></div></div>${AVA}`;
@@ -5803,8 +5821,8 @@ function buildMsg(m,s,idx){
       <div class="ts-head" onclick="toggleThink('${bodyId}',this)">
         <div class="ts-dot ${finished?'done':'live'}" aria-hidden="true"></div>
         <div class="ts-title">${finished
-          ? m.title.replace('Hi-Claw ','').replace('正在','').replace('拆解','拆解')
-          : m.title.replace('Hi-Claw 正在','正在')
+          ? m.title.replace('永小哒 ','').replace('正在','').replace('拆解','拆解')
+          : m.title.replace('永小哒 正在','正在')
         }</div>
         ${!finished?`<div class="ts-progress-text">${m.phase}/${m.steps.length}</div>`:''}
         <div class="ts-toggle" id="tog${bodyId}">${finished?'展开 ▾':'▴'}</div>
@@ -5829,28 +5847,54 @@ function buildMsg(m,s,idx){
   else if(m.type==='pipeline'){
     const b=document.createElement('div');
     b.className='bubble pipeline-bubble';
-    const steps=[
-      {ico:'🎯',label:'策略生成',sub:'活动方案'},
-      {ico:'✍️',label:'内容生成',sub:'话术物料'},
-      {ico:'👥',label:'用户圈选',sub:'精准触达'},
-      {ico:'🎁',label:'权益生成',sub:'奖励配置'},
-      {ico:'📡',label:'渠道匹配',sub:'分发执行'}
-    ];
+    // Scene-specific pipeline steps
+    const pipelineSteps = {
+      activity:[
+        {ico:'🎯',label:'策略生成',sub:'活动方案'},
+        {ico:'✍️',label:'内容生成',sub:'话术物料'},
+        {ico:'👥',label:'用户圈选',sub:'精准触达'},
+        {ico:'🎁',label:'权益生成',sub:'奖励配置'},
+        {ico:'📡',label:'渠道匹配',sub:'分发执行'}
+      ],
+      content:[
+        {ico:'🔍',label:'热点检索',sub:'平台抓取'},
+        {ico:'📊',label:'选题分析',sub:'10维评分'},
+        {ico:'✍️',label:'深度创作',sub:'多Agent写稿'},
+        {ico:'🛡',label:'合规审核',sub:'平台规范'},
+        {ico:'🎨',label:'配图生成',sub:'AI配图归档'}
+      ],
+      marketing:[
+        {ico:'🔍',label:'平台调研',sub:'社区分析'},
+        {ico:'✍️',label:'帖文起草',sub:'差异化话术'},
+        {ico:'👤',label:'人工确认',sub:'审核拍板'},
+        {ico:'🚀',label:'多社区推广',sub:'分轮发布'},
+        {ico:'📊',label:'实时跟踪',sub:'互动汇报'}
+      ],
+      community:[
+        {ico:'🔍',label:'平台调研',sub:'社区分析'},
+        {ico:'✍️',label:'帖文起草',sub:'差异化话术'},
+        {ico:'👤',label:'人工确认',sub:'审核拍板'},
+        {ico:'🚀',label:'多社区推广',sub:'分轮发布'},
+        {ico:'📊',label:'实时跟踪',sub:'互动汇报'}
+      ]
+    };
+    const steps = pipelineSteps[state.cur] || pipelineSteps.activity;
     b.innerHTML=`
-      <div class="pl-title">Hi-Claw 自动化执行链路</div>
+      <div class="pl-title">🦞 永小哒 自动化执行链路</div>
       <div class="pl-steps">
         ${steps.map((s,i)=>`
-          <div class="pl-step" style="animation-delay:${i*120}ms">
+          <div class="pl-step">
             <div class="pl-ico">${s.ico}</div>
             <div class="pl-label">${s.label}</div>
             <div class="pl-sub">${s.sub}</div>
           </div>
-          ${i<steps.length-1?'<div class="pl-arrow">→</div>':''}
-        `).join('')}
+          ${i<steps.length-1?'<div class="pl-arr">→</div>':''}`).join('')}
       </div>
-      <div class="pl-note">全链路 AI 自动完成，关键节点等你拍板</div>`;
+      <div class="pl-note">全链路 AI 自动完成，关键节点等你拍板</div>
+    `;
     wrap.appendChild(b);
   }
+
   else if(m.type==='events'){
     const b=document.createElement('div');
     b.className='bubble event-stream';
@@ -6315,7 +6359,7 @@ function buildMsg(m,s,idx){
           <div class="rb-cw-next-title">如需进一步处理：</div>
           <ul class="rb-cw-bullets">
             <li>📊 按城市/门店定制化版本</li>
-            <li>🤖 配置 Hi-Claw 自动批量发送流程</li>
+            <li>🤖 配置 永小哒 自动批量发送流程</li>
             <li>📈 设计话术 A/B 测试方案</li>
           </ul>
         </div>
@@ -6818,7 +6862,7 @@ function buildMsg(m,s,idx){
         </tbody>
       </table>
       <div class="rb-cw-direct" style="margin-top:10px">
-        <strong>直接可用：</strong>所有配图已按平台规范生成，版权归属 Hi-Claw AI 生成，可商用。
+        <strong>直接可用：</strong>所有配图已按平台规范生成，版权归属 永小哒 AI 生成，可商用。
       </div>
       <div class="rb-actions" style="margin-top:8px">
         <button class="rb-btn-p" onclick="showToast('素材包下载中…')">⬇ 下载全部素材</button>
@@ -7027,11 +7071,11 @@ function buildMsg(m,s,idx){
         </tbody>
       </table>
       <div class="rb-cw-direct" style="margin-top:10px">
-        <strong>配置就绪，等你一键启动。</strong> Hi-Claw 会在发送后实时回传打开率、预约转化数和积分兑换情况。
+        <strong>配置就绪，等你一键启动。</strong> 永小哒 会在发送后实时回传打开率、预约转化数和积分兑换情况。
       </div>
       <div class="rb-actions" style="margin-top:8px">
         <button class="rb-btn-p" onclick="showToast('已启动分发，转化数据实时回传中…');setStatus('done')">🚀 一键启动分发</button>
-        <button class="rb-btn-g" onclick="quickReply('配置 Hi-Claw 自动批量发送流程，并设置A/B测试')">配置自动化发送</button>
+        <button class="rb-btn-g" onclick="quickReply('配置 永小哒 自动批量发送流程，并设置A/B测试')">配置自动化发送</button>
         <button class="rb-btn-g" onclick="quickReply('发送前先预览一条样本')">预览样本</button>
       </div>
     </div>`;
@@ -7123,7 +7167,7 @@ function buildMsg(m,s,idx){
             <div class="rb-cw-next-title">如需进一步处理：</div>
             <ul class="rb-cw-bullets">
               <li>📊 按城市/门店定制化版本</li>
-              <li>🤖 配置 Hi-Claw 自动批量发送流程</li>
+              <li>🤖 配置 永小哒 自动批量发送流程</li>
               <li>📈 设计话术 A/B 测试方案</li>
             </ul>
           </div>
@@ -7286,7 +7330,7 @@ function buildMsg(m,s,idx){
 // Quick reply: pre-fill and send
 // Toast notification
 let _toastTimer;
-window.showToast=function showToast(msg, type){
+window.showToast=function(msg, type){
   let t=document.getElementById('hcToast');
   if(!t){
     t=document.createElement('div');
@@ -7299,7 +7343,7 @@ window.showToast=function showToast(msg, type){
   _toastTimer=setTimeout(()=>{t.className='hc-toast';},2800);
 }
 
-window.stopExecution=function stopExecution(){
+window.stopExecution=function(){
   clearTimers();
   setStatus('idle');
   const stopBtn=document.getElementById('stopBtn');
@@ -7613,7 +7657,7 @@ function syncAll(){
   }
 }
 
-window.openScene=function openScene(key,text=''){
+window.openScene=function(key,text=''){
   state.cur=key;
   homeScreenEl.style.opacity='0';
   homeScreenEl.style.transition='opacity .15s ease';
@@ -7641,7 +7685,7 @@ window.openScene=function openScene(key,text=''){
   },150);
 }
 
-window.setMode=function setMode(m){
+window.setMode=function(m){
   document.querySelectorAll('.comp-mode').forEach(b=>b.classList.remove('on'));
   const el=document.getElementById('mode'+m.charAt(0).toUpperCase()+m.slice(1));
   if(el) el.classList.add('on');
@@ -7672,14 +7716,14 @@ window.showAgentPicker=function showAgentPicker(){
   homeScreenEl.classList.remove('hidden');
   renderHomeCats();renderCards();
 }
-window.goHome=function goHome(){
+window.goHome=function(){
   clearTimers();
   appScreenEl.classList.add('hidden');
   homeScreenEl.classList.remove('hidden');
   renderHomeCats();renderCards();
 }
 
-window.cycleRole=function cycleRole(){
+window.cycleRole=function(){
   state.cur=ORDER[(ORDER.indexOf(state.cur)+1)%ORDER.length];
   syncAll();
 }
