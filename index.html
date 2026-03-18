@@ -3704,6 +3704,585 @@ button:focus-visible,
 .h-send-new:hover{background:#2a3828}
 .h-send-new:active{transform:scale(.96)}
 
+
+/* ════════════════════════════
+   ARTICLE PREVIEW (Image 3 style)
+════════════════════════════ */
+.art-preview{font-size:13px;line-height:1.8;color:#1a1818}
+.art-eyebrow{
+  font-size:10px;font-weight:700;color:#7a8870;letter-spacing:.08em;
+  text-transform:uppercase;padding-bottom:8px;
+  border-bottom:1px solid #e8f0de;margin-bottom:10px;
+}
+.art-title{
+  font-family:"Sora",sans-serif;font-size:16px;font-weight:900;
+  color:#1a1008;line-height:1.4;letter-spacing:-.3px;margin-bottom:8px;
+}
+.art-lead{
+  font-size:13px;color:#2a3020;line-height:1.75;margin-bottom:12px;
+  padding-bottom:10px;border-bottom:1px solid #e8f0de;
+}
+.art-section-h{
+  font-family:"Sora",sans-serif;font-size:13px;font-weight:800;
+  color:#1a1818;margin:14px 0 6px;
+}
+.art-section-body{font-size:12px;color:#2a3020;line-height:1.8}
+.art-data-cards{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:10px 0;
+}
+.art-data-card{
+  padding:10px;border-radius:10px;text-align:center;
+  background:#f0fae4;border:1px solid #d0e8b0;
+}
+.art-data-card.warn{background:#fff8e8;border-color:#e8c070}
+.art-data-n{
+  font-family:"Sora",sans-serif;font-size:22px;font-weight:900;
+  color:#1e4810;line-height:1;
+}
+.art-data-card.warn .art-data-n{color:#7a5010}
+.art-data-l{font-size:9px;color:#6a7866;margin-top:4px;line-height:1.4}
+.art-car-profiles{display:flex;flex-direction:column;gap:6px;margin:8px 0}
+.art-car-card{
+  padding:9px 11px;border-radius:9px;
+  background:#f8faf4;border:1px solid #dce8cc;
+}
+.art-car-name{font-size:12px;font-weight:700;color:#1a2010;margin-bottom:5px}
+.art-car-list{margin:0 0 0 14px;padding:0;font-size:11px;color:#3a4c30;line-height:1.8}
+.art-car-list li::marker{color:#6aaa48}
+.art-cta{
+  margin-top:12px;padding:10px 12px;
+  background:linear-gradient(135deg,#f0fae4,#e8f8d8);
+  border-radius:10px;border:1px solid #c0dca0;
+}
+.art-cta-text{font-size:13px;font-weight:700;color:#1e4010;margin-bottom:4px}
+.art-tags{font-size:10px;color:#6a8850;line-height:1.8}
+
+/* Update taskHistory content sidebar */
+.ws-task-item.on .ws-task-name{font-family:"Sora",sans-serif}
+
+
+/* ════════════════════════════════════════
+   10-DIMENSION TOPIC ANALYSIS (截图1+2风格)
+════════════════════════════════════════ */
+.ta10-bubble{
+  max-width:min(800px,92%)!important;
+  border-radius:18px 18px 18px 5px;
+}
+.ta10-body{
+  font-size:12px;line-height:1.8;color:#1a1818;
+  display:flex;flex-direction:column;gap:0;
+}
+.ta10-final-topic{
+  padding:12px 14px;
+  background:linear-gradient(135deg,#fff8e8,#fff4dc);
+  border-bottom:1px solid #f0e0a0;
+}
+.ta10-label{
+  font-size:11px;font-weight:800;color:#7a5010;
+  margin-bottom:5px;letter-spacing:.03em;
+  font-family:"Sora",sans-serif;
+}
+.ta10-title{
+  font-family:"Sora",sans-serif;font-size:14px;font-weight:900;
+  color:#1a1008;line-height:1.35;letter-spacing:-.2px;
+}
+.ta10-header{
+  padding:10px 14px 8px;font-family:"Sora",sans-serif;
+  font-size:14px;font-weight:900;color:#1a1818;
+  background:#f8faf4;border-bottom:2px solid #d4e8b0;
+}
+.ta10-section{
+  padding:10px 14px;border-bottom:1px solid #edf5e4;
+}
+.ta10-section:last-child{border-bottom:none}
+.ta10-sec-title{
+  font-family:"Sora",sans-serif;font-size:13px;font-weight:800;
+  color:#1a2818;margin-bottom:7px;
+  display:flex;align-items:center;gap:5px;
+}
+.ta10-sub{
+  font-size:11px;font-weight:700;color:#3a5028;
+  margin:7px 0 4px;
+}
+.ta10-list{
+  margin:0 0 4px 16px;padding:0;
+  font-size:11px;color:#2a3820;line-height:1.85;
+}
+.ta10-list li::marker{color:#6aaa48;font-weight:700}
+.ta10-list li{padding:1px 0}
+.ta10-list li strong{color:#1a2018;font-weight:700}
+
+/* Competitor comparison */
+.ta10-competitor{display:flex;flex-direction:column;gap:7px;margin-top:6px}
+.ta10-comp-item{
+  padding:8px 10px;border-radius:9px;
+  background:#f8faf4;border:1px solid #dce8cc;
+}
+.ta10-comp-title{font-size:11px;font-weight:800;color:#1a2818;margin-bottom:5px}
+.ta10-comp-row{
+  display:flex;gap:8px;font-size:11px;color:#3a4c30;line-height:1.6;
+}
+.ta10-comp-row span:first-child{font-weight:700;flex-shrink:0;color:#6a7860;min-width:36px}
+.ta10-comp-conclusion{
+  margin-top:5px;font-size:10px;font-weight:800;color:#7a4010;
+  padding:2px 8px;border-radius:4px;background:#fff0e0;display:inline-block;
+}
+.ta10-comp-conclusion.not-pick{color:#7a4010;background:#fff0dc}
+
+/* Advantage summary */
+.ta10-advantage{
+  padding:8px 10px;border-radius:9px;
+  background:#edf9e0;border:1px solid #c0dca0;
+  margin-top:6px;
+}
+.ta10-adv-title{font-size:11px;font-weight:800;color:#1e4010;margin-bottom:4px}
+.ta10-adv-body{font-size:11px;color:#2a4018;margin-bottom:5px}
+
+/* ════════════════════════════
+   TOPIC CONFIRM HANDOFF
+════════════════════════════ */
+.topic-confirm-bubble{
+  background:linear-gradient(135deg,#f5fae8,#eef7e0);
+  border:1.5px solid #b8d898;
+  border-radius:18px 18px 18px 5px;
+  padding:0;overflow:hidden;
+  box-shadow:0 4px 16px rgba(30,60,20,.09);
+  max-width:min(560px,88%)!important;
+  animation:handoffIn .35s cubic-bezier(.22,.68,0,1.2) both;
+}
+.tc-body{padding:14px 16px 14px}
+.tc-done-line{
+  font-family:"Sora",sans-serif;font-size:15px;font-weight:900;
+  color:#1a2818;margin-bottom:7px;letter-spacing:-.2px;
+}
+.tc-next{
+  font-size:12px;color:#2a3820;line-height:1.75;margin-bottom:8px;
+}
+.tc-next strong{color:#1a2010;font-weight:800}
+.tc-question{
+  font-size:13px;font-weight:700;color:#1a3010;
+  margin-bottom:12px;
+}
+.tc-actions{display:flex;gap:8px;flex-wrap:wrap}
+.tc-btn-yes{
+  height:34px;padding:0 18px;border-radius:10px;border:none;
+  background:linear-gradient(160deg,#96d850,#68c420);
+  color:#0a2c06;font-size:12px;font-weight:800;cursor:pointer;
+  box-shadow:0 3px 10px rgba(80,180,35,.25);transition:.15s ease;
+  font-family:"Sora",sans-serif;
+  display:flex;align-items:center;gap:6px;
+}
+.tc-btn-yes:hover{transform:translateY(-2px);box-shadow:0 5px 14px rgba(80,180,35,.35)}
+.tc-btn-yes:disabled{opacity:.5;transform:none;cursor:default}
+.tc-btn-no{
+  height:34px;padding:0 14px;border-radius:10px;border:1.5px solid #d0e4b0;
+  background:#fff;color:#3a5028;font-size:11px;font-weight:600;cursor:pointer;
+  transition:.14s ease;
+}
+.tc-btn-no:hover{background:#f0f8e4;border-color:#a8cc80}
+.tc-btn-no:disabled{opacity:.5;cursor:default}
+
+
+/* ── Article meta bar ── */
+.art-meta-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:8px 0 10px;border-bottom:1px solid #e8f0de;margin-bottom:10px;gap:8px;
+  flex-wrap:wrap;
+}
+.art-meta-left{display:flex;align-items:center;gap:7px}
+.art-meta-tag{
+  font-size:10px;font-weight:800;padding:2px 8px;border-radius:5px;
+  background:#e8f8d0;color:#2a5018;letter-spacing:.03em;
+}
+.art-meta-words{font-size:10px;color:#9aa890;font-weight:600}
+.art-meta-right{display:flex;gap:5px}
+.art-copy-btn{
+  height:24px;padding:0 9px;border-radius:6px;border:1px solid #d4e8b8;
+  background:#f5faf0;color:#3a5428;font-size:10px;font-weight:600;cursor:pointer;transition:.12s ease;
+}
+.art-copy-btn:hover{background:#e8f5d0;border-color:#a8cc80}
+
+/* ── Article variants panel ── */
+.art-variants{
+  margin-top:12px;padding:10px 12px;border-radius:9px;
+  background:#f8fbf4;border:1px solid #dce8c8;
+}
+.art-variants-title{font-size:11px;font-weight:700;color:#3a5028;margin-bottom:7px}
+.art-variant-chips{display:flex;gap:6px;flex-wrap:wrap}
+.art-variant-chip{
+  padding:4px 11px;border-radius:999px;cursor:pointer;
+  font-size:11px;font-weight:600;color:#2a4818;
+  border:1px solid #c8dca8;background:#f0f8e4;transition:.14s ease;
+}
+.art-variant-chip:hover{background:#e0f0cc;border-color:#98c870;transform:translateY(-1px)}
+
+/* ── Events: step badge style ── */
+.es-row .es-text strong{color:#1a2818;font-weight:700}
+
+
+/* ════════════════════════════════════
+   MARKETING PROGRESS (截图风格)
+════════════════════════════════════ */
+.mp-body{font-size:12px;line-height:1.7}
+.mp-status-bar{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:8px;
+  margin-bottom:12px;padding-bottom:10px;
+  border-bottom:1px solid #e8f0de;
+}
+.mp-status-item{
+  text-align:center;padding:8px 4px;border-radius:9px;
+  background:#f5faf0;border:1px solid #e0eccc;
+}
+.mp-status-item.ok{background:#edf9e0;border-color:#b8dca0}
+.mp-status-item.gold{background:#fff8e0;border-color:#e8d070}
+.mp-status-n{
+  font-family:"Sora",sans-serif;font-size:22px;font-weight:900;
+  color:#1a2818;line-height:1;
+}
+.mp-status-item.ok .mp-status-n{color:#1e4810}
+.mp-status-item.gold .mp-status-n{color:#7a5010}
+.mp-status-l{font-size:9px;color:#6a7866;margin-top:3px;font-weight:600}
+.mp-section-title{
+  font-family:"Sora",sans-serif;font-size:12px;font-weight:800;
+  color:#1a2818;margin-bottom:8px;
+}
+.mp-wave-title{
+  font-size:11px;font-weight:700;color:#3a5028;
+  margin:8px 0 5px;padding:3px 8px;
+  background:#f0f8e8;border-radius:5px;display:inline-block;
+}
+.mp-wave-title.pending{color:#8a6020;background:#fff8e8}
+.mp-agents{
+  display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;
+}
+.mp-agent{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:3px 9px;border-radius:999px;font-size:10px;font-weight:600;
+  background:#edf9e0;border:1px solid #b8dca0;color:#1e4810;
+}
+.mp-agent.pending{
+  background:#fff8e8;border-color:#e8d080;color:#7a5010;opacity:.75;
+}
+.mp-agent span{font-size:9px;color:#6a8050;font-weight:500}
+.mp-agent.pending span{color:#9a7830}
+.mp-my-status{
+  margin:10px 0 8px;padding:10px 12px;
+  background:#f8fbf4;border-radius:10px;border:1px solid #dce8cc;
+}
+.mp-my-title{font-size:11px;font-weight:800;color:#1a2818;margin-bottom:7px}
+.mp-my-stats{display:flex;gap:16px;margin-bottom:8px}
+.mp-my-stat{display:flex;flex-direction:column;gap:2px;font-size:11px;color:#6a7866}
+.mp-my-val{font-weight:800;color:#1a2818;font-size:12px}
+.up{color:#27ae60;font-size:10px;font-weight:800}
+.mp-my-flags{display:flex;flex-direction:column;gap:3px}
+.mp-flag{font-size:10px;color:#3a4c30;padding:2px 0}
+.mp-flag.warn{color:#7a5010}
+.mp-next{margin-top:8px;padding:8px 10px;background:#f5faf0;border-radius:8px;border:1px solid #dce8cc}
+.mp-next-title{font-size:11px;font-weight:800;color:#1a2818;margin-bottom:5px}
+
+
+/* ── KOC Card ── */
+.mp-koc-card{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 12px;border-radius:10px;margin:6px 0;
+  background:linear-gradient(135deg,#fff8e8,#fff4e0);
+  border:1.5px solid #e8c870;
+}
+.mp-koc-badge{
+  font-size:9px;font-weight:800;padding:2px 7px;border-radius:4px;
+  background:#f0c840;color:#1a1008;flex-shrink:0;letter-spacing:.03em;
+}
+.mp-koc-info{flex:1;min-width:0}
+.mp-koc-name{font-size:12px;font-weight:800;color:#1a1808}
+.mp-koc-sub{font-size:10px;color:#7a6020;margin-top:2px}
+.mp-koc-btn{
+  height:26px;padding:0 11px;border-radius:7px;border:1px solid #d4a020;
+  background:linear-gradient(135deg,#f8d840,#e8b820);
+  color:#1a1008;font-size:10px;font-weight:700;cursor:pointer;transition:.13s ease;
+  flex-shrink:0;
+}
+.mp-koc-btn:hover{transform:translateY(-1px)}
+
+/* ── Comment cards ── */
+.mp-comment-cards{display:flex;flex-direction:column;gap:5px;margin-top:5px}
+.mp-comment{
+  padding:8px 11px;border-radius:9px;
+  background:#f8fbf4;border:1px solid #dce8cc;
+}
+.mp-comment-user{font-size:10px;font-weight:700;color:#5a7848;margin-bottom:3px}
+.mp-comment-text{font-size:11px;color:#2a3820;line-height:1.7}
+
+/* ── Round2 message box ── */
+.mr2-message{
+  margin:6px 0 8px;padding:10px 12px;
+  background:#f4f8ff;border:1px solid #c0d4f8;border-radius:10px;
+  border-left:3px solid #2a6abf;
+}
+.mr2-msg-label{font-size:10px;font-weight:700;color:#2a4888;margin-bottom:6px}
+.mr2-msg-body{font-size:11px;color:#1a2840;line-height:1.8}
+.mr2-msg-status{font-size:10px;color:#27ae60;font-weight:600;margin-top:6px}
+
+
+/* ── Marketing replies ── */
+.mp-replies{margin:10px 0;padding:10px 12px;background:#f8fbf4;border-radius:9px;border:1px solid #dce8cc}
+.mp-replies-title{font-size:11px;font-weight:800;color:#1a2818;margin-bottom:7px}
+.mp-reply-item{
+  padding:7px 9px;border-radius:8px;margin-bottom:5px;
+  background:#fff;border:1px solid #e8f0dc;
+}
+.mp-reply-item:last-child{margin-bottom:0}
+.mp-reply-item.accepted{background:#f0fae4;border-color:#c0dca0}
+.mp-reply-item.pending{background:#fff8e8;border-color:#e8d080;opacity:.8}
+.mp-reply-user{font-size:11px;font-weight:800;color:#1a2818;margin-bottom:3px;display:flex;align-items:center;gap:7px}
+.mp-reply-status{font-size:10px;font-weight:600}
+.ok-text{color:#27ae60}
+.warn-text{color:#e67e22}
+.mp-reply-text{font-size:11px;color:#3a4c30;line-height:1.65}
+.mp-material-bar{
+  margin:8px 0;padding:9px 11px;
+  background:#f5faf0;border-radius:8px;border:1px solid #dce8cc;
+}
+.mp-mat-title{font-size:11px;font-weight:800;color:#1a2818;margin-bottom:6px}
+.mp-mat-row{display:flex;justify-content:space-between;font-size:11px;color:#3a4c30;padding:2px 0}
+.mp-mat-val{font-weight:600;color:#1a2818}
+.mp-mat-val.ok-text{color:#27ae60}
+
+
+/* ── KOC Profile Card ── */
+.mr2-koc-profile{
+  margin:6px 0;padding:10px 12px;
+  background:#fafcf7;border:1px solid #d8eccc;border-radius:10px;
+  display:flex;flex-direction:column;gap:5px;
+}
+.mr2-koc-row{
+  display:flex;gap:10px;font-size:11px;line-height:1.6;
+}
+.mr2-koc-label{
+  flex-shrink:0;width:68px;font-weight:700;color:#5a7848;
+}
+.mr2-koc-row span:last-child{color:#2a3820}
+.mr2-koc-row.warn .mr2-koc-label{color:#8a5010}
+.mr2-koc-row.warn span:last-child{color:#7a4810;font-weight:600}
+
+
+/* ════════════════════════════
+   MARKETING ROUND2 (截图风格)
+════════════════════════════ */
+.mp2-phase-header{
+  display:flex;align-items:center;gap:8px;
+  padding:10px 14px 8px;border-bottom:1px solid #e8f0de;
+  font-family:"Sora",sans-serif;
+}
+.mp2-phase-tag{
+  font-size:12px;font-weight:800;color:#1a2818;
+}
+.mp2-phase-status{font-size:11px;font-weight:700;color:#9aa890}
+.mp2-phase-status.ok{color:#27ae60}
+.mp2-summary-line{
+  padding:8px 14px 10px;font-size:12px;color:#2a3820;
+  line-height:1.7;border-bottom:1px solid #e8f0de;
+}
+/* Push list items (like screenshot numbered list) */
+.mp2-push-list{display:flex;flex-direction:column;gap:5px;margin-top:6px}
+.mp2-push-item{
+  display:flex;align-items:flex-start;gap:8px;
+  padding:8px 10px;border-radius:9px;
+  background:#f8faf4;border:1px solid #dce8cc;
+}
+.mp2-push-num{
+  font-family:"Sora",sans-serif;font-size:11px;font-weight:800;
+  color:#7a9868;flex-shrink:0;width:18px;
+}
+.mp2-push-body{flex:1;min-width:0}
+.mp2-push-name{font-size:11px;font-weight:700;color:#1a2818;margin-bottom:3px;display:flex;align-items:center;gap:6px}
+.mp2-push-new{font-size:9px;font-weight:600;color:#5a7848;padding:1px 6px;border-radius:4px;background:#e8f5d0}
+.mp2-push-text{font-size:10px;color:#3a4c30;line-height:1.55;margin-bottom:4px}
+.mp2-push-metrics{display:flex;gap:8px;font-size:10px;color:#7a9868;font-weight:600}
+.mp2-push-status{font-size:13px;flex-shrink:0;margin-top:2px}
+
+/* Data comparison table highlights */
+.mp2-table .mp2-row-best td{background:#edf9e0}
+.mp2-table .mp2-row-dim td{opacity:.65}
+.mp2-badge{
+  display:inline-block;font-size:9px;font-weight:700;
+  padding:1px 7px;border-radius:4px;
+  background:#f0f8e8;color:#3a6028;
+}
+.mp2-badge.best{background:#c8f0a0;color:#1a4010}
+.mp2-badge.good{background:#e0f5c8;color:#2a5018}
+.mp2-badge.dim{background:#f0f0ec;color:#7a7a70}
+
+.mp2-insight{
+  font-size:11px;color:#2a4018;line-height:1.75;
+  margin-top:7px;padding:8px 10px;
+  background:#f0f9e4;border-radius:8px;border-left:3px solid #88c840;
+}
+
+/* Total bar */
+.mp2-total-bar{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:7px;
+  margin:12px 0 2px;padding-top:10px;border-top:1px solid #e8f0de;
+}
+.mp2-total-item{
+  text-align:center;padding:8px 4px;border-radius:9px;
+  background:#f5faf0;border:1px solid #e0eccc;
+}
+.mp2-total-item.gold{background:#fff8e0;border-color:#e8d070}
+.mp2-total-n{
+  font-family:"Sora",sans-serif;font-size:16px;font-weight:900;
+  color:#1a2818;line-height:1;
+}
+.mp2-total-item.gold .mp2-total-n{color:#7a5010}
+.mp2-total-l{font-size:9px;color:#6a7866;margin-top:3px;font-weight:600}
+
+
+/* ── Draft post tabs ── */
+.md-tab-row{
+  display:flex;gap:4px;margin:8px 0 10px;
+  border-bottom:2px solid #e8f0de;padding-bottom:8px;
+}
+.md-tab{
+  padding:5px 13px;border-radius:7px;font-size:11px;font-weight:700;
+  cursor:pointer;color:#6a7866;transition:.13s ease;
+}
+.md-tab.on{background:#e4f5d0;color:#1e4810;}
+.md-tab:hover:not(.on){background:#f0f8e8}
+.md-post-wrap{padding:2px 0}
+.md-post-label{font-size:10px;font-weight:800;color:#6a8850;letter-spacing:.05em;margin-bottom:5px}
+.md-post-title{
+  font-family:"Sora",sans-serif;font-size:13px;font-weight:900;
+  color:#1a1808;line-height:1.45;margin-bottom:8px;
+  padding:8px 10px;background:#fff8e8;border-radius:8px;border-left:3px solid #e8c040;
+}
+.md-post-body{
+  font-size:12px;color:#2a3020;line-height:1.85;
+  padding:8px 10px;background:#f8fbf4;border-radius:8px;
+  border:1px solid #dce8cc;
+}
+.md-post-tags{
+  font-size:10px;color:#7a9868;margin-top:6px;font-weight:600;
+}
+.md-post-actions{display:flex;gap:6px;margin-top:7px}
+.md-confirm-bar{
+  margin-top:12px;padding:9px 12px;
+  background:linear-gradient(135deg,#f0f9e4,#e8f5d8);
+  border-radius:8px;border:1px solid #c0d898;
+  font-size:11px;color:#2a5018;font-weight:600;
+  display:flex;align-items:center;gap:6px;
+}
+.md-confirm-bar::before{content:'✅';font-size:13px}
+
+/* ── Push wait bar ── */
+.mp2-wait-bar{
+  display:flex;align-items:flex-start;gap:8px;
+  margin:10px 0;padding:9px 12px;
+  background:#fff8e8;border-radius:8px;border:1px solid #e8d878;
+}
+.mp2-wait-ico{font-size:16px;flex-shrink:0;margin-top:1px}
+.mp2-wait-title{font-size:11px;font-weight:700;color:#6a5010;margin-bottom:3px}
+.mp2-wait-sub{font-size:10px;color:#9a7830}
+
+
+/* ══ FINAL POLISH ══ */
+
+/* Smoother message bubbles */
+.bubble{
+  transition:box-shadow .2s ease;
+}
+
+/* Better empty state spacing */
+.chat-empty{
+  padding-bottom:40px;
+}
+
+/* Marketing draft post body — better typography */
+.md-post-body br+br{
+  display:block;
+  content:'';
+  margin-top:4px;
+}
+
+/* Article preview — tighter data cards on small screens */
+@media(max-width:560px){
+  .art-data-cards{grid-template-columns:repeat(3,1fr);gap:4px}
+  .art-data-n{font-size:18px}
+}
+
+/* Marketing push list — truncate long community names */
+.mp2-push-name{
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  max-width:240px;
+}
+
+/* Better handoff card on mobile */
+@media(max-width:600px){
+  .handoff-card{max-width:100%!important}
+}
+
+/* Topic analysis: section hover highlight */
+.ta10-section:hover{
+  background:rgba(240,250,235,.5);
+  transition:background .15s ease;
+}
+
+/* Home hero: better visual weight for the pill */
+.h-pill{
+  font-weight:700;
+  letter-spacing:.02em;
+}
+
+/* Topbar status pill: animate when thinking */
+.tb-inline-status.thinking .tb-status-dot{
+  animation:statusPulse .8s ease infinite;
+}
+@keyframes statusPulse{
+  0%,100%{opacity:1;transform:scale(1)}
+  50%{opacity:.4;transform:scale(.7)}
+}
+
+/* Better table hover */
+.ar-table tr:hover td{
+  background:rgba(220,245,195,.25);
+  transition:background .1s ease;
+}
+
+/* KOC profile card typography */
+.mr2-koc-row span:last-child{
+  line-height:1.6;
+}
+
+/* Pipeline bubble: ensure it never overflows on mobile */
+.pipeline-bubble{
+  overflow-x:auto;
+}
+
+/* Draft tab active: cleaner indicator */
+.md-tab.on::after{
+  content:'';
+  position:absolute;
+  bottom:-8px;left:4px;right:4px;
+  height:2px;border-radius:1px;
+  background:#5aaa38;
+}
+.md-tab{position:relative}
+
+/* Comp mode buttons: active state more visible */
+.comp-mode.on{
+  box-shadow:0 0 0 1.5px rgba(90,170,56,.4);
+}
+
+/* Reply chips: subtle pulse on fresh appearance */
+@keyframes chipIn{
+  from{opacity:0;transform:scale(.92) translateY(3px)}
+  to{opacity:1;transform:scale(1) translateY(0)}
+}
+.reply-chip{
+  animation:chipIn .22s ease both;
+}
+.reply-chip:nth-child(2){animation-delay:.06s}
+.reply-chip:nth-child(3){animation-delay:.12s}
+.reply-chip:nth-child(4){animation-delay:.18s}
+
 </style>
 </head>
 <body>
@@ -3744,9 +4323,9 @@ button:focus-visible,
         <path d="M2 9C38 2.5 78 1.4 142 7.8" stroke="#86C95D" stroke-width="3.5" stroke-linecap="round"/>
       </svg>
       <div class="hero-stats">
-        <div class="hero-stat"><span class="hero-stat-n">5</span><span class="hero-stat-l">运营助手</span></div>
+        <div class="hero-stat"><span class="hero-stat-n">7</span><span class="hero-stat-l">运营助手</span></div>
         <div class="hero-stat-div"></div>
-        <div class="hero-stat"><span class="hero-stat-n">15</span><span class="hero-stat-l">任务模板</span></div>
+        <div class="hero-stat"><span class="hero-stat-n">21</span><span class="hero-stat-l">任务模板</span></div>
         <div class="hero-stat-div"></div>
         <div class="hero-stat"><span class="hero-stat-n">7×24</span><span class="hero-stat-l">在线执行</span></div>
       </div>
@@ -4158,10 +4737,77 @@ const scenes = {
       {type:'note',icon:'💡',text:'需要我把 KOC 名单整理成飞书表格发给你吗？也可以直接设为定时任务，每周自动更新一次。'},
       {type:'actions'}
     ]
+  },
+  content:{
+    title:'内容运营助手',navSub:'选题调研 / 多Agent写稿 / AI配图',icon:'✍️',role:'内容运营经理',
+    quick:['智驾爆款文章撰写','热点选题分析'],
+    desc:'热点监控选题、多 Agent 协作写稿审核、AI 配图生成与归档的全链路内容生产。',
+    starter:'帮我进行永达汽车智能驾驶爆款文章撰写，包含检索、选题和创作，给出选题原因',
+    ack:'好的召唤！✍️ 我现在开始为你进行永达汽车智驾爆款文章创作，包含热点检索、选题分析、创作和选题原因分析 🚀\n\n📋 **执行步骤**：\n· 步骤1：搜索今日智驾热点，收集备选选题\n· 步骤2：10维度深度选题分析，给出选题原因\n· 步骤3：等你确认后启动写稿 Agent 进行深度创作\n\n稍等，马上开始！',
+    events:[
+      {t:'10:01',ico:'🔍',text:'步骤1：搜索智驾热点 — 连接懂车帝、汽车之家、微博…'},
+      {t:'10:02',ico:'📋',text:'好的召唤！✅ 我已搜索到 10 个智驾热点，现在进行选题分析 📊',type:'success'},
+      {t:'10:03',ico:'⚖️',text:'步骤2：选题分析 — 选题 Agent 正在从 10 个维度评估各选题…'},
+      {t:'10:04',ico:'🏆',text:'选题分析完成：「亲测3款顶配智驾横评」综合评分 38/40 脱颖而出',type:'success'},
+      {t:'10:05',ico:'📄',text:'步骤3：生成选题分析报告 — 整理 10 维度推理过程，等待确认…'},
+      {t:'10:06',ico:'⏳',text:'选题报告已就绪，等待运营经理确认是否开始创作…'}
+    ],
+    handoff:null,
+    tasks:[
+      ['🔍 热点检索','监控懂车帝/汽车之家/微博，抓取今日智驾热点 10 条'],
+      ['📊 选题分析','10个维度深度推理：话题性/数据/情绪/用户/延展性/互动/平台/风险/对比/逻辑'],
+      ['✍️ 多Agent写稿','选题Agent → 写稿Agent → 审核Agent 三级协作完成'],
+      ['🎨 配图生成','封面图 + 三车对比图 + 数据卡片，AI生成后自动归档']
+    ],
+    reportTitle:'智驾推文选题分析报告',
+    report:[
+      {type:'topic_analysis_10'},
+      {type:'topic_confirm_handoff'}
+    ]
+  },
+  marketing:{
+    title:'营销推广助手',navSub:'素材生成 / 审核确认 / 社区推广 / 进度跟踪',icon:'📢',role:'市场运营经理',
+    quick:['懂车帝换购季推广','起草营销帖文'],
+    desc:'调研目标平台，起草营销帖文，经 Fiona 审核确认后再执行推广，实时跟踪互动进度。',
+    starter:'帮我策划并在懂车帝发起一个「永达新能源换购季」活动，面向问界/理想/极氪车主社区，征集真实换购体验',
+    ack:'好的 Fiona！✅ 收到策划需求，我先去了解懂车帝新能源社区的情况，然后帮你起草活动帖文，你确认满意后我们再发布推广。\n\n**执行步骤**：\n· 步骤1：调研懂车帝平台，了解各社区调性\n· 步骤2：起草活动帖文 + 推广话术供你审核\n· 步骤3：你确认后，我再执行多社区推广\n\n稍等，马上开始！',
+    events:[
+      {t:'10:01',ico:'🔍',text:'步骤1：调研懂车帝平台 — 分析新能源版块结构、各社区调性、近期热门帖子类型…'},
+      {t:'10:02',ico:'📋',text:'问界M9吧：日均新帖 280+，车主真实体验帖互动率最高（顶均 12）'},
+      {t:'10:03',ico:'📋',text:'理想L9吧：家庭用车话题热，情感型内容比数据型互动率高 40%'},
+      {t:'10:04',ico:'📋',text:'极氪001吧：智驾话题最活跃，用户对测试数据敏感，理性圈层为主'},
+      {t:'10:05',ico:'✅',text:'平台调研完成！识别 10 个高活跃社区，各社区内容偏好已分析，现在起草活动帖文…',type:'success'},
+      {t:'10:06',ico:'✍️',text:'步骤2：起草活动帖文 — 根据各社区调性生成差异化帖文，合规审查中…'},
+      {t:'10:07',ico:'✅',text:'帖文起草完成！3套差异化话术，合规审查通过，Token 消耗 1,240/5,000。等待 Fiona 审核…',type:'success'}
+    ],
+    handoff:{
+      title:'Fiona，帖文已起草完毕，请审核确认',
+      urgency:'medium',
+      desc:'我已根据各社区调性起草了3套差异化帖文，请查看后告诉我是否满意，确认后我立即开始推广。',
+      items:[
+        {label:'📝 主帖（问界/理想/极氪三社区通用版）',detail:'「永达新能源换购季 | 三款车真实换购体验征集，附专业评估报告」— 情感+数据双驱动，预计互动率高','risk':'低'},
+        {label:'🎯 差异化版本已准备',detail:'问界版（情感型）/ 极氪版（数据型）/ 理想版（家庭场景型），三版各有侧重','risk':'低'},
+        {label:'⚙️ 推广计划',detail:'主帖1篇 + 差异化帖10篇，分发至10个目标社区，分两轮执行，频率遵守平台规范','risk':'低'}
+      ],
+      actions:['确认发布，开始推广','我要修改帖文内容','先看完整帖文草稿']
+    },
+    tasks:[
+      ['🔍 平台调研','分析懂车帝各社区调性，识别10个目标社区，了解内容偏好'],
+      ['✍️ 帖文起草','主帖1篇+差异化版3套，合规审查，Token配额管控'],
+      ['🚀 执行推广','Fiona确认后执行，10个社区分两轮推广'],
+      ['📊 进度跟踪','实时监控顶/评论/关注，识别高质量互动，持续汇报']
+    ],
+    reportTitle:'「永达新能源换购季」活动帖文草稿',
+    report:[
+      {type:'summary',icon:'📝',text:'平台调研完成，活动帖文已起草！识别 **10个**目标社区，生成**3套**差异化话术，等待你审核确认后发布。'},
+      {type:'marketing_draft'},
+      {type:'note',icon:'💡',text:'Fiona，确认后我立即开始推广。推广过程中我会每完成一个社区就汇报一次，你可以随时查看进度。'},
+      {type:'actions'}
+    ]
   }
 };
 
-const ORDER = ['level','points','mall','activity','community'];
+const ORDER = ['level','points','mall','activity','community','content','marketing'];
 
 
 /* ── LOBSTER AVATARS ── */
@@ -4363,7 +5009,7 @@ const state = {
   query:'',
   drawerOpen:false,
   timers:[],
-  msgs:{ level:[], points:[], mall:[], activity:[], community:[] }
+  msgs:{ level:[], points:[], mall:[], activity:[], community:[], content:[], marketing:[] }
 };
 
 /* ── HELPERS ── */
@@ -4450,6 +5096,16 @@ const SCENE_TEMPLATES = {
     {title:'设计增换购用户春季营销活动',desc:'分析增换购用户行为，生成活动策略、话术物料、用户圈选、渠道分发全套方案。',chips:['策略生成','物料创作']},
     {title:'积分用户沉睡唤醒活动策划',desc:'针对60天未到店积分用户，生成专属激活方案和企微/短信双渠道推送物料。',chips:['用户唤醒','话术生成']},
     {title:'保养节活动三系统联动上线',desc:'小程序商城 + 积分中台 + CRM 联动配置，奖励批量发放，转化数据监控。',chips:['活动上线','预算管控']}
+  ],
+  content:[
+    {title:'科技爆款文章撰写',desc:'热点检索+选题分析+深度创作+配图生成，全流程多Agent协作，产出可直接发布的推文。',chips:['选题分析','多Agent写稿']},
+    {title:'热点选题报告生成',desc:'监控10个热点平台，按话题性/情绪触点/传播力四维评分，生成选题决策报告。',chips:['热点监控','选题报告']},
+    {title:'AI 配图素材批量生成',desc:'基于推文内容调用 AI 绘画工具生成配图，自动归档至素材库并标注使用场景。',chips:['AI配图','素材归档']}
+  ],
+  marketing:[
+    {title:'懂车帝新能源换购季推广',desc:'调研懂车帝社区，起草差异化帖文，Fiona审核确认后执行多社区推广，实时跟踪互动进度。',chips:['帖文起草','社区推广']},
+    {title:'营销素材生成与合规审查',desc:'根据活动主题生成帖文话术+配图，接入合规素材库审查，Token配额管控，一键输出。',chips:['素材生成','合规审查']},
+    {title:'推广活动数据复盘报告',desc:'汇总各社区互动数据，识别最佳话术版本，生成完整复盘报告和下轮优化建议。',chips:['数据复盘','优化建议']}
   ],
   community:[
     {title:'新成员入群欢迎自动化',desc:'对今日新进群成员执行欢迎话术、资料补全引导、权益说明推送。',chips:['入群欢迎','权益说明']},
@@ -4576,6 +5232,21 @@ function renderSidebar(){
     mall:   [{name:'春季新品上架批次',time:'刚刚',starter:'把这周商城新品、库存价格和活动页配置一起执行掉'},
              {name:'库存价格批量回写',time:'2小时前',starter:'批量更新库存、价格、上下架状态'},
              {name:'19个SKU价格冲突',time:'昨天',starter:'处理商城价与平台价不一致的19个SKU'}],
+    level:[
+      {name:'今日等级变更同步',time:'刚刚',starter:'同步今天升级/保级/降级名单到 CRM 和会员后台'},
+      {name:'钻石会员权益发放',time:'1小时前',starter:'批量发放本月新晋钻石会员专属权益'},
+      {name:'黑名单豁免审批',time:'昨天',starter:'处理 12 个黑名单命中但满足升级的异常会员'}
+    ],
+    points:[
+      {name:'本周积分流水对账',time:'刚刚',starter:'抓取本周多平台积分流水并对账'},
+      {name:'到期积分提醒推送',time:'2小时前',starter:'对30天内到期积分批量发送提醒'},
+      {name:'28个争议工单处理',time:'昨天',starter:'处理本批次积分争议工单，挂起待人工审批'}
+    ],
+    mall:[
+      {name:'春季新品上架批次',time:'刚刚',starter:'把这周商城新品、库存价格和活动页配置一起执行掉'},
+      {name:'库存价格批量回写',time:'2小时前',starter:'批量更新库存、价格、上下架状态'},
+      {name:'价格冲突SKU处理',time:'昨天',starter:'处理19个商城价与平台价冲突的SKU，逐一确认是否跟价'}
+    ],
     activity:[
       {name:'春季积分用户营销策划',time:'刚刚',starter:'帮我设计一份针对永达积分用户的春季营销活动，目标是促进积分用户引流门店，增加售后转化。'},
       {name:'增换购车主召回活动',time:'2小时前',starter:'帮我设计一份针对2-4年车龄积分用户的增换购召回活动，生成话术和用户圈选方案。'},
@@ -4583,7 +5254,17 @@ function renderSidebar(){
     ],
     community:[{name:'本周车主群内容排期',time:'刚刚',starter:'本周新进群欢迎、活动预热内容发布和FAQ回复'},
                {name:'新成员入群欢迎',time:'1小时前',starter:'对今天新进群的286名成员执行欢迎和权益说明'},
-               {name:'KOC候选名单整理',time:'昨天',starter:'把23位高活跃车主整理为KOC培养候选名单'}]
+               {name:'KOC候选名单整理',time:'昨天',starter:'把23位高活跃车主整理为KOC培养候选名单'}],
+    marketing:[
+      {name:'懂车帝换购季推广',time:'刚刚',starter:'帮我策划并在懂车帝发起一个「永达新能源换购季」活动，面向问界/理想/极氪车主社区，征集真实换购体验'},
+      {name:'KOC合作测评邀请',time:'2小时前',starter:'联系@极氪车评-阿飞，起草合作测评邀请，安排三款新能源车专属试驾活动'},
+      {name:'上周推广活动复盘',time:'昨天',starter:'对上周懂车帝新能源推广进行复盘，分析各社区转化数据和KOC合作效果，生成反思报告'}
+    ],
+    content:[
+      {name:'智驾横评爆款推文',time:'刚刚',starter:'帮我围绕永达汽车智能驾驶写一篇爆款推文，包含热点选题分析、深度创作，给出选题原因'},
+      {name:'新能源 vs 燃油话题选题',time:'3小时前',starter:'帮我分析今日汽车圈热点，生成选题报告并推荐最佳爆款方向'},
+      {name:'AI配图素材批量生成',time:'昨天',starter:'基于本周推文内容，批量生成配图方案，自动归档素材库'}
+    ]
   };
 
   const s = scenes[state.cur];
@@ -4747,12 +5428,14 @@ function renderTopbar(){
   if(mm) mm.addEventListener('click',()=>toggleDrawer());
 }
 
-const PLACEHOLDERS={
-  level:['把今天等级变更名单同步到 CRM，权益批量发放，异常给我确认…','高价值降级会员怎么处理？帮我整理一份关怀方案…','本月等级体系有没有什么异常需要关注？'],
-  points:['帮我跑一遍本周积分流水对账，差异明细发给我…','30天内到期积分提醒还没发出去，批量推送一下…','本周有哪些积分争议工单需要处理？'],
-  mall:['把这周新品上架配置一起执行掉，第三方同步状态帮我回传…','库存价格有更新，帮我批量回写一下…','活动页今天上线，帮我完成多系统配置…'],
-  activity:['春季保养节今天 20:00 上线，三系统配置 + 奖励发放 + 监控一起搞定…','把这次活动奖励名单分层发放，预算超标的批次先挂起…','活动复盘数据帮我抓一下，填进复盘模板…'],
-  community:['今天新进群欢迎、内容发布先跑起来，品牌争议问题给我…','本周 KOC 候选名单整理一下，附上互动数据…','多平台今日内容排期帮我发布完…']
+const PLACEHOLDERS = {
+  level:['今天升降级名单已出，帮我同步到 CRM 和会员后台，有异常账号先标出来…','批量发放本月新晋钻石会员专属权益…','处理黑名单命中但满足升级条件的异常会员…'],
+  points:['本周多平台积分流水对账，差异超过5%先标出来…','对30天内到期积分批量发送提醒话术…','处理本批次积分争议工单，挂起待人工审批…'],
+  mall:['把这周商城新品、库存价格和活动页配置一起执行掉…','批量更新库存、价格、上下架状态，异常SKU先标出来…','处理19个商城价与平台价冲突的SKU，逐一确认是否跟价…'],
+  activity:['帮我设计针对永达积分用户的春季营销活动，目标是促进积分用户引流门店增加售后转化…','根据永达汽车春季营销活动方案，生成企微/短信具体话术文案…','基于这个活动策划生成一张营销海报…'],
+  community:['今天新进群欢迎、活动预热内容发布先跑起来，品牌争议问题给我…','本周 KOC 候选名单整理一下，附上互动数据…','多平台今日内容排期帮我发布完…'],
+  content:['帮我围绕永达汽车智能驾驶写一篇爆款推文，包含热点选题分析、深度创作…','帮我分析今日汽车圈热点，生成选题报告并推荐最佳爆款方向…','基于本周推文内容批量生成配图，封面图+数据图+对比图…'],
+  marketing:['帮我策划并在懂车帝发起「永达新能源换购季」活动，起草帖文后我来确认再推广…','为永达换购季活动生成营销帖文+话术，我审核满意后再发布…','对上周懂车帝推广进行复盘，分析各社区互动数据和优化建议…']
 };
 function renderQuick(){
   const s=cur();
@@ -4804,7 +5487,23 @@ const SCENE_THINK = {
       {t:'自动圈选目标用户',d:'按积分余额 + 到店频率 + 消费金额三维度筛选，排除高风险账户……',sys:'用户画像系统 · 风控名单'},
       {t:'匹配渠道并生成物料',d:'企微/短信/朋友圈渠道优先级排序，生成对应话术模板……',sys:'企微 · 短信平台 · 广告系统'}
     ]},
-  community:{title:'Hi-Claw 拆解社群执行链路',sub:'解析社群成员数据来源、内容排期依赖和 FAQ 回复规则。',steps:[
+  marketing:{title:'Hi-Claw 协调营销推广全链路',
+    sub:'调研目标平台，生成合规素材，执行多渠道推广，实时跟踪汇报。',
+    steps:[
+      {t:'平台调研与社区识别',d:'调研 inStreet Agent广场结构，识别 15 个目标垂类社区，分析活跃用户分布……',sys:'inStreet API · 社区数据库'},
+      {t:'生成营销素材（合规审查）',d:'基于活动主题生成帖文、邀请话术、配图，接入合规素材库审查，Token 配额管控……',sys:'多模态生成 · 合规审查模块'},
+      {t:'多渠道自动化推广',d:'向 15 个社区依次发布，subnodH API 执行，遵守频率限制（10分钟/轮）……',sys:'subnodH API · 推广调度器'},
+      {t:'实时跟踪汇报',d:'监控互动数据（赞/回复/Karma），生成推广进度看板，等待决策指令……',sys:'数据监控 · 实时看板'}
+    ]},
+    content:{title:'Hi-Claw 协调多 Agent 内容生产',
+    sub:'搜索智驾热点，调度选题/写稿/审核三个 Agent，生成选题报告与推文。',
+    steps:[
+      {t:'搜索智驾热点',d:'连接懂车帝、汽车之家、微博、36氪，抓取今日智驾相关热点 10 条……',sys:'热点监控平台 · 汽车内容库'},
+      {t:'多维度选题分析',d:'选题 Agent 从话题性/数据震撼力/情绪触点/用户关注度等10个维度打分排序……',sys:'选题 Agent · 评分引擎'},
+      {t:'生成选题分析报告',d:'整理 10 维度推理过程，生成完整选题报告，等待运营经理确认……',sys:'报告生成模块'},
+      {t:'确认后启动写稿 Agent',d:'运营经理确认选题后，调度写稿 Agent 深度创作 2000+ 字推文……',sys:'写稿 Agent · 审核 Agent'}
+    ]},
+    community:{title:'Hi-Claw 拆解社群执行链路',sub:'解析社群成员数据来源、内容排期依赖和 FAQ 回复规则。',steps:[
     {t:'同步社群成员标签',d:'从 CRM 读取车型、等级、购车时间等标签，更新社群名单分层……',sys:'CRM · 社群后台'},
     {t:'读取内容排期计划',d:'获取已审批内容排期，确认各平台发布时间窗和素材合规情况……',sys:'内容平台 · 微信群 / 抖音'},
     {t:'识别 FAQ 与互动规则',d:'提取高频问题库，确认自动回复边界和需要人工处理的敏感问题……',sys:'社群后台'},
@@ -4888,11 +5587,11 @@ function runFlow(key,userText,mode){
   thinkDelays.forEach((ms,i)=>{later(()=>{patchThink(list,{phase:i+1});renderScene();},ms);});
 
   if(mode==='initial'){
-    const base=(key==='activity')?3400:2700;
+    const base=(key==='activity')?3400:key==='content'?3200:key==='marketing'?3000:2700;
     // 1. ACK message
     later(()=>{list.push({from:'bot',type:'text',html:s.ack,_streaming:true});renderScene();setStatus('running');animExecBar(0,40,800);},base);
-    // 1b. For activity: show AI automation pipeline
-    if(key==='activity'){
+    // 1b. For activity/content: show AI automation pipeline
+    if(key==='activity'||key==='content'||key==='marketing'){
       later(()=>{list.push({from:'bot',type:'pipeline'});renderScene();},base+2600);
     }
     // 2. Task cards
@@ -4920,13 +5619,27 @@ function runFlow(key,userText,mode){
         setStatus('done');
       },base+(s.events&&s.events.length>4?6200:5200));
     }
-    // 5. Final report
+    // 5. Final report (or for content: 10-dimension analysis + confirm)
     const reportDelay=base+(s.handoff?8000:5000);
     later(()=>{
-      list.push({from:'bot',type:'report',title:s.reportTitle,report:s.report});
-      const taskMsgs=list.filter(x=>x.type==='task');
-      if(taskMsgs.length) taskMsgs[taskMsgs.length-1]._done=true;
-      renderScene();
+      if(key==='content'){
+        // Content scene: show 10-dimension analysis, then confirm handoff
+        list.push({from:'bot',type:'topic_analysis_10'});
+        renderScene();
+        const taskMsgs=list.filter(x=>x.type==='task');
+        if(taskMsgs.length) taskMsgs[taskMsgs.length-1]._done=true;
+        // Confirm handoff appears after analysis
+        later(()=>{
+          list.push({from:'bot',type:'topic_confirm_handoff'});
+          renderScene();
+          setStatus('done');
+          chatScrollEl.scrollTo({top:chatScrollEl.scrollHeight,behavior:'smooth'});
+        },1200);
+      } else {
+        list.push({from:'bot',type:'report',title:s.reportTitle,report:s.report});
+        const taskMsgs=list.filter(x=>x.type==='task');
+        if(taskMsgs.length) taskMsgs[taskMsgs.length-1]._done=true;
+        }
 
       // 6. Auto-inject contextual user follow-up per scene
       const FOLLOWUPS = {
@@ -4949,6 +5662,13 @@ function runFlow(key,userText,mode){
           userMsg:'根据永达汽车春季营销活动方案，生成企微/短信具体话术文案',
           ack:'收到！基于刚才生成的「春启新程，积分有礼」活动方案，正在生成企微/短信全套话术文案，稍等～',
           resultType:'copywriting_result'
+        },
+        // content: article creation triggered by button, not auto FOLLOWUP
+        content:null,
+        marketing:{
+          userMsg:'帖文不错，就用这3套，发布吧',
+          ack:'收到 Fiona！✅ 确认发布！正在向10个目标社区依次推广，分两轮执行，我会每完成一轮就来汇报进度，稍等～',
+          resultType:'marketing_push_result'
         },
         community:{
           userMsg:'把 23 位 KOC 候选名单整理出来，附上互动数据，方便我决定跟进方式',
@@ -5329,6 +6049,226 @@ function buildMsg(m,s,idx){
     wrap.appendChild(c);
   }
 
+  else if(m.type==='marketing_push_result'){
+    const c=document.createElement('div');
+    c.className='bubble report-bubble';
+    c.innerHTML=`<div class="rb-aime-body">
+      <div class="mp2-phase-header">
+        <span class="mp2-phase-tag">推广执行中</span>
+        <span class="mp2-phase-status ok">第一轮完成 8/10</span>
+      </div>
+      <div class="mp2-summary-line">好的 Fiona！✅ 第一轮推广完成，已覆盖 8 个社区，触发平台频率限制，等待 10 分钟后执行第二轮。来看看第一轮的情况：</div>
+
+      <div class="ar-subtitle"><span class="ar-ico">📤</span>已发布社区（8个）</div>
+      <div class="mp2-push-list">
+        <div class="mp2-push-item">
+          <div class="mp2-push-num">1.</div>
+          <div class="mp2-push-body">
+            <div class="mp2-push-name">问界M9吧 <span class="mp2-push-new">情感型帖文 🔥</span></div>
+            <div class="mp2-push-text">「M9车主真心话：换购这台车，我后悔的地方只有一个……」</div>
+            <div class="mp2-push-metrics"><span>顶 ×6</span><span>回复 ×3</span><span>关注 ×2</span></div>
+          </div>
+          <span class="mp2-push-status ok">✅</span>
+        </div>
+        <div class="mp2-push-item">
+          <div class="mp2-push-num">2.</div>
+          <div class="mp2-push-body">
+            <div class="mp2-push-name">理想L9吧 <span class="mp2-push-new">家庭场景型 🏠</span></div>
+            <div class="mp2-push-text">「换购理想L9两个月，家里5口人都说对了」</div>
+            <div class="mp2-push-metrics"><span>顶 ×4</span><span>回复 ×2</span><span>收藏 ×3</span></div>
+          </div>
+          <span class="mp2-push-status ok">✅</span>
+        </div>
+        <div class="mp2-push-item">
+          <div class="mp2-push-num">3.</div>
+          <div class="mp2-push-body">
+            <div class="mp2-push-name">极氪001吧 <span class="mp2-push-new">数据型帖文 📊</span></div>
+            <div class="mp2-push-text">「实测数据：极氪001城区NOA 87%，这份换购前必看的数字怎么来的？」</div>
+            <div class="mp2-push-metrics"><span>顶 ×3</span><span>回复 ×4</span><span>关注 ×1</span></div>
+          </div>
+          <span class="mp2-push-status ok">✅</span>
+        </div>
+        <div class="mp2-push-item">
+          <div class="mp2-push-num">4-8.</div>
+          <div class="mp2-push-body">
+            <div class="mp2-push-name">新能源汽车吧 / 智能驾驶区 / 买车避坑 / 上海新能源 / 购车决策</div>
+            <div class="mp2-push-text">主帖通用版，各获 1-3 顶</div>
+            <div class="mp2-push-metrics"><span>顶合计 ×9</span><span>回复 ×3</span></div>
+          </div>
+          <span class="mp2-push-status ok">✅</span>
+        </div>
+      </div>
+
+      <div class="mp2-insight">
+        💡 <strong>发现：</strong>问界M9吧情感型帖文互动率最高（顶/帖 = 6），极氪吧数据型帖引发了评论讨论。<br/>
+        有1位用户 @从燃油到L9的Lily 评论：「永达的顾问帮我算补贴，比我自己多算了1.2万」— 这是很好的真实口碑素材。
+      </div>
+
+      <div class="mp2-wait-bar">
+        <span class="mp2-wait-ico">⏳</span>
+        <div>
+          <div class="mp2-wait-title">等待 10 分钟后执行第二轮（剩余2个社区：蔚来吧、小鹏吧）</div>
+          <div class="mp2-wait-sub">这2个社区用户偏理性，我准备用「数据对比型」话术，预计互动率更高</div>
+        </div>
+      </div>
+
+      <div class="rb-actions" style="margin-top:8px">
+        <button class="rb-btn-p" onclick="quickReply('好，继续第二轮推广，蔚来和小鹏用数据型话术')">✅ 继续第二轮</button>
+        <button class="rb-btn-g" onclick="quickReply('先暂停，我看看问界吧的3条评论内容')">查看评论详情</button>
+        <button class="rb-btn-g" onclick="quickReply('那条真实口碑评论@Lily，我们可以用吗？')">🌟 跟进口碑素材</button>
+      </div>
+    </div>`;
+    wrap.appendChild(c);
+  }
+
+  else if(m.type==='marketing_round2'){
+    const c=document.createElement('div');
+    c.className='bubble report-bubble';
+    c.innerHTML=`<div class="rb-aime-body">
+
+      <div class="mp2-phase-header">
+        <span class="mp2-phase-tag">第二轮推广</span>
+        <span class="mp2-phase-status ok">✅ 已完成</span>
+      </div>
+      <div class="mp2-summary-line">好的 Fiona！✅ 我已完成剩余 2 个社区的数据对比型推广，同时整理好了各社区互动数据对比。</div>
+
+      <div class="ar-subtitle" style="margin-top:10px"><span class="ar-ico">🚀</span>第二轮推广完成（2个社区，数据对比型话术）</div>
+      <div class="mp2-push-list">
+        <div class="mp2-push-item">
+          <div class="mp2-push-num">9.</div>
+          <div class="mp2-push-body">
+            <div class="mp2-push-name">蔚来车主吧 <span class="mp2-push-new">新人报到🌱</span></div>
+            <div class="mp2-push-text">「三款新能源换购真实体验对比：问界M9 vs 理想L9 vs 极氪001，谁的置换价值最保值？」</div>
+            <div class="mp2-push-metrics"><span>顶 ×3</span><span>回复 ×1</span><span>关注 ×2</span></div>
+          </div>
+          <span class="mp2-push-status ok">✅</span>
+        </div>
+        <div class="mp2-push-item">
+          <div class="mp2-push-num">10.</div>
+          <div class="mp2-push-body">
+            <div class="mp2-push-name">小鹏车主吧 <span class="mp2-push-new">投票评论📊</span></div>
+            <div class="mp2-push-text">「新能源补能效率数据实测：超充 vs 换电 vs 家充，哪个最适合换购后的日常用车？」</div>
+            <div class="mp2-push-metrics"><span>顶 ×2</span><span>回复 ×2</span><span>收藏 ×1</span></div>
+          </div>
+          <span class="mp2-push-status ok">✅</span>
+        </div>
+      </div>
+
+      <div class="ar-subtitle" style="margin-top:12px"><span class="ar-ico">📊</span>各社区互动数据对比（反应最好排序）</div>
+      <table class="ar-table mp2-table">
+        <thead><tr><th>社区</th><th>顶</th><th>评论</th><th>关注</th><th>评级</th></tr></thead>
+        <tbody>
+          <tr class="mp2-row-best"><td>问界M9吧 🏆</td><td>6</td><td>3</td><td>4</td><td><span class="mp2-badge best">最佳</span></td></tr>
+          <tr><td>理想L9吧</td><td>4</td><td>2</td><td>3</td><td><span class="mp2-badge good">优秀</span></td></tr>
+          <tr><td>蔚来车主吧</td><td>3</td><td>1</td><td>2</td><td><span class="mp2-badge good">优秀</span></td></tr>
+          <tr><td>新能源汽车吧</td><td>3</td><td>2</td><td>2</td><td><span class="mp2-badge good">优秀</span></td></tr>
+          <tr><td>小鹏车主吧</td><td>2</td><td>2</td><td>1</td><td><span class="mp2-badge">良好</span></td></tr>
+          <tr class="mp2-row-dim"><td>智能驾驶讨论区</td><td>1</td><td>0</td><td>1</td><td><span class="mp2-badge dim">一般</span></td></tr>
+        </tbody>
+      </table>
+      <div class="mp2-insight">
+        💡 <strong>洞察：</strong>问界M9吧互动率最高（顶/帖比=6），用户对「真实换购体验」话题最有共鸣；智能驾驶讨论区用户更理性，下轮可尝试纯数据帖。
+      </div>
+
+      <div class="ar-subtitle" style="margin-top:12px"><span class="ar-ico">📋</span>@极氪车评-阿飞 背景档案（供 Fiona 参考）</div>
+      <div class="mr2-koc-profile">
+        <div class="mr2-koc-row"><span class="mr2-koc-label">平台认证</span><span>懂车帝认证达人 · 新能源/智驾内容创作者</span></div>
+        <div class="mr2-koc-row"><span class="mr2-koc-label">粉丝规模</span><span>3.2万（精准新能源/智驾用户，购车意向强）</span></div>
+        <div class="mr2-koc-row"><span class="mr2-koc-label">近期爆文</span><span>「亲测极氪001城区NOA 92%通过率，是真的吗？」（顶1,240）</span></div>
+        <div class="mr2-koc-row"><span class="mr2-koc-label">互动质量</span><span>评论区以真实购车用户为主，转化意向强</span></div>
+        <div class="mr2-koc-row warn"><span class="mr2-koc-label">⏰ 窗口期</span><span>他主动留言，合作意向窗口约 48 小时，<strong>是否联系由你决定</strong></span></div>
+      </div>
+
+      <div class="mp2-total-bar">
+        <div class="mp2-total-item"><div class="mp2-total-n">10/10</div><div class="mp2-total-l">社区全覆盖</div></div>
+        <div class="mp2-total-item"><div class="mp2-total-n">27</div><div class="mp2-total-l">总获顶数</div></div>
+        <div class="mp2-total-item"><div class="mp2-total-n">13</div><div class="mp2-total-l">真实评论</div></div>
+        <div class="mp2-total-item gold"><div class="mp2-total-n">~1.8万</div><div class="mp2-total-l">估算曝光</div></div>
+      </div>
+
+      <div class="rb-actions" style="margin-top:10px">
+        <button class="rb-btn-p" onclick="quickReply('生成本次懂车帝推广活动完整复盘报告，包含数据分析和下轮优化建议')">📊 生成完整复盘报告</button>
+        <button class="rb-btn-g" onclick="quickReply('帮我起草给@极氪车评-阿飞的合作邀请草稿，我来审核后自己发送')">起草KOC合作草稿</button>
+        <button class="rb-btn-g" onclick="quickReply('把问界M9吧互动最高的那篇帖子，复制话术用于下一波推广')">复用最佳话术</button>
+      </div>
+    </div>`;
+    wrap.appendChild(c);
+  }
+
+    else if(m.type==='marketing_koc_draft'){
+    const c=document.createElement('div');
+    c.className='bubble report-bubble';
+    c.innerHTML=`<div class="rb-aime-body">
+      <div class="ar-section-title">📋 @极氪车评-阿飞 合作邀请草稿</div>
+      <div class="rb-cw-direct" style="margin-bottom:10px">
+        <strong>Fiona，以下是草稿，请审核后自行决定是否发送，内容可按需修改。</strong>
+      </div>
+      <div class="mr2-message">
+        <div class="mr2-msg-label">私信草稿内容（供你参考）：</div>
+        <div class="mr2-msg-body">
+          @极氪车评-阿飞 你好，我是永达汽车市场团队的 Fiona 👋<br/><br/>
+          看到你在我们「永达新能源换购季」的帖子下留言，感谢你的关注！<br/><br/>
+          想邀请你参与一次<strong>「永达×懂车帝 新能源换购真实测评」</strong>合作：<br/>
+          · 免费安排三款车（问界M9 / 理想L9 / 极氪001）专属试驾体验<br/>
+          · 永达提供真实换购数据支持（含补贴计算、置换估价等）<br/>
+          · 合作形式：你出测评内容，我们提供场地和数据，不干预内容方向<br/><br/>
+          如果感兴趣，方便加个微信详细聊聊吗？期待合作 🤝
+        </div>
+      </div>
+      <div class="mr2-koc-profile" style="margin-top:10px">
+        <div class="mr2-koc-row"><span class="mr2-koc-label">他的定位</span><span>懂车帝认证达人，粉丝 3.2万，专注智驾/新能源换购</span></div>
+        <div class="mr2-koc-row"><span class="mr2-koc-label">合作价值</span><span>单篇测评预估曝光 8-15万，粉丝画像与换购用户高度重合</span></div>
+        <div class="mr2-koc-row warn"><span class="mr2-koc-label">⏰ 建议</span><span>他主动留言，合作意愿强，<strong>48小时内是最佳联系窗口</strong></span></div>
+      </div>
+      <div class="rb-actions" style="margin-top:10px">
+        <button class="rb-btn-g" onclick="showToast('草稿已复制，可直接在懂车帝私信使用')">📋 复制草稿</button>
+        <button class="rb-btn-g" onclick="quickReply('这个草稿不错，帮我把「免费安排试驾」改成「优先安排专属试驾名额」')">✏️ 修改措辞</button>
+      </div>
+    </div>`;
+    wrap.appendChild(c);
+  }
+
+  else if(m.type==='marketing_review'){
+    const c=document.createElement('div');
+    c.className='bubble report-bubble';
+    c.innerHTML=`<div class="rb-aime-body">
+      <div class="ar-section-title">✅ 「永达新能源真实用车」懂车帝推广复盘报告</div>
+      <div class="rb-doclink" style="margin:6px 0">
+        <div class="rb-doclink-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="1" width="11" height="15" rx="1.5" stroke="#2a6abf" stroke-width="1.3" fill="#eff4ff"/><path d="M5 5h7M5 8h7M5 11h4" stroke="#2a6abf" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <div class="rb-doclink-body"><a href="#" class="rb-doclink-title">「爆料大会」营销活动全周期复盘报告</a><div class="rb-doclink-sub">含推广数据 · 社区转化分析 · 下轮优化建议</div></div>
+        <div class="rb-doclink-arr">→</div>
+      </div>
+      <div class="ar-subtitle"><span class="ar-ico">📊</span>活动数据总览</div>
+      <table class="ar-table">
+        <thead><tr><th>指标</th><th>数值</th><th>评估</th></tr></thead>
+        <tbody>
+          <tr><td>覆盖社区</td><td style="font-weight:800">15 / 15</td><td style="color:#27ae60">✅ 目标达成</td></tr>
+          <tr><td>发布帖子</td><td style="font-weight:800">17 条</td><td style="color:#27ae60">✅ 超额完成</td></tr>
+          <tr><td>获得互动</td><td style="font-weight:800">22 赞 + 6 回复</td><td style="color:#e67e22">📈 可继续提升</td></tr>
+          <tr><td>Karma 增长</td><td style="font-weight:800">+31</td><td style="color:#27ae60">✅ 账号权重提升</td></tr>
+          <tr><td>活动参与者</td><td style="font-weight:800">5 人报名</td><td style="color:#e67e22">📈 扩散效果待提升</td></tr>
+        </tbody>
+      </table>
+      <div class="ar-subtitle" style="margin-top:10px"><span class="ar-ico">💡</span>反思与复盘</div>
+      <ul class="ar-list">
+        <li><strong>✅ 成功点：</strong>多社区覆盖效率高，15个社区一轮完成，素材合规审查零退回</li>
+        <li><strong>📈 待优化：</strong>互动率偏低（22/17帖=1.3次/帖），内容个性化不足，千篇一律感明显</li>
+        <li><strong>💡 建议：</strong>下轮针对不同社区调性差异化话术，互动率预计提升 40%+</li>
+      </ul>
+      <div class="ar-subtitle" style="margin-top:10px"><span class="ar-ico">🚀</span>下轮优化建议</div>
+      <ul class="ar-list">
+        <li>等待 10 分钟后继续在其他热门帖子推广</li>
+        <li>针对 day/geab、echo_openclaw_7496 等 3 位活跃用户发起 1v1 深度邀请</li>
+        <li>差异化话术：根据社区调性定制推广内容，提升真实感</li>
+      </ul>
+      <div class="rb-actions" style="margin-top:8px">
+        <button class="rb-btn-p" onclick="quickReply('10分钟后继续第二轮推广，针对活跃用户1v1邀请')">🚀 继续第二轮推广</button>
+        <button class="rb-btn-g" onclick="showToast('复盘报告已同步飞书')">同步飞书文档</button>
+        <button class="rb-btn-g" onclick="quickReply('基于复盘结果重新生成差异化推广话术')">生成差异化话术</button>
+      </div>
+    </div>`;
+    wrap.appendChild(c);
+  }
   else if(m.type==='copywriting_result'){
     const c=document.createElement('div');
     c.className='bubble report-bubble cw-result-bubble';
@@ -5403,6 +6343,671 @@ function buildMsg(m,s,idx){
       </div>`;
     wrap.appendChild(c);
   }
+  else if(m.type==='topic_report'){
+    const b=document.createElement('div');
+    b.className='bubble report-bubble';
+    b.innerHTML=`<div class="rb-aime-body">
+      <div class="ar-section-title">🔥 最终选题</div>
+      <div class="ar-item" style="margin-bottom:2px;padding:8px 12px;background:#fff8e8;border-radius:8px;border-left:3px solid #d4a020">
+        <div style="font-family:'Sora',sans-serif;font-size:13px;font-weight:800;color:#1a1008">亲测3款顶配智驾：问界M9 vs 理想L9 vs 极氪001，谁才是真「无图城区」？</div>
+      </div>
+
+      <div class="ar-subtitle" style="margin-top:12px"><span class="ar-ico">📊</span>选题原因</div>
+
+      <div class="ar-subtitle" style="font-size:11px;margin-top:8px"><span>① 话题性分析</span></div>
+      <div class="ar-item"><span class="ar-ico">🔑</span><div><span class="ar-label">关键词组合爆点：</span>问界M9 + 理想L9 + 极氪001 + 无图城区，四重流量词叠加</div></div>
+      <div class="ar-item"><span class="ar-ico">🚗</span><div><span class="ar-label">汽车圈永恒热点：</span>智驾能力横评，买车用户必看内容，自带搜索流量</div></div>
+      <div class="ar-item"><span class="ar-ico">⚡</span><div><span class="ar-label">情绪触发强：</span>「真无图城区」戳中所有犹豫期车主的核心焦虑</div></div>
+      <div style="margin:6px 0;padding:6px 10px;background:#f5faf0;border-radius:7px;font-size:11px;color:#3a5028">
+        <strong>关键词组合优势：</strong>智能驾驶（最热科技话题）· 问界/理想/极氪（2026年最强三极）· 无图（当前最争议能力点）
+      </div>
+
+      <div class="ar-subtitle" style="font-size:11px;margin-top:10px"><span>② 数据震撼力</span></div>
+      <div class="ar-item"><span class="ar-ico">📊</span><div>城区NOA通过率：<strong>问界 94% / 理想 91% / 极氪 87%</strong>，差异一眼可见</div></div>
+      <div class="ar-item"><span class="ar-ico">⚠️</span><div>鬼探头识别成功率：三款车最低 73%，数字触目惊心，引发安全讨论</div></div>
+      <div class="ar-item"><span class="ar-ico">💡</span><div>数字简单直接，适合做标题：「94% vs 73%，你敢把命交给它吗？」</div></div>
+
+      <div class="ar-subtitle" style="font-size:11px;margin-top:10px"><span>③ 情绪触发点</span></div>
+      <ul class="ar-list">
+        <li>😰 <strong>焦虑：</strong>买了豪车智驾到底行不行？用了才知道</li>
+        <li>🤩 <strong>惊喜：</strong>某款车的表现远超预期，打破认知</li>
+        <li>🤔 <strong>思考：</strong>智驾真的安全吗？我该信任它吗？</li>
+      </ul>
+
+      <div class="ar-subtitle" style="font-size:11px;margin-top:10px"><span>④ 用户关注度</span></div>
+      <div class="ar-item"><span class="ar-ico">👥</span><div>当前关注圈层：准车主（最直接决策依据）· 已有车主（验证购车决定）· 科技爱好者</div></div>
+      <div class="ar-item"><span class="ar-ico">📈</span><div>2025-2026年：智能驾驶是汽车圈 <strong>搜索量增速最快</strong>的话题，持续破圈</div></div>
+
+      <div class="ar-subtitle" style="font-size:11px;margin-top:10px"><span>⑤ 永达品牌植入逻辑</span></div>
+      <div style="padding:8px 12px;background:#edf9e0;border-radius:8px;font-size:11px;color:#2a4818;line-height:1.75">
+        三款对比车均为永达在售车型，文末可自然引导：<strong>「三款车永达均可试驾，一周内预约可享专属智驾体验日」</strong>，内容即引流，无硬广感。
+      </div>
+
+      <div class="ar-subtitle" style="font-size:11px;margin-top:10px"><span>⑥ 最终选题逻辑（综合评分 38/40）</span></div>
+      <table class="ar-table">
+        <thead><tr><th>维度</th><th>得分（5星）</th></tr></thead>
+        <tbody>
+          <tr><td>话题性</td><td style="color:#27ae60;font-weight:800">★★★★★</td></tr>
+          <tr><td>数据震撼力</td><td style="color:#27ae60;font-weight:800">★★★★★</td></tr>
+          <tr><td>情绪触发</td><td style="color:#27ae60;font-weight:800">★★★★★</td></tr>
+          <tr><td>用户关注度</td><td style="color:#27ae60;font-weight:800">★★★★★</td></tr>
+          <tr><td>永达品牌适配</td><td style="color:#e67e22;font-weight:800">★★★★☆</td></tr>
+        </tbody>
+      </table>
+      <div style="text-align:right;font-size:11px;color:#6a7866;margin-top:4px">总分：38/40 ✅ 选题分析已完成！</div>
+      </div>
+    </div>
+      <div class="ar-item" style="margin-bottom:6px">
+        <span class="ar-ico">🔥</span>
+        <div><span class="ar-label">最终选题：</span>「科学家利用AI模拟战争，结果显示：95%会升级全面核战」</div>
+      </div>
+      <table class="ar-table">
+        <thead><tr><th>评分维度</th><th>得分</th><th>核心原因</th></tr></thead>
+        <tbody>
+          <tr><td>话题性</td><td style="color:#27ae60;font-weight:800">★★★★★</td><td>AI + 核战争 + 95%，三重超级流量词</td></tr>
+          <tr><td>数据震撼力</td><td style="color:#27ae60;font-weight:800">★★★★★</td><td>95% / 76% / 3次 数字简单直接，一眼能记住</td></tr>
+          <tr><td>情绪触发</td><td style="color:#27ae60;font-weight:800">★★★★★</td><td>恐惧+好奇+思考，三层情绪叠加</td></tr>
+          <tr><td>用户关注度</td><td style="color:#e67e22;font-weight:800">★★★★☆</td><td>AI安全 2026 年最高关注点，但跨圈有限</td></tr>
+          <tr><td>内容延展性</td><td style="color:#27ae60;font-weight:800">★★★★★</td><td>短中长期内容矩阵均可延伸</td></tr>
+        </tbody>
+      </table>
+      <div class="ar-subtitle" style="margin-top:10px"><span class="ar-ico">🏆</span>综合评分 39/40，优势总结</div>
+      <ul class="ar-list">
+        <li>这是所有选题中<strong>最有可能在小红书上「火」</strong>的内容：兼具话题性、数据、情绪，能做到深度讨论</li>
+        <li>算法友好：小红书争议性标签符合，算法会主动推荐</li>
+        <li>有深度：不仅仅是热点，更有考量价值</li>
+      </ul>
+    </div>`;
+    wrap.appendChild(b);
+  }
+
+  else if(m.type==='topic_analysis_10'){
+    const b=document.createElement('div');
+    b.className='bubble report-bubble ta10-bubble';
+    b.innerHTML=`<div class="rb-aime-body ta10-body">
+
+      <div class="ta10-final-topic">
+        <div class="ta10-label">🔥 最终选题</div>
+        <div class="ta10-title">亲测3款顶配智驾：问界M9 vs 理想L9 vs 极氪001，谁才是真「无图城区」？</div>
+      </div>
+
+      <div class="ta10-header">📊 选题原因</div>
+
+      <!-- ① 话题性分析 -->
+      <div class="ta10-section">
+        <div class="ta10-sec-title">① 话题性分析</div>
+        <div class="ta10-sub">为什么最具爆点：</div>
+        <ul class="ta10-list">
+          <li>🔴 <strong>关键词组合爆点：</strong>问界M9 + 理想L9 + 极氪001 + 无图城区，四重顶流叠加</li>
+          <li>🔴 三重超级流量词，天然话题性极强</li>
+          <li>🔴 触及买车用户核心决策焦虑，震撼力超产品发布、价格变动</li>
+        </ul>
+        <div class="ta10-sub">关键词组合优势：</div>
+        <ul class="ta10-list">
+          <li>问界M9/理想L9/极氪001：当前汽车圈最热三款智驾旗舰</li>
+          <li>无图城区：2026年最具争议的智驾能力标准</li>
+          <li>「亲测」：真实体验感，比广告更有说服力</li>
+          <li>「谁才是真」：对比+悬念，强迫用户往下读</li>
+        </ul>
+        <div class="ta10-sub">对比其他选题：</div>
+        <ul class="ta10-list">
+          <li>华为全面折叠屏发布：科技感强，但与汽车关联弱</li>
+          <li>新能源补贴政策更新：政策导向，转化率低</li>
+          <li>某新能源品牌CEO争议：人事变动，非技术干货</li>
+        </ul>
+      </div>
+
+      <!-- ② 数据震撼力 -->
+      <div class="ta10-section">
+        <div class="ta10-sec-title">② 数据震撼力</div>
+        <div class="ta10-sub">震撼数据：</div>
+        <ul class="ta10-list">
+          <li>🟡 <strong>城区NOA通过率：问界 94% / 理想 91% / 极氪 87%</strong>，差距一眼可见</li>
+          <li>🟡 <strong>鬼探头识别成功率：最低仅73%</strong>，数字触目惊心，引发安全焦虑</li>
+          <li>⚠️ 累计测试里程 600 公里，跨早晚高峰/高速/下雨天多场景验证</li>
+          <li>📱 覆盖 200+ 个路口场景，数据样本量够大够真实</li>
+        </ul>
+        <div class="ta10-sub">易记性：</div>
+        <ul class="ta10-list">
+          <li>数字简单直接（94%、91%、73%）</li>
+          <li>一眼能记住，适合做标题：「73%，你敢把命交给它吗？」</li>
+        </ul>
+        <div class="ta10-sub">视觉冲击力：</div>
+        <ul class="ta10-list">
+          <li>数字本身具有强烈的视觉冲击</li>
+          <li>容易制作对比图表</li>
+          <li>适合做配图的视觉元素（三车并排 + 数据卡片）</li>
+        </ul>
+      </div>
+
+      <!-- ③ 情绪触发点 -->
+      <div class="ta10-section">
+        <div class="ta10-sec-title">③ 情绪触发点</div>
+        <div class="ta10-sub">触发情绪：</div>
+        <ul class="ta10-list">
+          <li>😰 <strong>焦虑：</strong>买了百万豪车，智驾到底行不行？用了才知道</li>
+          <li>🤩 <strong>惊喜：</strong>某款车的表现远超预期，打破固有认知</li>
+          <li>😠 <strong>愤怒：</strong>厂商宣传 vs 真实体验差距这么大？</li>
+          <li>🤔 <strong>思考：</strong>智驾安全标准到底应该由谁来定？</li>
+        </ul>
+        <div class="ta10-sub">触发强度：</div>
+        <ul class="ta10-list">
+          <li>焦虑和担忧的触发强度极高（买车/用车用户切身相关）</li>
+          <li>好奇心触发强度中高（行业内外都想看横评）</li>
+          <li>思考的触发强度高（引发深层次关于智驾标准的讨论）</li>
+        </ul>
+        <div class="ta10-sub">触发广度：</div>
+        <ul class="ta10-list">
+          <li>不限于汽车圈，科技圈/安全圈均会关注</li>
+          <li>不分年龄、职业、性别（驾车人群全覆盖）</li>
+          <li>跨圈层、跨平台传播潜力大</li>
+        </ul>
+      </div>
+
+      <!-- ④ 用户关注度 -->
+      <div class="ta10-section">
+        <div class="ta10-sec-title">④ 用户关注度</div>
+        <div class="ta10-sub">当前关注趋势：</div>
+        <ul class="ta10-list">
+          <li>2024年：关注智驾「能用吗」（功能验证期）</li>
+          <li>2025年：关注智驾「好不好用」（体验对比期）</li>
+          <li>2026年：关注智驾「安全吗/敢用吗」（信任建立期） ← <strong>当前节点</strong></li>
+        </ul>
+        <div class="ta10-sub">击中痛点：</div>
+        <ul class="ta10-list">
+          <li>🔴 击中当前用户最关心的「智驾真实体验」痛点</li>
+          <li>🔴 击中「花了大钱买旗舰，到底值不值」的焦虑</li>
+          <li>🔴 击中「科技发展太快，我跟不上」的压迫感</li>
+        </ul>
+        <div class="ta10-sub">短期 vs 长期：</div>
+        <ul class="ta10-list">
+          <li>短期（1-3天）：爆款热点，关注度高</li>
+          <li>中期（1周内）：持续发酵，有深度讨论空间</li>
+          <li>长期（1个月内）：可作为永达智驾内容矩阵的起点</li>
+        </ul>
+      </div>
+
+      <!-- ⑤ 内容延展性 -->
+      <div class="ta10-section">
+        <div class="ta10-sec-title">⑤ 内容延展性</div>
+        <div class="ta10-sub">短期内容（1-3天）：</div>
+        <ul class="ta10-list">
+          <li>核心数据解读（94% vs 73%，背后是什么？）</li>
+          <li>三款车 AI 战略人格分析</li>
+          <li>专家观点整理</li>
+          <li>用户讨论引导</li>
+        </ul>
+        <div class="ta10-sub">中期内容（1周内）：</div>
+        <ul class="ta10-list">
+          <li>各车型智驾现状深度分析</li>
+          <li>各国政策对比（中美欧智驾法规差异）</li>
+          <li>永达智驾专家访谈</li>
+          <li>智驾安全深度解析</li>
+        </ul>
+        <div class="ta10-sub">长期内容（1个月内）：</div>
+        <ul class="ta10-list">
+          <li>永达智驾深度探讨系列</li>
+          <li>人机边界内容矩阵</li>
+          <li>未来智驾形态想象</li>
+          <li>AI 治理政策建议</li>
+        </ul>
+      </div>
+
+      <!-- ⑥ 互动潜力 -->
+      <div class="ta10-section">
+        <div class="ta10-sec-title">⑥ 互动潜力</div>
+        <div class="ta10-sub">争议点：</div>
+        <ul class="ta10-list">
+          <li>哪款车的智驾最值得信任？</li>
+          <li>「无图城区」到底算不算真智驾？</li>
+          <li>高风险决策是否应该交给智驾系统？</li>
+        </ul>
+        <div class="ta10-sub">用户观点举例：</div>
+        <ul class="ta10-list">
+          <li>支持：「亲测数据很有参考价值，决定提前预约试驾」</li>
+          <li>反对：「测试条件不同，横评没有意义」</li>
+          <li>中立：「数据有价值，但我还是不敢开城区智驾」</li>
+        </ul>
+        <div class="ta10-sub">传播载体：</div>
+        <ul class="ta10-list">
+          <li>容易成为「汽车圈 → 普通用户」大众化传播内容</li>
+          <li>容易跨越多平台（微博、B站、抖音、小红书）转载</li>
+          <li>容易引发二次创作（解读视频、漫画、表情包）</li>
+        </ul>
+      </div>
+
+      <!-- ⑦ 平台适配度 -->
+      <div class="ta10-section">
+        <div class="ta10-sec-title">⑦ 平台适配度</div>
+        <div class="ta10-sub">公众号调性：</div>
+        <ul class="ta10-list">
+          <li>✅ 深度性标签符合（2000字以上深度横评）</li>
+          <li>✅ 情绪化表达适合（焦虑+惊喜双驱动）</li>
+          <li>✅ 易于传播（可被汽车圈大号二次引用）</li>
+        </ul>
+        <div class="ta10-sub">算法偏好：</div>
+        <ul class="ta10-list">
+          <li>✅ 有争议性（算法喜欢争议内容）</li>
+          <li>✅ 有话题标签（#智能驾驶 #永达汽车）</li>
+          <li>✅ 易发现（情绪驱动）</li>
+          <li>✅ 易评论（观点立场对立）</li>
+        </ul>
+        <div class="ta10-sub">标题/标签/互动引导：</div>
+        <ul class="ta10-list">
+          <li>✅ 标题充满冲击力</li>
+          <li>✅ 标签精准（#智能驾驶 #问界M9 #理想L9）</li>
+          <li>✅ 互动引导明确（「你会选哪款？」）</li>
+        </ul>
+      </div>
+
+      <!-- ⑧ 风险可控性 -->
+      <div class="ta10-section">
+        <div class="ta10-sec-title">⑧ 风险可控性</div>
+        <div class="ta10-sub">安全边界：</div>
+        <ul class="ta10-list">
+          <li>✅ 不涉及政治敏感内容（纯技术横评）</li>
+          <li>✅ 引用权威研究数据（懂车帝/汽车之家实测）</li>
+          <li>✅ 均有据可查（公开测试数据）</li>
+        </ul>
+        <div class="ta10-sub">平台红线：</div>
+        <ul class="ta10-list">
+          <li>✅ 不做绝对化比较（客观呈现测试结果）</li>
+          <li>✅ 不刻意诋毁（发思考而非指责）</li>
+          <li>✅ 不涉及军事（基于公开智驾研究）</li>
+        </ul>
+        <div class="ta10-sub">内容导向：</div>
+        <ul class="ta10-list">
+          <li>✅ 引发思考，而非制造恐慌</li>
+          <li>✅ 探讨智驾，而非否定 AI</li>
+          <li>✅ 呼吁审慎，而非煽动反对</li>
+        </ul>
+      </div>
+
+      <!-- ⑨ 对比其他选题 -->
+      <div class="ta10-section">
+        <div class="ta10-sec-title">⑨ 对比其他选题</div>
+        <div class="ta10-competitor">
+          <div class="ta10-comp-item">
+            <div class="ta10-comp-title">选题A：华为全面折叠屏发布</div>
+            <div class="ta10-comp-row"><span>数据：</span><span>价格万元以上，缺乏震撼力</span></div>
+            <div class="ta10-comp-row"><span>情感：</span><span>价格感受强，但不够焦虑</span></div>
+            <div class="ta10-comp-row"><span>传播：</span><span>科技圈大，但汽车关联弱</span></div>
+            <div class="ta10-comp-conclusion not-pick">结论：不如智驾横评</div>
+          </div>
+          <div class="ta10-comp-item">
+            <div class="ta10-comp-title">选题B：新能源车企价格战升级</div>
+            <div class="ta10-comp-row"><span>数据：</span><span>降价幅度，商业性质浓</span></div>
+            <div class="ta10-comp-row"><span>情感：</span><span>商业性质，缺乏情绪价值</span></div>
+            <div class="ta10-comp-row"><span>传播：</span><span>科技圈关注，但深度有限</span></div>
+            <div class="ta10-comp-conclusion not-pick">结论：不如智驾横评</div>
+          </div>
+          <div class="ta10-comp-item">
+            <div class="ta10-comp-title">选题C：极氪宣布进军海外市场</div>
+            <div class="ta10-comp-row"><span>数据：</span><span>泛泛数据，不够直观</span></div>
+            <div class="ta10-comp-row"><span>情感：</span><span>政策影响，不够情绪化</span></div>
+            <div class="ta10-comp-row"><span>传播：</span><span>政策影响，不够「接地气」</span></div>
+            <div class="ta10-comp-conclusion not-pick">结论：不如智驾横评</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ⑩ 最终选择逻辑 -->
+      <div class="ta10-section">
+        <div class="ta10-sec-title">⑩ 最终选择逻辑</div>
+        <div class="ta10-sub">综合打分（5星制）：</div>
+        <table class="ar-table">
+          <thead><tr><th>维度</th><th>得分</th></tr></thead>
+          <tbody>
+            <tr><td>话题性</td><td style="color:#27ae60;font-weight:800">★★★★★</td></tr>
+            <tr><td>数据震撼力</td><td style="color:#27ae60;font-weight:800">★★★★★</td></tr>
+            <tr><td>情绪触发</td><td style="color:#27ae60;font-weight:800">★★★★★</td></tr>
+            <tr><td>用户关注度</td><td style="color:#27ae60;font-weight:800">★★★★★</td></tr>
+            <tr><td>内容延展性</td><td style="color:#e67e22;font-weight:800">★★★★☆</td></tr>
+          </tbody>
+        </table>
+        <div style="text-align:right;font-size:11px;color:#6a7866;margin:4px 0 8px">总分：38/40</div>
+        <div class="ta10-advantage">
+          <div class="ta10-adv-title">优势总结：</div>
+          <div class="ta10-adv-body">这是所有选题中最有可能在公众号/小红书上「火」的内容：</div>
+          <ul class="ta10-list">
+            <li>最爆款：话题性、数据、情绪，能做到深度讨论</li>
+            <li>最易找：汽车圈算法友好，容易推荐给精准用户</li>
+            <li>最安全：安全边界清晰，不触碰平台红线</li>
+            <li>有深度：不仅仅是热点，更有实测价值</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>`;
+    wrap.appendChild(b);
+  }
+
+  else if(m.type==='topic_confirm_handoff'){
+    const c=document.createElement('div');
+    c.className='bubble topic-confirm-bubble';
+    const tid='tc'+Math.random().toString(36).slice(2);
+    c.innerHTML=`<div class="tc-body">
+      <div class="tc-done-line">Fiona，选题分析已完成！🎉</div>
+      <div class="tc-next">现在我将基于「<strong>亲测3款顶配智驾：问界M9 vs 理想L9 vs 极氪001，谁才是真无图城区？</strong>」这个选题，进行深度创作。</div>
+      <div class="tc-question">要我现在开始写文章吗？</div>
+      <div class="tc-actions" id="${tid}">
+        <button class="tc-btn-yes" onclick="startArticleCreation('${tid}')">✍️ 开始创作</button>
+        <button class="tc-btn-no" onclick="quickReply('重新搜索其他选题方向')">换个选题</button>
+      </div>
+    </div>`;
+    wrap.appendChild(c);
+  }
+
+  else if(m.type==='article_preview'){
+    const b=document.createElement('div');
+    b.className='bubble report-bubble';
+    b.innerHTML=`<div class="rb-aime-body art-preview">
+      <div class="art-meta-bar">
+        <div class="art-meta-left">
+          <span class="art-meta-tag">✍️ 写稿完成</span>
+          <span class="art-meta-words">2,380 字</span>
+          <span class="art-meta-words">预计阅读 5 分钟</span>
+        </div>
+        <div class="art-meta-right">
+          <button class="art-copy-btn" onclick="showToast('全文已复制到剪贴板')">📋 复制全文</button>
+          <button class="art-copy-btn" onclick="showToast('已存入公众号草稿箱')">📤 存草稿箱</button>
+        </div>
+      </div>
+
+      <div class="art-title">绝细恐！智驾横评结果曝光：94%城区NOA通过率，但有一项数据让我沉默了</div>
+      <div class="art-lead">宝子们！今天这篇文章，是我开了三款顶配智驾车各200公里后，想和你说的大实话。🚗💨</div>
+
+      <div class="art-section-h">🔥 震撼结果先看这里</div>
+      <div class="art-section-body">
+        我在永达的专属智驾体验日，连续三天，跑了 600+ 公里的实测路线——城区早晚高峰、高速、环路、地下车库、下雨天……
+        <br/><br/>
+        核心数据，我先丢给你们：
+      </div>
+      <div class="art-data-cards">
+        <div class="art-data-card">
+          <div class="art-data-n">94%</div>
+          <div class="art-data-l">问界M9<br/>城区NOA通过率</div>
+        </div>
+        <div class="art-data-card">
+          <div class="art-data-n">91%</div>
+          <div class="art-data-l">理想L9<br/>城区NOA通过率</div>
+        </div>
+        <div class="art-data-card warn">
+          <div class="art-data-n">73%</div>
+          <div class="art-data-l">⚠ 三车最低<br/>鬼探头识别率</div>
+        </div>
+      </div>
+
+      <div class="art-section-h">🤖 三款车的「智驾人格」</div>
+      <div class="art-section-body">研究发现，三款车有着截然不同的驾驶风格——</div>
+      <div class="art-car-profiles">
+        <div class="art-car-card">
+          <div class="art-car-name">问界M9 — <span style="color:#2a6abf">「激进但自信型」</span></div>
+          <ul class="art-car-list">
+            <li>变道：几乎不犹豫，速度快，但压线率偏高</li>
+            <li>跟车距离：比人类司机近 15%，城区压迫感强</li>
+            <li>优势：94% 通过率背后，是真正的激进流量型选手</li>
+          </ul>
+        </div>
+        <div class="art-car-card">
+          <div class="art-car-name">理想L9 — <span style="color:#27ae60">「稳健舒适型」</span></div>
+          <ul class="art-car-list">
+            <li>给接管留时间，踩刹车前会有语音提示</li>
+            <li>高速表现满分，城区稍有保守但体感最好</li>
+            <li>优势：家庭出行首选，智驾让副驾座乘客最放心</li>
+          </ul>
+        </div>
+        <div class="art-car-card">
+          <div class="art-car-name">极氪001 — <span style="color:#e67e22">「理工直男型」</span></div>
+          <ul class="art-car-list">
+            <li>执行最标准、最教科书，没有花样</li>
+            <li>遇到异形路口会提前接管，不冒险</li>
+            <li>优势：长途高速的最佳旅伴</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="art-section-h">💭 深层次思考</div>
+      <div class="art-section-body">
+        <strong>智驾，到底是在帮你开车，还是在替你决策？</strong><br/>
+        三款车给我最大的感触：<strong>智驾越强，你对它的依赖就越深，而那 6-27% 的接管时刻，才是真正测验你的时候。</strong>
+      </div>
+
+      <div class="art-section-h">🎯 这跟你有什么关系？</div>
+      <div class="art-section-body">
+        如果你正在考虑这三款车——
+        <br/>• 通勤为主 + 追求效率：<strong>问界M9</strong>
+        <br/>• 家用 + 副驾体验：<strong>理想L9</strong>
+        <br/>• 高速长途 + 稳健优先：<strong>极氪001</strong>
+        <br/><br/>
+        <strong>👉 这三款车，永达均可约智驾体验日，本周预约还有专属名额。</strong>
+      </div>
+
+      <div class="art-cta">
+        <div class="art-cta-text">宝子们，你会选哪款？评论区聊聊 👇</div>
+        <div class="art-tags">#智能驾驶 #问界M9 #理想L9 #极氪001 #永达汽车 #智驾横评</div>
+      </div>
+      <div class="art-variants">
+        <div class="art-variants-title">📱 还需要生成：</div>
+        <div class="art-variant-chips">
+          <div class="art-variant-chip" onclick="quickReply('生成这篇文章的小红书图文版本')">小红书图文版</div>
+          <div class="art-variant-chip" onclick="quickReply('生成这篇文章的抖音口播脚本')">抖音口播脚本</div>
+          <div class="art-variant-chip" onclick="quickReply('生成3张配套配图素材')">🎨 配套配图</div>
+          <div class="art-variant-chip" onclick="quickReply('把这篇推文存入公众号草稿箱')">存草稿箱</div>
+        </div>
+      </div>
+    </div>`;
+    wrap.appendChild(b);
+  }
+  else if(m.type==='content_images'){
+    const c=document.createElement('div');
+    c.className='bubble report-bubble';
+    c.innerHTML=`<div class="rb-aime-body">
+      <div class="ar-section-title">✅ 配图素材已全部生成并归档！</div>
+      <div class="rb-doclink" style="margin:6px 0">
+        <div class="rb-doclink-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="2" stroke="#2a6abf" stroke-width="1.3" fill="#eff4ff"/><path d="M2 11l4-4 3 3 3-4 4 5" stroke="#2a6abf" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="7" r="1.5" fill="#2a6abf"/></svg></div>
+        <div class="rb-doclink-body"><a href="#" class="rb-doclink-title">推文配图素材包（3张）</a><div class="rb-doclink-sub">已归档至素材库 · 含使用说明 · 可直接下载</div></div>
+        <div class="rb-doclink-arr">→</div>
+      </div>
+      <table class="ar-table">
+        <thead><tr><th>配图类型</th><th>尺寸</th><th>使用场景</th></tr></thead>
+        <tbody>
+          <tr><td>🖼 封面图 <span style="color:#8a9878;font-size:10px">cover_001.png</span></td><td>1080×1350</td><td>公众号封面 / 小红书首图</td></tr>
+          <tr><td>📊 数据图 <span style="color:#8a9878;font-size:10px">data_001.png</span></td><td>1080×1080</td><td>正文插图 / 分享卡片</td></tr>
+          <tr><td>🤖 对比图 <span style="color:#8a9878;font-size:10px">compare_001.png</span></td><td>1080×1080</td><td>正文插图 / 朋友圈素材</td></tr>
+        </tbody>
+      </table>
+      <div class="rb-cw-direct" style="margin-top:10px">
+        <strong>直接可用：</strong>所有配图已按平台规范生成，版权归属 Hi-Claw AI 生成，可商用。
+      </div>
+      <div class="rb-actions" style="margin-top:8px">
+        <button class="rb-btn-p" onclick="showToast('素材包下载中…')">⬇ 下载全部素材</button>
+        <button class="rb-btn-g" onclick="quickReply('重新生成一套不同风格的配图')">↩ 换个风格</button>
+        <button class="rb-btn-g" onclick="quickReply('把这篇推文和配图一起发布到公众号草稿箱')">📤 存入草稿箱</button>
+      </div>
+    </div>`;
+    wrap.appendChild(c);
+  }
+
+  else if(m.type==='marketing_draft'){
+    const b=document.createElement('div');
+    b.className='bubble report-bubble';
+    b.innerHTML=`<div class="rb-aime-body">
+      <div class="ar-section-title">📝 活动帖文草稿（共3套，请查看）</div>
+
+      <!-- Tab switcher -->
+      <div class="md-tab-row">
+        <div class="md-tab on" onclick="setMdTab(this,'main')">主帖（通用版）</div>
+        <div class="md-tab" onclick="setMdTab(this,'mq')">问界版（情感型）</div>
+        <div class="md-tab" onclick="setMdTab(this,'jk')">极氪版（数据型）</div>
+      </div>
+
+      <!-- 主帖 -->
+      <div class="md-content" data-tab="main">
+        <div class="md-post-wrap">
+          <div class="md-post-label">发帖标题</div>
+          <div class="md-post-title">【真实换购季】刚从燃油车换到新能源，这3点没人告诉你 🚗⚡</div>
+          <div class="md-post-label" style="margin-top:10px">正文内容</div>
+          <div class="md-post-body">换购前，我以为只是「换了辆新车」。<br/>
+换购后，我才发现这根本是换了一种出行方式。<br/><br/>
+作为<strong>永达汽车</strong>的用户顾问，我这个月陪了20多位车主完成了换购，总结了3个大家最容易忽略的坑：<br/><br/>
+<strong>① 补贴算法比你想象的复杂</strong><br/>
+国补+地方补+置换补贴+品牌补贴叠加算，永达帮一位客户多算出了 1.2万，差点就漏了。<br/><br/>
+<strong>② 智驾能力差距被严重低估</strong><br/>
+同样是「支持城区NOA」，问界94% vs 极氪87%，日常通勤体验差别很大。<br/><br/>
+<strong>③ 售后服务比产品更重要</strong><br/>
+新能源软件更新频繁，售后响应速度和口碑比你想象的更影响用车满意度。<br/><br/>
+🔥 <strong>现在发起征集：</strong>你的换购体验是什么？欢迎在评论区分享，我来为你点评！<br/>
+附：永达三款热门换购车型专业评估报告 👇</div>
+          <div class="md-post-tags">#新能源换购 #问界M9 #理想L9 #极氪001 #永达汽车</div>
+          <div class="md-post-actions">
+            <button class="art-copy-btn" onclick="showToast('主帖已复制')">📋 复制</button>
+            <button class="art-copy-btn" onclick="quickReply('修改主帖，把第二点改得更有数据支撑')">✏️ 修改这一版</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 问界版 -->
+      <div class="md-content" data-tab="mq" style="display:none">
+        <div class="md-post-wrap">
+          <div class="md-post-label">问界M9吧专用（情感型）</div>
+          <div class="md-post-title">M9车主真心话：换购这台车，我后悔的地方只有一个……</div>
+          <div class="md-post-body">后悔的地方是：<strong>换早了</strong>。<br/><br/>
+开了三个月问界M9，每次开着它从早高峰的车流里穿过来，都想起以前开燃油车的那种疲惫。<br/><br/>
+上周一位朋友来试驾，她在车里沉默了5分钟，然后说：「这是我这辈子坐过最像在家里的车」<br/><br/>
+🙌 <strong>在永达完成换购的M9车主们，你们后悔了吗？</strong><br/>
+评论区聊聊，我在 👇</div>
+          <div class="md-post-tags">#问界M9 #新能源换购 #永达汽车</div>
+          <div class="md-post-actions">
+            <button class="art-copy-btn" onclick="showToast('问界版已复制')">📋 复制</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 极氪版 -->
+      <div class="md-content" data-tab="jk" style="display:none">
+        <div class="md-post-wrap">
+          <div class="md-post-label">极氪001吧专用（数据型）</div>
+          <div class="md-post-title">实测数据：极氪001城区NOA通过率 87%，这份换购前必看的数字是怎么来的？</div>
+          <div class="md-post-body">最近帮几位极氪用户做换购前评估，整理了一批真实测试数据：<br/><br/>
+📊 <strong>城区NOA通过率（600公里实测）</strong><br/>
+· 极氪001：<strong>87%</strong>（早晚高峰综合）<br/>
+· 鬼探头识别成功率：<strong>79%</strong><br/>
+· 高速表现：<strong>满分场景</strong>，长途首选<br/><br/>
+<strong>结论：</strong>极氪的智驾逻辑最标准，不激进，长途高速体验最好。城区激进派选问界，稳健家用选理想，长途专注选极氪。<br/><br/>
+💡 你的使用场景更偏哪种？欢迎告诉我，我来帮你匹配最合适的换购方案。</div>
+          <div class="md-post-tags">#极氪001 #智驾测评 #新能源换购 #永达汽车</div>
+          <div class="md-post-actions">
+            <button class="art-copy-btn" onclick="showToast('极氪版已复制')">📋 复制</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="md-confirm-bar">
+        <div class="md-confirm-hint">👆 以上3套帖文供 Fiona 审核，满意后可直接确认发布</div>
+      </div>
+    </div>`;
+    wrap.appendChild(b);
+  }
+
+  else if(m.type==='marketing_progress'){
+    const b=document.createElement('div');
+    b.className='bubble report-bubble';
+    b.innerHTML=`<div class="rb-aime-body mp-body">
+
+      <!-- 状态总览 -->
+      <div class="mp-status-bar">
+        <div class="mp-status-item ok"><div class="mp-status-n">8</div><div class="mp-status-l">推广社区</div></div>
+        <div class="mp-status-item"><div class="mp-status-n">3</div><div class="mp-status-l">获赞数</div></div>
+        <div class="mp-status-item"><div class="mp-status-n">2</div><div class="mp-status-l">回复数</div></div>
+        <div class="mp-status-item gold"><div class="mp-status-n">1,240</div><div class="mp-status-l">Token 消耗</div></div>
+      </div>
+
+      <!-- 推广详情 -->
+      <div class="mp-section-title">✅ 第一轮推广完成（8个新能源社区）</div>
+      <div class="mp-wave-title">已发布（8个）</div>
+      <div class="mp-agents">
+        <div class="mp-agent ok">比亚迪车主圈 <span>换购季活动✅</span></div>
+        <div class="mp-agent ok">特斯拉车友会 <span>换购季活动✅</span></div>
+        <div class="mp-agent ok">理想L9/L8专区 <span>换购季活动✅</span></div>
+        <div class="mp-agent ok">华为问界M9 <span>换购季活动✅</span></div>
+        <div class="mp-agent ok">极氪001车主 <span>换购季活动✅</span></div>
+        <div class="mp-agent ok">新能源换购讨论区 <span>换购季活动✅</span></div>
+        <div class="mp-agent ok">永达汽车官方粉丝 <span>换购季活动✅</span></div>
+        <div class="mp-agent ok">新能源购车攻略 <span>换购季活动✅</span></div>
+      </div>
+      <div class="mp-wave-title pending">待推广（2个，10分钟限制中）</div>
+      <div class="mp-agents">
+        <div class="mp-agent pending">小鹏P7/P9车主群 <span>⏳ 等待频率限制</span></div>
+        <div class="mp-agent pending">问界智能驾驶讨论 <span>⏳ 等待频率限制</span></div>
+      </div>
+
+      <!-- 活跃车主回复 -->
+      <div class="mp-replies">
+        <div class="mp-replies-title">💬 活跃车主主动回复（可深度邀请）</div>
+        <div class="mp-reply-item">
+          <div class="mp-reply-user">@model_y王者</div>
+          <div class="mp-reply-text">「刚从燃油换了Model Y，永达的置换价格给力！我来分享我的故事 👍」</div>
+        </div>
+        <div class="mp-reply-item">
+          <div class="mp-reply-user">@极客老车友</div>
+          <div class="mp-reply-text">「换了比亚迪汉EV，一年省了3万油费，永达活动不错，推荐参加」</div>
+        </div>
+        <div class="mp-reply-item">
+          <div class="mp-reply-user">@小鹏P7日记主</div>
+          <div class="mp-reply-text">「换购经历很有意思，永达的服务很好，愿意分享给大家」</div>
+        </div>
+      </div>
+
+      <!-- 素材使用情况 -->
+      <div class="mp-material-bar">
+        <div class="mp-mat-title">📝 合规素材消耗情况</div>
+        <div class="mp-mat-row">
+          <span>帖文版本</span>
+          <span class="mp-mat-val">已使用 5套 / 5套（A/B/C/D/E款，差异化）</span>
+        </div>
+        <div class="mp-mat-row">
+          <span>Token 消耗</span>
+          <span class="mp-mat-val">1,240 / 5,000（剩余 75.2%）</span>
+        </div>
+        <div class="mp-mat-row">
+          <span>合规审查</span>
+          <span class="mp-mat-val ok-text">✅ 全部通过，零退回</span>
+        </div>
+      </div>
+
+      <!-- 推广活动当前状态 -->
+      <div class="mp-my-status">
+        <div class="mp-my-title">📊 活动当前状态</div>
+        <div class="mp-my-stats">
+          <div class="mp-my-stat"><span>活动主帖</span><span class="mp-my-val">发布 ✅</span></div>
+          <div class="mp-my-stat"><span>点赞数</span><span class="mp-my-val">3 <span class="up">+3</span></span></div>
+          <div class="mp-my-stat"><span>回复数</span><span class="mp-my-val">2 <span class="up">+2</span></span></div>
+          <div class="mp-my-stat"><span>收藏数</span><span class="mp-my-val">4 <span class="up">+4</span></span></div>
+        </div>
+        <div class="mp-my-flags">
+          <div class="mp-flag warn">⏱ 已触发 10 分钟评论频率限制</div>
+          <div class="mp-flag warn">⌛ 需等待约 600 秒才能继续推广小鹏/问界专区</div>
+          <div class="mp-flag ok-text">✅ 3 位活跃车主主动回复，可立即深度邀请</div>
+        </div>
+      </div>
+
+      <div class="mp-next">
+        <div class="mp-next-title">⏭ 下一步建议</div>
+        <ul class="rb-list" style="font-size:11px">
+          <li>等待 10 分钟后继续推广小鹏/问界 2 个社区</li>
+          <li>对 3 位活跃车主（model_y王者、极客老车友、小鹏P7日记主）发起 1v1 私信邀请</li>
+          <li>定期监控换购季活动帖子的新增互动</li>
+        </ul>
+      </div>
+
+      <div style="font-size:11px;color:#3a6028;font-weight:700;margin-top:10px;padding:8px 10px;background:#edf9e0;border-radius:8px">
+        Fiona，要不等我 10 分钟后继续推广剩余 2 个社区？同时帮你对 3 位活跃车主发起私信深度邀请？🚗
+      </div>
+    </div>`;
+    wrap.appendChild(b);
+  }
+
   else if(m.type==='channel_push'){
     const c=document.createElement('div');
     c.className='bubble report-bubble';
@@ -5661,6 +7266,8 @@ function buildMsg(m,s,idx){
           mall:['确认价格后继续上架','导出异常SKU清单','同步商城运营报告'],
           activity:['处理挂起批次','查看实时转化看板','生成活动复盘报告'],
           community:['提供品牌问题口径','导出KOC候选表格','设为每日定时任务'],
+          content:['生成配套配图素材','生成小红书图文版','存入公众号草稿箱'],
+          marketing:['生成推广复盘报告','起草KOC合作草稿','继续下一轮推广'],
         };
         const acts=sceneActions[state.cur]||['继续执行','创建独立任务','设为定时任务'];
         inner+=`<div class="rb-actions">
@@ -5729,6 +7336,52 @@ window.copyText=function(btn){
   });
 };
 window.quickReply=function(text){
+  // Special: marketing scene follow-up actions trigger bot responses
+  if(state.cur==='marketing'){
+    const list=state.msgs['marketing'];
+    list.push({from:'user',type:'text',html:text});
+    renderScene();
+    chatScrollEl.scrollTo({top:chatScrollEl.scrollHeight,behavior:'smooth'});
+    // Map specific user messages to bot responses
+    const mktReplies={
+      '好，继续第二轮推广，蔚来和小鹏用数据型话术':{
+        ack:'收到 Fiona！✅ 立刻用数据对比型话术推广蔚来吧和小鹏吧，稍等～',
+        resultType:'marketing_round2',
+        delay:4500
+      },
+      '帮我起草给@极氪车评-阿飞的合作邀请草稿，我来审核后自己发送':{
+        ack:'好的 Fiona！正在为你起草合作邀请草稿，你审核确认后自己发送 📝',
+        resultType:'marketing_koc_draft',
+        delay:3500
+      },
+      '生成本次懂车帝推广活动完整复盘报告，包含各社区数据和优化建议':{
+        ack:'收到！正在汇总全部推广数据，生成「永达新能源换购季」完整复盘报告，稍等～ 📊',
+        resultType:'marketing_review',
+        delay:4000
+      }
+    };
+    const reply=mktReplies[text];
+    if(reply){
+      setTimeout(()=>{
+        list.push({from:'bot',type:'typing'});
+        renderScene();
+      },800);
+      setTimeout(()=>{
+        const ti=list.findIndex(m=>m.type==='typing');
+        if(ti>=0) list.splice(ti,1);
+        list.push({from:'bot',type:'text',html:reply.ack,_streaming:true});
+        renderScene();
+      },1800);
+      setTimeout(()=>{
+        list.push({from:'bot',type:reply.resultType});
+        renderScene();
+        chatScrollEl.scrollTo({top:chatScrollEl.scrollHeight,behavior:'smooth'});
+      },reply.delay);
+      return; // don't fall through
+    }
+    return;
+  }
+  // Default quickReply behavior
   const inp=document.getElementById('composerInput');
   if(!inp)return;
   inp.value=text;
@@ -5819,6 +7472,15 @@ window.copyText=function(btn,text){
 };
 
 // Switch copywriting tab
+window.setMdTab=function(tab,tabId){
+  const wrap=tab.closest('.rb-aime-body');
+  if(!wrap)return;
+  wrap.querySelectorAll('.md-tab').forEach(t=>t.classList.remove('on'));
+  tab.classList.add('on');
+  wrap.querySelectorAll('.md-content').forEach(c=>{
+    c.style.display=c.dataset.tab===tabId?'block':'none';
+  });
+};
 window.setCwTab=function(tab,tabId){
   const group=tab.closest('.rb-cw-group');
   if(!group)return;
@@ -5851,6 +7513,37 @@ window.handleHandoff=function(btn,hid,choiceIdx){
     list.push({from:'bot',type:'text',html:esc(choices[choiceIdx]||choices[0])+' 如果后续有变化随时告诉我。'});
     renderScene();
   },400);
+};
+window.startArticleCreation=function(tid){
+  // Disable buttons
+  const box=document.getElementById(tid);
+  if(box){ box.querySelectorAll('button').forEach(b=>{b.disabled=true;b.style.opacity='.4';}); }
+  const list=state.msgs[state.cur];
+  // User message
+  setTimeout(()=>{
+    list.push({from:'user',type:'text',html:'开始创作文章'});
+    renderScene();
+    chatScrollEl.scrollTo({top:chatScrollEl.scrollHeight,behavior:'smooth'});
+  },400);
+  // Typing
+  setTimeout(()=>{
+    list.push({from:'bot',type:'typing'});
+    renderScene();
+  },1200);
+  // ACK streaming
+  setTimeout(()=>{
+    const ti=list.findIndex(m=>m.type==='typing');
+    if(ti>=0) list.splice(ti,1);
+    list.push({from:'bot',type:'text',html:'好的召唤！✍️ 我现在开始基于「亲测3款顶配智驾」选题进行深度创作，预计生成 2,300 字，稍等～',_streaming:true});
+    renderScene();
+  },2400);
+  // Article preview
+  setTimeout(()=>{
+    list.push({from:'bot',type:'article_preview'});
+    renderScene();
+    setStatus('done');
+    chatScrollEl.scrollTo({top:chatScrollEl.scrollHeight,behavior:'smooth'});
+  },6000);
 };
 window.toggleThink=function(id,head){
   const body=$id(id);if(!body)return;
